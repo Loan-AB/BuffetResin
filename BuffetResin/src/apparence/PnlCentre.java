@@ -18,5 +18,7 @@ public class PnlCentre extends JPanel {
 		setBackground(Color.blue);
 		
 		
+		
+		
 	}
 }
