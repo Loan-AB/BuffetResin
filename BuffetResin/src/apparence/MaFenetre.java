@@ -1,6 +1,7 @@
 package apparence;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,15 +11,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import composant.MonBouton;
-import main.main;
-import vue.Panel_Gridlayout;
 
 public class MaFenetre extends JFrame {
 	
+	PnlBas pnlBas;
+	PnlHaut pnlHaut;
+	PnlCentre pnlCentre;
+	
 	public MaFenetre()
 	{
-		this.setSize(200, 200);
+		pnlBas = new PnlBas();
+		pnlCentre = new PnlCentre("coucou");
+		pnlHaut = new PnlHaut();
 		//pour que la fenetre soit au centre
 		this.setLocationRelativeTo(null);
 		
@@ -26,13 +30,19 @@ public class MaFenetre extends JFrame {
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
 
-
 		
-		Panel_Gridlayout monPanel = new Panel_Gridlayout();
 		
-
-		this.add(monPanel);
+		setLayout(new Box());
+		this.setSize(480, 800);
+		pnlBas.setLayout(new fLO());
+		pnlCentre.setLayout(new BorderLayout());
+		pnlHaut.setLayout(new BorderLayout());
+	
+		add(pnlHaut,BorderLayout.NORTH);
+		add(pnlCentre, BorderLayout.CENTER);
+		add(pnlBas, BorderLayout.SOUTH);
 		
+	
 		
 
 		this.setVisible(true); //ça toujours a la fin
