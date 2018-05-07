@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 
 
 public class MaFenetre extends JFrame {
@@ -40,6 +41,7 @@ public class MaFenetre extends JFrame {
 		
 		//test pour les composant du haut
 		MonLabel lblTime = new MonLabel();
+		MaBatterie prbBatterie = new MaBatterie();
 		
 		
 		
@@ -68,6 +70,7 @@ public class MaFenetre extends JFrame {
 
 		// le haut : 
 		pnlHaut.add(lblTime);
+		pnlHaut.add(prbBatterie);
 		lblTime.setText(time.toLocaleString()); //sera réglé par un timer ou prise du temps du pc
 		
 		//System.out.println("time" + time);
