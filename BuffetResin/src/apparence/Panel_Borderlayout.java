@@ -5,8 +5,6 @@ import java.awt.BorderLayout;
 
 import javax.swing.*;
 
-import composant.*;
-
 
 public class Panel_Borderlayout extends JPanel{
 	

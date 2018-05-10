@@ -1,6 +1,7 @@
 package apparence;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -16,11 +17,16 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 
+@SuppressWarnings("serial")
 public class MaFenetre extends JFrame {
 	
 	PnlBas pnlBas;
 	PnlHaut pnlHaut;
 	PnlCentre pnlCentre;
+	PnlAccueil pnlAccueil;
+	CardLayout couche;
+	PnlSecret pnlSecret;
+	PnlContact pnlContact;
 	
 	@SuppressWarnings("deprecation")
 	public MaFenetre()
@@ -28,66 +34,82 @@ public class MaFenetre extends JFrame {
 		pnlBas = new PnlBas();
 		pnlCentre = new PnlCentre("coucou");
 		pnlHaut = new PnlHaut();
-		
-		//pour le temps
-		
-		java.util.GregorianCalendar calendar = new GregorianCalendar();
-		java.util.Date time  = calendar.getTime();
-		
-		//test pour les composant du bas
-		MonBouton btnhome = new MonBouton("home", true);
-		MonBouton btnretour = new MonBouton("retour", true);
-		MonBouton btnsuivant = new MonBouton("suivant", true);
-		
-		//test pour les composant du haut
-		MonLabel lblTime = new MonLabel();
-		MaBatterie prbBatterie = new MaBatterie();
-		
-		
+		couche = new CardLayout();
+		pnlAccueil = new PnlAccueil("Acceuil");
+		pnlContact = new PnlContact("Contact");
+		pnlSecret = new PnlSecret("Secret");
 		
 		//pour que la fenetre soit au centre
 		this.setLocationRelativeTo(null);
 		
 		//this.setLocation(5, 10); on peux choisir
-		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
-
-		
 		
 		//setLayout(new Box(defaultCloseOperation));
 		this.setSize(480, 800);
 		pnlBas.setLayout(new FlowLayout());
 		pnlCentre.setLayout(new GridLayout());
 		pnlHaut.setLayout(new FlowLayout());
-	
 		
-		//ajout dans la fenetre  , les panels
 		add(pnlHaut,BorderLayout.NORTH);
-		add(pnlCentre,BorderLayout.CENTER);
+		add(pnlCentre);
 		add(pnlBas, BorderLayout.SOUTH);
 		
-		//ajout du matos dans les panel
+		pnlCentre.setLayout(couche);
+		pnlCentre.add(pnlAccueil, "Accueil");
+		pnlCentre.add(pnlContact, "Contact");
+		pnlCentre.add(pnlSecret, "Secret");
+		
+		couche.show(pnlCentre, "Accueil");
 
-		// le haut : 
-		pnlHaut.add(lblTime);
-		pnlHaut.add(prbBatterie);
-		lblTime.setText(time.toLocaleString()); //sera réglé par un timer ou prise du temps du pc
+		//ajout dans la fenetre  , les panels
+		/*
+		ActionListener retournerMaison = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				couche.show(pnlCentre, "Accueil");
+			}
+		};
 		
-		//System.out.println("time" + time);
 		
-		//le centre : 
 		
-		//le bas : 
+		ActionListener lancerContact = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				couche.show(pnlCentre, "Contact");
+			}
+		};
+		ActionListener lancerSecret = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				couche.show(pnlCentre, "Secret");
+			}
+		};
+		ActionListener lancerGalerie = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//couche.show(pnlCentre, "Accueil");
+			}
+		};
+		pnlAccueil.setListenerBtn(lancerContact, lancerSecret, lancerGalerie);
+		*/
+		ActionListener lancerAppli = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				couche.show(pnlCentre, ((MonBouton)arg0.getSource()).getText());
+			}
+		};
+		pnlAccueil.setListenerBtn(lancerAppli);
+		pnlBas.setListenerBtn(lancerAppli);
 		
-		pnlBas.add(btnretour);
-		pnlBas.add(btnhome);
-		pnlBas.add(btnsuivant);
-		
-
 		this.setVisible(true); //ça toujours a la fin
-	
-
-	
+		
+		
 	}
 
 	

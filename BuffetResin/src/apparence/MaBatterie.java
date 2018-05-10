@@ -1,9 +1,8 @@
 package apparence;
 
-import java.awt.Dimension;
-
 import javax.swing.JProgressBar;
 
+@SuppressWarnings("serial")
 public class MaBatterie extends JProgressBar{
 	int Progression;
 	

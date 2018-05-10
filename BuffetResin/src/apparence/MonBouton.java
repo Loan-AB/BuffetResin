@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
-import main.*;
 
 public class MonBouton extends JButton {
 	
@@ -21,7 +20,7 @@ public class MonBouton extends JButton {
 		
 		this.setOpaque(isopaque);
 		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-		this.setForeground(Color.green);
+		//this.setForeground(Color.green);
 		this.setBackground(Color.LIGHT_GRAY);
 		
 		
