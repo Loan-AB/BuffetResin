@@ -27,6 +27,7 @@ public class MaFenetre extends JFrame {
 	CardLayout couche;
 	PnlSecret pnlSecret;
 	PnlContact pnlContact;
+	PnlGalerie pnlGalerie;
 	
 	@SuppressWarnings("deprecation")
 	public MaFenetre()
@@ -38,6 +39,7 @@ public class MaFenetre extends JFrame {
 		pnlAccueil = new PnlAccueil("Acceuil");
 		pnlContact = new PnlContact("Contact");
 		pnlSecret = new PnlSecret("Secret");
+		pnlGalerie = new PnlGalerie("Galerie");
 		
 		//pour que la fenetre soit au centre
 		this.setLocationRelativeTo(null);
@@ -59,6 +61,7 @@ public class MaFenetre extends JFrame {
 		pnlCentre.add(pnlAccueil, "Accueil");
 		pnlCentre.add(pnlContact, "Contact");
 		pnlCentre.add(pnlSecret, "Secret");
+		pnlCentre.add(pnlGalerie,"Galerie");
 		
 		couche.show(pnlCentre, "Accueil");
 
