@@ -1,30 +1,57 @@
 package gestionGalerie;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JPanel;
+import javax.swing.JTable;
+
 import apparence.PnlCentre;
 import apparence.PnlSecret;
+import test.BouttonPhoto;
+import test.MesImages;
+import test.MonImage;
 
 public class Gallery extends PnlCentre {
 	
-	BouttonPhoto bouttonPhoto[];
-	MesImage mesImage[];
-	JPanel panelScrollbar = new JPanel();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	MesImages mesImages = new MesImages();
 	JPanel panelPhoto = new JPanel();
 	
+	
 	public Gallery() {
-		// TODO Auto-generated constructor stub
+		
+		setLayout(new BorderLayout());
+		add(panelPhoto);
 		
 		
-		PanelGallery.setLayout(new BorderLayout());
 		
-		panelPhoto.setLayout(new GridLayout(4,2));
 		
-		for(int i=0;i<bouttonPhoto.length;i++)	
-			panelPhoto.add(bouttonPhoto[i]);
+		
+		panelPhoto.setLayout(new GridLayout(3,5));
+		
+	
+		for(int i=0;i<mesImages.images.length;i++) {
 			
+			panelPhoto.add(new BouttonPhoto(new MonImage(i)));
+			
+		}
 		
 		
+	
+	
 		
+		setSize(480,800);
 		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
 	}
+	
 
 }
