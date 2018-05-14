@@ -2,6 +2,9 @@ package apparence;
 
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 @SuppressWarnings("serial")
 public class PnlAccueil extends PnlCentre {
 	
@@ -12,13 +15,16 @@ public class PnlAccueil extends PnlCentre {
 	public PnlAccueil(String nom) {
 		super(nom);
 		
+		
 		btnContact = new MonBouton("Contact", true);
 		btnGalerie = new MonBouton("Galerie", true);
-		btnSecret = new MonBouton("Secret", true);		
+		btnSecret = new MonBouton("Secret", true);	
+
 		
 		add(btnContact);
 		add(btnGalerie);
 		add(btnSecret);
+		
 		
 	}
 

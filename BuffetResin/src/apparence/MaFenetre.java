@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
+import gestionContact.PnlContact;
+
 
 @SuppressWarnings("serial")
 public class MaFenetre extends JFrame {
@@ -109,6 +111,8 @@ public class MaFenetre extends JFrame {
 		};
 		pnlAccueil.setListenerBtn(lancerAppli);
 		pnlBas.setListenerBtn(lancerAppli);
+		
+		setResizable(false); //fix la taille
 		
 		this.setVisible(true); //ça toujours a la fin
 		

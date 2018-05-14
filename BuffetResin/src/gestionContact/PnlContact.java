@@ -1,4 +1,4 @@
-package apparence;
+package gestionContact;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -13,6 +13,10 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.ListCellRenderer;
+
+import apparence.MonBouton;
+import apparence.MonLabel;
+import apparence.PnlCentre;
 import gestionContact.*;
 
 public class PnlContact  extends PnlCentre {
@@ -36,8 +40,8 @@ public class PnlContact  extends PnlCentre {
 		
 		lblTitre.setText("Contact");
 		lContact = new ArrayList<Contact>();
-		lContact.add(new Contact("Baffet", "Lian", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\Downloads\\bg.jpg")));
-		lContact.add(new Contact("Beffet", "Lean", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\Downloads\\bg.jpg")));
+		lContact.add(new Contact("Baffet", "Lian", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\git\\BuffetResin\\BuffetResin\\src\\gestionContact")));
+		lContact.add(new Contact("Beffet", "Lean", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\git\\BuffetResin\\BuffetResin\\src\\gestionContact\\maliki.jpg")));
 		lContact.add(new Contact("Buffet", "Loan", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\Downloads\\bg.jpg")));
 		lContact.add(new Contact("Biffet", "Luan", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\Downloads\\bg.jpg")));
 		
