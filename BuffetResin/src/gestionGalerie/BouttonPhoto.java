@@ -18,4 +18,4 @@ public class BouttonPhoto extends JBoutton  {
 		setIcon(monImage.photo);
 		}
 	}
-}
+

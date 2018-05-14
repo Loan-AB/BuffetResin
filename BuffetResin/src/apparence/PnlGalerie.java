@@ -1,5 +1,7 @@
 package apparence;
 
+import gestionGalerie.Gallery;
+
 public class PnlGalerie extends PnlCentre {
 
 	public PnlGalerie(String nom) {
@@ -7,5 +9,7 @@ public class PnlGalerie extends PnlCentre {
 		
 		add(new MonBouton("COUCOU", true));
 		System.out.println("coder ici la galerie :D");
+		
+		Gallery gallerie = new Gallery();
 	}
 }

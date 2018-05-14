@@ -14,7 +14,7 @@ public class MesImages extends ImageIcon {
 	File recherche;
 	File ListePhoto[];
 	ImageIcon photoChoisie;
-	;
+	
 	
 	public MesImages() {
 		// TODO Auto-generated constructor stub
