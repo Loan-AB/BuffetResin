@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 public class MonLabel extends JLabel {
 	
 	public MonLabel() {
-		setForeground(Color.white);
+		setForeground(Color.white) ;
 
 	
 	}

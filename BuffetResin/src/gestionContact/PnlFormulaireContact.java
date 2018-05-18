@@ -51,7 +51,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 		txtNom.addFocusListener(null);
 		add(txtNom);
 		
-		add(btnAnnuler);
+		add(btnAnnuler ); 
 		add(btnValider);
 		
 //		txtNom.addFocusListener(new FocusListener() {

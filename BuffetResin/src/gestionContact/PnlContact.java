@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
 import apparence.MonBouton;
 import apparence.MonLabel;
 import apparence.PnlCentre;
-import gestionContact.*;
+import gestionContact .*;
 
 public class PnlContact  extends PnlCentre {
 
