@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 import gestionContact.PnlContact;
+import gestionContact.PnlFormulaireContact;
 import gestionGalerie.PnlGalerie;
 import gestionGalerie.*;
 
@@ -32,8 +33,9 @@ public class MaFenetre extends JFrame {
 	PnlSecret pnlSecret;
 	PnlContact pnlContact;
 	PnlGalerie pnlGalerie;
+	PnlFormulaireContact pnlFormulaire;
 	
-	@SuppressWarnings("deprecation")
+
 	public MaFenetre()
 	{
 		pnlBas = new PnlBas();
@@ -44,6 +46,8 @@ public class MaFenetre extends JFrame {
 		pnlContact = new PnlContact("Contact");
 		pnlSecret = new PnlSecret("Secret");
 		pnlGalerie = new PnlGalerie("Galerie");
+		//pas sure
+		pnlFormulaire = new PnlFormulaireContact("Formulaire");
 		
 		//pour que la fenetre soit au centre
 		this.setLocationRelativeTo(null);
@@ -66,35 +70,12 @@ public class MaFenetre extends JFrame {
 		pnlCentre.add(pnlContact, "Contact");
 		pnlCentre.add(pnlSecret, "Secret");
 		pnlCentre.add(pnlGalerie,"Galerie");
+		pnlCentre.add(pnlFormulaire, "Formulaire");
 		
-		couche.show(pnlCentre, "Accueil");
+		couche.show(pnlCentre, "Formulaire");
 
 		//ajout dans la fenetre  , les panels
 		/*
-		ActionListener retournerMaison = new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				couche.show(pnlCentre, "Accueil");
-			}
-		};
-		
-		
-		
-		ActionListener lancerContact = new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				couche.show(pnlCentre, "Contact");
-			}
-		};
-		ActionListener lancerSecret = new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				couche.show(pnlCentre, "Secret");
-			}
-		};
 		ActionListener lancerGalerie = new ActionListener() {
 			
 			@Override
@@ -111,6 +92,7 @@ public class MaFenetre extends JFrame {
 				couche.show(pnlCentre, ((MonBouton)arg0.getSource()).getText());
 			}
 		};
+		
 		pnlAccueil.setListenerBtn(lancerAppli);
 		pnlBas.setListenerBtn(lancerAppli);
 		

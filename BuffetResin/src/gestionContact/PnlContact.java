@@ -20,8 +20,6 @@ import javax.swing.JScrollPane;
 import apparence.MonBouton;
 import apparence.MonLabel;
 import apparence.PnlCentre;
-import exoCorr.City;
-import exoCorr.Person;
 import gestionContact.*;
 
 public class PnlContact  extends PnlCentre {
@@ -86,22 +84,43 @@ public class PnlContact  extends PnlCentre {
 		
 	}
 
-	private void creeContact() 
+	private void creeContact(String nom , String prenom , String numeroTel ,String numeroMobile ,String email ,ImageIcon photo ) 
 	{
 		System.out.println("le formulaire");
 		System.out.println("validation si tout champ pleinn et contact existe pas deja=> puis création");
-		//cération
-		//Phase test des para : 
-		String nom = "Beffet"  ; 
-		String prenom = "prouti" ; 
-		String numeroTel = "078 715 37 72";
-		String numeroMobile = "01545 4545 454 78";
-		String email= "fhdsuifhi@hjsdhfkj.com" ; 
-		String nomFichier = nom+prenom ; 
-		ImageIcon photo = new ImageIcon("C:\\Users\\loanb\\Downloads\\ImageContact\\chang.jpg");
-		//fin
+		String nomFichier = nom+prenom;
 		serializeObject( nomFichier,  nom,  prenom,  numeroTel,  numeroMobile,  email,  photo); //écrire
 	}
+	
+	/*
+	 * La methode listerRepertoire 
+	 * 
+	 * but : cette methode sert a lister tout les fichiers et les désérialize
+	 * 
+	 * Entrée : le chemin du repertoire ou contien les fichier
+	 * Sortie : aucune
+	 */
+	public void listerRepertoire(File repertoire){
+
+		String [] listefichiers;
+
+		int i;
+		listefichiers=repertoire.list();
+		for(i=0;i<listefichiers.length;i++)
+			{
+				if(listefichiers[i].endsWith(".txt")) // == true
+					{
+					System.out.println(listefichiers[i].toString());
+					deSerializeObject(listefichiers[i].toString());
+						
+					}
+			}
+		}
+	
+	/*
+	 * Les methodes suivante servent a la création et la lecture des fichiers
+	 * 
+	 */
 	
 	public  void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email, ImageIcon photo) {
 		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photo);
@@ -135,21 +154,4 @@ public class PnlContact  extends PnlCentre {
 			e.printStackTrace();
 		}
 	}
-	
-	public void listerRepertoire(File repertoire){
-
-		String [] listefichiers;
-
-		int i;
-		listefichiers=repertoire.list();
-		for(i=0;i<listefichiers.length;i++)
-			{
-				if(listefichiers[i].endsWith(".txt")) // == true
-					{
-					System.out.println(listefichiers[i].toString());
-					deSerializeObject(listefichiers[i].toString());
-						
-					}
-			}
-		}
 }

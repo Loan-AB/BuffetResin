@@ -25,6 +25,19 @@ public class Contact implements Serializable{
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 	}
 	
+	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email) {
+		
+		//on pourrait a la limite déterminer 4 photo par derfaut avec un aléatoire.
+		ImageIcon photo = new ImageIcon("C:\\Users\\loanb\\Downloads\\ImageContact\\chang.jpg");
+		this.nom = nom;
+		this.prenom = prenom;
+		NumeroTel = numeroTel;
+		NumeroMobile = numeroMobile;
+		this.email = email;
+		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
+	}
+	
+	
 
 	@Override
 	public String toString() {

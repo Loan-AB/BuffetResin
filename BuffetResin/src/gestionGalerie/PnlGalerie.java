@@ -8,9 +8,11 @@ public class PnlGalerie extends PnlCentre {
 	public PnlGalerie(String nom) {
 		super(nom);
 		
-		add(new MonBouton("COUCOU", true));
+		add(new MonBouton("ajout", true));
 		System.out.println("coder ici la galerie :D");
 		
-//		Gallery gallerie = new Gallery();
+		
+		
+
 	}
 }
