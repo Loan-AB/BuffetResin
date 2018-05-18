@@ -9,9 +9,9 @@ import javax.swing.JTable;
 
 import apparence.PnlCentre;
 import apparence.PnlSecret;
-import test.BouttonPhoto;
-import test.MesImages;
-import test.MonImage;
+//import test.BouttonPhoto;
+//import test.MesImages;
+//import test.MonImage;
 
 public class Gallery extends PnlCentre {
 	

@@ -1,22 +1,27 @@
 package gestionContact;
 
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import javax.swing.DefaultListCellRenderer;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-import javax.swing.ListCellRenderer;
+
 
 import apparence.MonBouton;
 import apparence.MonLabel;
 import apparence.PnlCentre;
+import exoCorr.City;
+import exoCorr.Person;
 import gestionContact.*;
 
 public class PnlContact  extends PnlCentre {
@@ -24,34 +29,37 @@ public class PnlContact  extends PnlCentre {
 	MonLabel lblTitre;
 	MonBouton btnModifier;
 	MonBouton btnCreer;
-	JList lstContact;
+	JList<Contact> lstContact;
+	Contact[] tabContact;
 	
-	ArrayList<Contact> lContact;
+	
+	 ArrayList<Contact> lContact; //il n'aime pas les static on pourra le passer en paramètre je pense
 	
 	
 	public PnlContact(String nom) {
+		
 		super(nom);
 		// Contact -- Modifier -- Créer
-		// Liste des contacts
-			//Image + nom de la personne
+		
 		btnModifier = new MonBouton("Modifier", true);
 		btnCreer = new MonBouton("Créer", true);
 		lblTitre = new MonLabel();
-		
 		lblTitre.setText("Contact");
+		
+		
 		lContact = new ArrayList<Contact>();
-		lContact.add(new Contact("Baffet", "Lian", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\git\\BuffetResin\\BuffetResin\\src\\gestionContact")));
-		lContact.add(new Contact("Beffet", "Lean", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\git\\BuffetResin\\BuffetResin\\src\\gestionContact\\maliki.jpg")));
-		lContact.add(new Contact("Buffet", "Loan", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\Downloads\\bg.jpg")));
-		lContact.add(new Contact("Biffet", "Luan", "0 666 666 666" , "457 458 74 12", "asd@asd.asd", new ImageIcon("C:\\Users\\loanb\\Downloads\\bg.jpg")));
+		
+//		creeContact(); on en a déja quelque'un
+		System.out.println("listercontact");
+		lireToutLesContact();
 		
 		add(lblTitre);
 		add(btnCreer);
 		add(btnModifier);
 		
-		//liste
 		
-		DefaultListModel lm = new DefaultListModel();
+		//Affichage de la Jlist avec les images
+		DefaultListModel<Contact> lm = new DefaultListModel<Contact>();
 
 		for (Contact contact : lContact) {
 			lm.addElement(contact);
@@ -63,42 +71,85 @@ public class PnlContact  extends PnlCentre {
 		lstContact.setModel(lm);
 
 		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
-		
-		
-		
-		
 		JScrollPane scrollPane= new JScrollPane(lstContact); 
 		scrollPane.setPreferredSize(new Dimension(460,600));
-		
-		
 		add(scrollPane);
+
 	}
 	
-	class ContactCellRenderer extends DefaultListCellRenderer implements ListCellRenderer<Object>
+	private void lireToutLesContact() {
+
+		File chemin = new File("C:\\Users\\loanb\\Downloads\\ImageContact\\"); 
+		listerRepertoire(chemin);
+		
+//		deSerializeObject();//lecture des fichiers serialiser
+		
+	}
+
+	private void creeContact() 
 	{
-	 
-	  @Override
-	  public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-	     Contact entry = (Contact) value;
-	 
-	     setText(value.toString());
-	     setIcon(entry.getImageIcon());
-	  
-	     if (isSelected) {
-	        setBackground(list.getSelectionBackground());
-	        setForeground(list.getSelectionForeground());
-	     }
-	     else {
-	        setBackground(list.getBackground());
-	        setForeground(list.getForeground());
-	     }
-	 
-	     setEnabled(list.isEnabled());
-	     setFont(list.getFont());
-	     setOpaque(true);
-	 
-	     return this;
-	  }
+		System.out.println("le formulaire");
+		System.out.println("validation si tout champ pleinn et contact existe pas deja=> puis création");
+		//cération
+		//Phase test des para : 
+		String nom = "Beffet"  ; 
+		String prenom = "prouti" ; 
+		String numeroTel = "078 715 37 72";
+		String numeroMobile = "01545 4545 454 78";
+		String email= "fhdsuifhi@hjsdhfkj.com" ; 
+		String nomFichier = nom+prenom ; 
+		ImageIcon photo = new ImageIcon("C:\\Users\\loanb\\Downloads\\ImageContact\\chang.jpg");
+		//fin
+		serializeObject( nomFichier,  nom,  prenom,  numeroTel,  numeroMobile,  email,  photo); //écrire
 	}
 	
+	public  void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email, ImageIcon photo) {
+		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photo);
+
+		try {
+			FileOutputStream fichier = new FileOutputStream("C:\\Users\\loanb\\Downloads\\ImageContact\\"+nomFichier+".txt");
+			ObjectOutputStream oos = new ObjectOutputStream(fichier);
+			oos.writeObject(cs);
+			oos.flush();
+			oos.close();
+		}
+		catch (java.io.IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public  void deSerializeObject(String nomFichier) { 
+		
+		try {
+			FileInputStream fichier = new FileInputStream("C:\\Users\\loanb\\Downloads\\ImageContact\\"+nomFichier);
+			ObjectInputStream ois = new ObjectInputStream(fichier);
+			Contact cs = (Contact) ois.readObject();
+			
+			lContact.add(cs);
+
+		}
+		catch (java.io.IOException e) {
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void listerRepertoire(File repertoire){
+
+		String [] listefichiers;
+
+		int i;
+		listefichiers=repertoire.list();
+		for(i=0;i<listefichiers.length;i++)
+			{
+				if(listefichiers[i].endsWith(".txt")) // == true
+					{
+					System.out.println(listefichiers[i].toString());
+					deSerializeObject(listefichiers[i].toString());
+						
+					}
+			}
+		}
 }

@@ -1,6 +1,7 @@
-package apparence;
+package gestionGalerie;
 
-import gestionGalerie.Gallery;
+import apparence.MonBouton;
+import apparence.PnlCentre;
 
 public class PnlGalerie extends PnlCentre {
 
@@ -10,6 +11,6 @@ public class PnlGalerie extends PnlCentre {
 		add(new MonBouton("COUCOU", true));
 		System.out.println("coder ici la galerie :D");
 		
-		Gallery gallerie = new Gallery();
+//		Gallery gallerie = new Gallery();
 	}
 }

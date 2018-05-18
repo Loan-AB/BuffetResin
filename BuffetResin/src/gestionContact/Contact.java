@@ -1,11 +1,14 @@
 package gestionContact;
 
 import java.awt.Image;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
 
-public class Contact {
+public class Contact implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private String nom;
 	private String prenom;
 	private String NumeroTel;
@@ -21,14 +24,65 @@ public class Contact {
 		this.email = email;
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 	}
+	
 
 	@Override
 	public String toString() {
-		return "Contact : " + nom  + " " + prenom + " " + NumeroTel + " " + NumeroMobile +  " " + email ;
+		return  getNom() + "  " + getPrenom() + "  " + getNumeroMobile();
 	}
+	
+	//Setter et Getter : 
 	
 	public ImageIcon getImageIcon() {
 		return photo;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getNumeroTel() {
+		return NumeroTel;
+	}
+
+	public void setNumeroTel(String numeroTel) {
+		NumeroTel = numeroTel;
+	}
+
+	public String getNumeroMobile() {
+		return NumeroMobile;
+	}
+
+	public void setNumeroMobile(String numeroMobile) {
+		NumeroMobile = numeroMobile;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public ImageIcon getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(ImageIcon photo) {
+		this.photo = photo;
 	}
 }
 

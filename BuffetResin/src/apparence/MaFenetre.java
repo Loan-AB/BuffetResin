@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 import gestionContact.PnlContact;
+import gestionGalerie.PnlGalerie;
+import gestionGalerie.*;
 
 
 @SuppressWarnings("serial")
