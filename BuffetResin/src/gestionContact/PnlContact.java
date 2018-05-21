@@ -1,6 +1,11 @@
 package gestionContact;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,8 +20,10 @@ import javax.swing.ImageIcon;
 
 import javax.swing.JList;
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-
+import apparence.MaFenetre;
 import apparence.MonBouton;
 import apparence.MonLabel;
 import apparence.PnlCentre;
@@ -29,16 +36,18 @@ public class PnlContact  extends PnlCentre {
 	MonBouton btnCreer;
 	JList<Contact> lstContact;
 	Contact[] tabContact;
+	MaFenetre maman;
+	DefaultListModel<Contact> lm;
 	
 	
 	 ArrayList<Contact> lContact; //il n'aime pas les static on pourra le passer en paramètre je pense
 	
 	
-	public PnlContact(String nom) {
+	public PnlContact(MaFenetre maman) {
 		
-		super(nom);
+		super("Contact");
 		// Contact -- Modifier -- Créer
-		
+		this.maman = maman;
 		btnModifier = new MonBouton("Modifier", true);
 		btnCreer = new MonBouton("Créer", true);
 		lblTitre = new MonLabel();
@@ -47,7 +56,7 @@ public class PnlContact  extends PnlCentre {
 		
 		lContact = new ArrayList<Contact>();
 		
-//		creeContact(); on en a déja quelque'un
+		//creeContact(); //on en a déja quelque'un
 		System.out.println("listercontact");
 		lireToutLesContact();
 		
@@ -55,9 +64,17 @@ public class PnlContact  extends PnlCentre {
 		add(btnCreer);
 		add(btnModifier);
 		
+		btnCreer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				maman.changeCouche("Formulaire");
+			}
+		});
+		
 		
 		//Affichage de la Jlist avec les images
-		DefaultListModel<Contact> lm = new DefaultListModel<Contact>();
+		lm = new DefaultListModel<Contact>();
 
 		for (Contact contact : lContact) {
 			lm.addElement(contact);
@@ -71,8 +88,15 @@ public class PnlContact  extends PnlCentre {
 		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
 		JScrollPane scrollPane= new JScrollPane(lstContact); 
 		scrollPane.setPreferredSize(new Dimension(460,600));
-		add(scrollPane);
-
+		add(scrollPane);		
+		lstContact.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				maman.afficherContact(lstContact.getSelectedValue());
+			}
+		});
+		
+		
 	}
 	
 	private void lireToutLesContact() {
@@ -82,14 +106,6 @@ public class PnlContact  extends PnlCentre {
 		
 //		deSerializeObject();//lecture des fichiers serialiser
 		
-	}
-
-	private void creeContact(String nom , String prenom , String numeroTel ,String numeroMobile ,String email ,ImageIcon photo ) 
-	{
-		System.out.println("le formulaire");
-		System.out.println("validation si tout champ pleinn et contact existe pas deja=> puis création");
-		String nomFichier = nom+prenom;
-		serializeObject( nomFichier,  nom,  prenom,  numeroTel,  numeroMobile,  email,  photo); //écrire
 	}
 	
 	/*
@@ -121,21 +137,6 @@ public class PnlContact  extends PnlCentre {
 	 * Les methodes suivante servent a la création et la lecture des fichiers
 	 * 
 	 */
-	
-	public  void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email, ImageIcon photo) {
-		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photo);
-
-		try {
-			FileOutputStream fichier = new FileOutputStream("C:\\Users\\loanb\\Downloads\\ImageContact\\"+nomFichier+".txt");
-			ObjectOutputStream oos = new ObjectOutputStream(fichier);
-			oos.writeObject(cs);
-			oos.flush();
-			oos.close();
-		}
-		catch (java.io.IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public  void deSerializeObject(String nomFichier) { 
 		
@@ -152,6 +153,17 @@ public class PnlContact  extends PnlCentre {
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public void ajouterContact(Contact contact) {
+		if(!lm.contains(contact)) {
+			int i=0;
+			while(i<lm.size() && lm.elementAt(i).compareTo(contact) < 0) {
+				i++;
+			}
+			lm.add(i, contact);
+			lstContact.setSelectedIndex(-1);
 		}
 	}
 }

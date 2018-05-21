@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
+import gestionContact.Contact;
 import gestionContact.PnlContact;
 import gestionContact.PnlFormulaireContact;
 import gestionGalerie.PnlGalerie;
@@ -42,12 +43,12 @@ public class MaFenetre extends JFrame {
 		pnlCentre = new PnlCentre("coucou");
 		pnlHaut = new PnlHaut();
 		couche = new CardLayout();
-		pnlAccueil = new PnlAccueil("Acceuil");
-		pnlContact = new PnlContact("Contact");
-		pnlSecret = new PnlSecret("Secret");
-		pnlGalerie = new PnlGalerie("Galerie");
+		pnlAccueil = new PnlAccueil(this);
+		pnlContact = new PnlContact(this);
+		pnlSecret = new PnlSecret(this);
+		pnlGalerie = new PnlGalerie(this);
 		//pas sure
-		pnlFormulaire = new PnlFormulaireContact("Formulaire");
+		pnlFormulaire = new PnlFormulaireContact(this);
 		
 		//pour que la fenetre soit au centre
 		this.setLocationRelativeTo(null);
@@ -72,7 +73,7 @@ public class MaFenetre extends JFrame {
 		pnlCentre.add(pnlGalerie,"Galerie");
 		pnlCentre.add(pnlFormulaire, "Formulaire");
 		
-		couche.show(pnlCentre, "Formulaire");
+		couche.show(pnlCentre, "Acceuil");
 
 		//ajout dans la fenetre  , les panels
 		/*
@@ -100,7 +101,17 @@ public class MaFenetre extends JFrame {
 		
 		this.setVisible(true); //ça toujours a la fin
 		
-		
+	}
+	public void changeCouche(String nom) {
+		couche.show(pnlCentre, nom);
+	}
+	public void afficherContact(Contact contact) {
+		pnlFormulaire.setContact(contact);
+		couche.show(pnlCentre, "Formulaire");
+	}
+	
+	public void ajouterContact(Contact contact) {
+		pnlContact.ajouterContact(contact);
 	}
 
 	

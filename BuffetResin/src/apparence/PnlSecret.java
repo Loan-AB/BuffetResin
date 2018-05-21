@@ -1,9 +1,11 @@
 package apparence;
 
 public class PnlSecret extends PnlCentre {
+	MaFenetre maman;
 
-	public PnlSecret(String nom) {
-		super(nom);
+	public PnlSecret(MaFenetre maman) {
+		super("Secret");
+		this.maman = maman;
 		add(new MonBouton("SECRET",true));	
 	}
 }
