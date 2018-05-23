@@ -1,14 +1,21 @@
 package gestionContact;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
-
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.*;
 import javax.swing.ImageIcon;
 
 
-public class Contact implements Serializable{
+public class Contact implements Serializable, Comparable{
 
 	private static final long serialVersionUID = 1L;
+	private static String chemin = "C:\\Users\\loanb\\Downloads\\ImageContact\\";
+	private String nomFichier;
 	private String nom;
 	private String prenom;
 	private String NumeroTel;
@@ -23,6 +30,7 @@ public class Contact implements Serializable{
 		NumeroMobile = numeroMobile;
 		this.email = email;
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
+		this.nomFichier = nom+prenom;
 	}
 	
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email) {
@@ -56,6 +64,7 @@ public class Contact implements Serializable{
 
 	public void setNom(String nom) {
 		this.nom = nom;
+		changerNomFichier();
 	}
 
 	public String getPrenom() {
@@ -64,6 +73,7 @@ public class Contact implements Serializable{
 
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+		changerNomFichier();
 	}
 
 	public String getNumeroTel() {
@@ -96,6 +106,57 @@ public class Contact implements Serializable{
 
 	public void setPhoto(ImageIcon photo) {
 		this.photo = photo;
+	}
+	
+	public static void setChemin(String path) {
+		chemin = path;
+	}
+	
+	public static String setChemin() {
+		return chemin;
+	}
+	
+	public void enregistrer() 
+	{
+		System.out.println("le formulaire");
+		System.out.println("validation si tout champ pleinn et contact existe pas deja=> puis création");
+		String nomFichier = nom+prenom;
+		serializeObject( nomFichier,  nom,  prenom,  NumeroTel,  NumeroMobile,  email,  photo); //écrire
+	}
+	private void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email, ImageIcon photo) {
+		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photo);
+		File f = new File(chemin+nomFichier+".txt");
+		if(f.exists()) { f.delete(); System.out.println("FICHIER SOUPRIMAY");}
+		try {
+			FileOutputStream fichier = new FileOutputStream(chemin+nomFichier+".txt");
+			ObjectOutputStream oos = new ObjectOutputStream(fichier);
+			oos.writeObject(cs);
+			oos.flush();
+			oos.close();
+		}
+		catch (java.io.IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void changerNomFichier() {
+		File f = new File(chemin+nomFichier+".txt");
+		File f2 = new File(chemin+nom+prenom+".txt");
+		try {
+			Files.move(f.toPath(), f2.toPath(),REPLACE_EXISTING);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		nomFichier = nom + prenom;
+	}
+
+	@Override
+	public int compareTo(Object arg0) {
+		Contact c = (Contact)arg0;
+		if(this.getNom().compareTo(c.getNom())==0) {
+			return getPrenom().compareTo(c.getPrenom());
+		}else return getNom().compareTo(c.getNom());
 	}
 }
 

@@ -11,10 +11,12 @@ public class PnlAccueil extends PnlCentre {
 	MonBouton btnContact;
 	MonBouton btnGalerie;
 	MonBouton btnSecret;
+	MaFenetre maman;
 
-	public PnlAccueil(String nom) {
-		super(nom);
-		
+	public PnlAccueil(MaFenetre maman) {
+		super("Acceuil");
+
+		this.maman= maman;
 		
 		btnContact = new MonBouton("Contact", true);
 		btnGalerie = new MonBouton("Galerie", true);
