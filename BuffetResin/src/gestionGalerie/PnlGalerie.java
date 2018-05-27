@@ -12,6 +12,7 @@ public class PnlGalerie extends PnlCentre {
 	public PnlGalerie(MaFenetre maman) {
 		super("Galerie");
 
+		
 		this.maman = maman;	
 		add(new MonBouton("ajout", true));
 		
