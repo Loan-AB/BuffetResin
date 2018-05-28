@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Contact implements Serializable, Comparable{
 
 	private static final long serialVersionUID = 1L;
-	private static String chemin = ".\\src\\fichierContact"; //chemin => chemin des fichiers
+	private static String chemin = ".\\src\\fichierContact\\"; //chemin => chemin des fichiers
 	private String nomFichier;
 	private String nom;
 	private String prenom;
@@ -36,7 +36,7 @@ public class Contact implements Serializable, Comparable{
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email) {
 		
 		//on pourrait a la limite déterminer 4 photo par derfaut avec un aléatoire.
-		ImageIcon photo = new ImageIcon(".\\src\\photoGalerie\\bg.jpg");
+		ImageIcon photo = new ImageIcon(".\\src\\photoGallerie\\default.png");
 		this.nom = nom;
 		this.prenom = prenom;
 		NumeroTel = numeroTel;
