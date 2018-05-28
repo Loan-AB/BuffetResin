@@ -101,7 +101,7 @@ public class PnlContact  extends PnlCentre {
 	
 	private void lireToutLesContact() {
 
-		File chemin = new File("C:\\Users\\loanb\\Downloads\\ImageContact\\"); 
+		File chemin = new File(".\\src\\fichierContact\\"); 
 		listerRepertoire(chemin);
 		
 //		deSerializeObject();//lecture des fichiers serialiser
@@ -141,7 +141,7 @@ public class PnlContact  extends PnlCentre {
 	public  void deSerializeObject(String nomFichier) { 
 		
 		try {
-			FileInputStream fichier = new FileInputStream("C:\\Users\\loanb\\Downloads\\ImageContact\\"+nomFichier);
+			FileInputStream fichier = new FileInputStream(".\\src\\fichierContact\\"+nomFichier);
 			ObjectInputStream ois = new ObjectInputStream(fichier);
 			Contact cs = (Contact) ois.readObject();
 			

@@ -28,7 +28,7 @@ public class PhotoAgrandie extends PnlCentre {
 		//labelPhoto.getMaximumSize();
 		add(labelPhoto);
 		//setVisible(true);
-		//setSize(480, 800);	
+		setSize(480, 800);	
 		
 		
 		
