@@ -1,14 +1,11 @@
 package gestionGalerie;
 
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
-import javax.imageio.ImageIO;
+import java.io.File;
+
 import javax.swing.ImageIcon;
+
+
 
 
 
@@ -29,7 +26,7 @@ public class MesImages extends ImageIcon {
 	public MesImages() {
 		// TODO Auto-generated constructor stub
 		
-		File recherche = new File("C:/Users/julie/eclipse-workspace/ProjetSmartphoneTestPersoJulienResin/src/test/Photo") ;
+		File recherche = new File("C:/Users/julie/git/BuffetResin/BuffetResin/src/photoGallerie") ;
 		
 				 File [] listePhoto = recherche.listFiles(); 
 				
