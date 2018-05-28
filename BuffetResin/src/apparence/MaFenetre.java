@@ -32,7 +32,7 @@ public class MaFenetre extends JFrame {
 	PnlAccueil pnlAccueil;
 	CardLayout couche;
 	PnlSecret pnlSecret;
-//	PnlContact pnlContact;
+	PnlContact pnlContact;
 	PnlGalerie pnlGalerie;
 	PnlFormulaireContact pnlFormulaire;
 	
@@ -44,7 +44,7 @@ public class MaFenetre extends JFrame {
 		pnlHaut = new PnlHaut();
 		couche = new CardLayout();
 		pnlAccueil = new PnlAccueil(this);
-//		pnlContact = new PnlContact(this);
+		pnlContact = new PnlContact(this);
 		pnlSecret = new PnlSecret(this);
 		pnlGalerie = new PnlGalerie(this);
 		//pas sure
@@ -68,7 +68,7 @@ public class MaFenetre extends JFrame {
 		
 		pnlCentre.setLayout(couche);
 		pnlCentre.add(pnlAccueil, "Accueil");
-//		pnlCentre.add(pnlContact, "Contact");
+		pnlCentre.add(pnlContact, "Contact");
 		pnlCentre.add(pnlSecret, "Secret");
 		pnlCentre.add(pnlGalerie,"Galerie");
 		pnlCentre.add(pnlFormulaire, "Formulaire");
@@ -111,7 +111,7 @@ public class MaFenetre extends JFrame {
 	}
 	
 	public void ajouterContact(Contact contact) {
-//		pnlContact.ajouterContact(contact);
+		pnlContact.ajouterContact(contact);
 	}
 
 	
