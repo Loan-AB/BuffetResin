@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JWindow;
 
 import gestionContact.Contact;
 import gestionContact.PnlContact;
@@ -54,10 +55,11 @@ public class MaFenetre extends JFrame {
 		this.setLocationRelativeTo(null);
 		
 		//this.setLocation(5, 10); on peux choisir
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
+		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
 		
 		//setLayout(new Box(defaultCloseOperation));
 		this.setSize(480, 800);
+		
 		pnlBas.setLayout(new FlowLayout());
 		pnlCentre.setLayout(new GridLayout());
 		pnlHaut.setLayout(new FlowLayout());

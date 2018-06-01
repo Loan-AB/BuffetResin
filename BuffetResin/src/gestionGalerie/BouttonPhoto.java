@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 
 
 
+
+
 public class BouttonPhoto extends JButton{
 	
 	
@@ -29,7 +31,9 @@ public class BouttonPhoto extends JButton{
 		
 		setPreferredSize(new Dimension(140,140));
 		//
-		setIcon(monImage.photo);
+		setIcon(monImage.photoSortie);
+		
+		setBorder(new RoudedBorder(20));
 		
 		
 		
