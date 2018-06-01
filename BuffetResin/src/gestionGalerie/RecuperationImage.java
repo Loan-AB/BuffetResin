@@ -1,6 +1,7 @@
 package gestionGalerie;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -16,7 +17,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+
 import apparence.MaFenetre;
+import apparence.PnlCentre;
 
 public class RecuperationImage implements MouseListener {
 
@@ -25,7 +29,8 @@ public class RecuperationImage implements MouseListener {
 	
 	BouttonPhoto bouttonPhoto[];
 	
-	CardLayout coucheImage;
+	
+	
 	
 	
 	
@@ -33,7 +38,7 @@ public class RecuperationImage implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		PhotoAgrandie frame= new PhotoAgrandie(((JButton)e.getSource()).getIcon());
+		PhotoAgrandie photoAgrandie= new PhotoAgrandie(((JButton)e.getSource()).getIcon());
 		//JLabel label = new JLabel(bouttonPhoto[1].getIcon());
 		//JLabel label = new JLabel();
 		

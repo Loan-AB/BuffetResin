@@ -3,6 +3,7 @@ package gestionGalerie;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,11 +24,17 @@ public class PnlGalerie extends PnlCentre {
 	MonImage monImage;
 	WrapLayout wrapLayout = new WrapLayout(3);
 	
+	CardLayout coucheGallerie  = new CardLayout();
+	
+	RecuperationImage recuperationImage = new RecuperationImage();
+	
 	public PnlGalerie(MaFenetre maman) {
 		super("Galerie");
 		
 		this.maman = maman;	
-		add(new MonBouton("ajout", true));
+		add(new MonBouton("ajout", true),BorderLayout.NORTH);
+		
+		//setLayout(coucheGallerie);
 		
 		add(scrollPane,BorderLayout.CENTER);
 		//scrollPane.setPreferredSize(new Dimension(480, 800));
@@ -46,7 +53,8 @@ public class PnlGalerie extends PnlCentre {
 			//scrollPane.add(bouttonPhoto[i]);
 			
 			bouttonPhoto[i].addMouseListener(new RecuperationImage());
-		}	
+		}
+		
 
 	}
 }
