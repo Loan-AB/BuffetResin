@@ -3,6 +3,7 @@ package gestionGalerie;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -46,7 +47,7 @@ public class PnlGalerie extends PnlCentre {
 		for(int i=0;i<mesImages.images.length;i++) {
 			monImage = mesImages.recupererImage(i);
 			
-			bouttonPhoto[i] = new BouttonPhoto(monImage);
+			bouttonPhoto[i] = new BouttonPhoto(new MonImage(i));
 			
 			panelPhoto.add(bouttonPhoto[i]);
 			//scrollPane.add(bouttonPhoto[i]);
@@ -56,7 +57,14 @@ public class PnlGalerie extends PnlCentre {
 				public void mouseClicked(MouseEvent e) {
 					System.out.println(((BouttonPhoto)(e.getSource())).getImageIcon());
 					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
-					maman.afficherImage(ii);
+					
+					
+					Image image = ii.getImage(); // transform it 
+					Image newimg = image.getScaledInstance(460,600,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+					
+					ImageIcon photoAgrandieSeul = new ImageIcon(newimg);
+					maman.afficherImage(photoAgrandieSeul);
+					
 				}
 			});
 		}
