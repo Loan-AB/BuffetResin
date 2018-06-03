@@ -34,7 +34,7 @@ public class PnlImage extends PnlCentre {
 				System.out.println(monImageIcon.getDescription());  
 				File file = new File(monImageIcon.getDescription());
 				
-				J
+				
 				
 //				System.out.println(e.getSource().toString());
 				
