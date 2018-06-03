@@ -15,30 +15,26 @@ import javax.swing.JPanel;
 
 
 
-
-
 public class BouttonPhoto extends JButton{
 	
+	ImageIcon ii;
 	
-
-
-
-	
-	public BouttonPhoto(MonImage monImage) {
+	public BouttonPhoto(ImageIcon monImage) {
 		
+		ii = monImage;
 		
 		// TODO Auto-generated constructor stub	
 		
 		setPreferredSize(new Dimension(140,140));
 		//
-		setIcon(monImage.photoSortie);
-		
-		setBorder(new RoudedBorder(20));
+		setIcon(ii);
 		
 		
-		
-		
-		}
+	}
+	
+	public ImageIcon getImageIcon() {
+		return ii;
+	}
 	
 }
 

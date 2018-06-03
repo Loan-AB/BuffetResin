@@ -16,6 +16,7 @@ public class Contact implements Serializable, Comparable{
 	private static final long serialVersionUID = 1L;
 	private static String chemin = ".\\src\\fichierContact\\"; //chemin => chemin des fichiers
 	private String nomFichier;
+
 	private String nom;
 	private String prenom;
 	private String NumeroTel;
@@ -33,19 +34,20 @@ public class Contact implements Serializable, Comparable{
 		this.nomFichier = nom+prenom;
 	}
 	
-	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email) {
+	//sans image spécifier on met celle par defaut
+	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email) 
+	{
 		
 		//on pourrait a la limite déterminer 4 photo par derfaut avec un aléatoire.
-		ImageIcon photo = new ImageIcon(".\\src\\photoGallerie\\default.png");
+		
 		this.nom = nom;
 		this.prenom = prenom;
 		NumeroTel = numeroTel;
 		NumeroMobile = numeroMobile;
 		this.email = email;
+		ImageIcon photo = new ImageIcon(".\\src\\photoGallerie\\default.png");
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 	}
-	
-	
 
 	@Override
 	public String toString() {
@@ -55,6 +57,9 @@ public class Contact implements Serializable, Comparable{
 	//Setter et Getter : 
 	
 	public ImageIcon getImageIcon() {
+		return photo;
+	}
+	public ImageIcon getImageIconDefault() {
 		return photo;
 	}
 
@@ -115,7 +120,15 @@ public class Contact implements Serializable, Comparable{
 	public static String setChemin() {
 		return chemin;
 	}
-	
+	public static String getChemin() {
+		return chemin;
+	}
+
+	public String getNomFichier() {
+		return nomFichier;
+	}
+
+
 	public void enregistrer() 
 	{
 		System.out.println("le formulaire");
@@ -149,6 +162,13 @@ public class Contact implements Serializable, Comparable{
 			// TODO: handle exception
 		}
 		nomFichier = nom + prenom;
+	}
+	
+	public void suppressioncontact()
+	{
+		File f = new File(chemin+nomFichier+".txt");
+		System.out.println(chemin+nomFichier+".txt");
+		f.delete(); 
 	}
 
 	@Override

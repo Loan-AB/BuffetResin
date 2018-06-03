@@ -4,23 +4,24 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import javax.swing.Box;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JWindow;
 
-import gestionContact.Contact;
-import gestionContact.PnlContact;
-import gestionContact.PnlFormulaireContact;
-import gestionGalerie.PnlGalerie;
+
+import gestionContact.*;
 import gestionGalerie.*;
 
 
@@ -31,11 +32,14 @@ public class MaFenetre extends JFrame {
 	PnlHaut pnlHaut;
 	PnlCentre pnlCentre;
 	PnlAccueil pnlAccueil;
+	PnlContactGalerie pnlContactGalerie;
 	CardLayout couche;
 	PnlSecret pnlSecret;
 	PnlContact pnlContact;
 	PnlGalerie pnlGalerie;
 	PnlFormulaireContact pnlFormulaire;
+	PnlImage pnlImage;
+	ArrayList<String> historiqueLayout;
 	
 
 	public MaFenetre()
@@ -48,9 +52,11 @@ public class MaFenetre extends JFrame {
 		pnlContact = new PnlContact(this);
 		pnlSecret = new PnlSecret(this);
 		pnlGalerie = new PnlGalerie(this);
+		pnlImage = new PnlImage(this);
+		pnlContactGalerie = new PnlContactGalerie(this);
 		//pas sure
 		pnlFormulaire = new PnlFormulaireContact(this);
-		
+		historiqueLayout = new ArrayList<>();
 		//pour que la fenetre soit au centre
 		this.setLocationRelativeTo(null);
 		
@@ -59,7 +65,6 @@ public class MaFenetre extends JFrame {
 		
 		//setLayout(new Box(defaultCloseOperation));
 		this.setSize(480, 800);
-		
 		pnlBas.setLayout(new FlowLayout());
 		pnlCentre.setLayout(new GridLayout());
 		pnlHaut.setLayout(new FlowLayout());
@@ -74,8 +79,11 @@ public class MaFenetre extends JFrame {
 		pnlCentre.add(pnlSecret, "Secret");
 		pnlCentre.add(pnlGalerie,"Galerie");
 		pnlCentre.add(pnlFormulaire, "Formulaire");
+		pnlCentre.add(pnlImage, "Image");
+		pnlCentre.add(pnlContactGalerie, "ChoixImage");
 		
-		couche.show(pnlCentre, "Acceuil");
+		couche.show(pnlCentre, "Accueil");
+		historiqueLayout.add("Accueil");
 
 		//ajout dans la fenetre  , les panels
 		/*
@@ -92,28 +100,48 @@ public class MaFenetre extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				couche.show(pnlCentre, ((MonBouton)arg0.getSource()).getText());
+
+					changeCouche(((MonBouton)arg0.getSource()).getText());
 			}
 		};
 		
+		ActionListener backAppli = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(historiqueLayout.size()>1) { historiqueLayout.remove(historiqueLayout.size()-1); }
+				couche.show(pnlCentre, historiqueLayout.get(historiqueLayout.size()-1));
+			}
+		};
+
+		pnlBas.setListenerBtn(lancerAppli, backAppli);
 		pnlAccueil.setListenerBtn(lancerAppli);
-		pnlBas.setListenerBtn(lancerAppli);
-		
 		setResizable(false); //fix la taille
 		
 		this.setVisible(true); //ça toujours a la fin
 		
 	}
 	public void changeCouche(String nom) {
-		couche.show(pnlCentre, nom);
+		if(!(historiqueLayout.get(historiqueLayout.size()-1).equals(nom))) {
+			historiqueLayout.add( nom);
+			couche.show(pnlCentre, nom);
+		}
 	}
 	public void afficherContact(Contact contact) {
 		pnlFormulaire.setContact(contact);
-		couche.show(pnlCentre, "Formulaire");
+		changeCouche("Formulaire");
 	}
 	
 	public void ajouterContact(Contact contact) {
 		pnlContact.ajouterContact(contact);
+	}
+	public void supprimerContact(Contact contact) {
+		pnlContact.supprimerContact(contact);
+		
+	}
+	public void afficherImage(ImageIcon icon) {
+		pnlImage.setImage(icon);
+		changeCouche("Image");
 	}
 
 	

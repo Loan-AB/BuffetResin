@@ -2,6 +2,7 @@ package gestionContact;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -33,39 +34,37 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 	
 	MonBouton btnValider;
 	MonBouton btnAnnuler;
+	MonBouton btnSupprimer;
+	MonBouton btnChoixImage;
+	
 	JTextArea txtNom;
 	JTextArea txtPrenom;
 	JTextArea txtNumeroTel;
 	JTextArea txtNumeroMobile;
 	JTextArea txtEmail;
+	
 	MaFenetre maman;
 	Contact contact;
 	JLabel image;
 	public PnlFormulaireContact(MaFenetre maman) {
 		super("Formulaire");
 		this.maman = maman;
-		
-		//pour la photo je ne sais pas encore , => on ouvre la galerie et on dit que "ajouter 
-		//au contact xx) ou on modifier le contact et pn ajoute
-		//il fazdra par la suite faire en sorte que si on a pas rempli de photo , cela met la phot par defaut.
-		//nom,  prenom,  numeroTel,  numeroMobile,  email,  photo
-		
-		
 		btnAnnuler = new MonBouton("Annuler", true);
 		btnValider = new MonBouton("Valider", true);
+		btnSupprimer = new MonBouton("Suprimmer", true);
+		btnChoixImage = new MonBouton("ChoixImage", true);
 		txtNom = new MonJtextArea("Nom");
 		txtPrenom = new MonJtextArea("Prenom");
 		txtNumeroTel = new MonJtextArea("Telephonne");
 		txtNumeroMobile = new MonJtextArea("Mobile");
 		txtEmail = new MonJtextArea("Email");
-//		txtNom = new MonJtextArea("Nom");
 		txtNom.addFocusListener(null);
+		
 		image = new JLabel();
 		
 		add(image);
+
 		add(txtNom);
-		add(btnAnnuler);
-		add(btnValider);
 		add(txtNom);
 		add(txtPrenom);
 		add(txtNumeroTel);
@@ -74,11 +73,28 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 		
 		add(btnAnnuler ); 
 		add(btnValider);
+		add(btnSupprimer);
+		add(btnChoixImage);
+			
 		
 		btnAnnuler.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				dechargement();
+				maman.changeCouche("Contact");
+			}
+		});
+		btnSupprimer.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+					 contact.suppressioncontact();
+					 maman.supprimerContact(contact);
+
+				//réaffiche les contact
+				System.out.println(contact.getNom());
 				dechargement();
 				maman.changeCouche("Contact");
 			}
@@ -98,20 +114,23 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 					contact.setEmail(txtEmail.getText());
 					contact.setNumeroMobile(txtNumeroMobile.getText());
 					contact.setNumeroTel(txtNumeroTel.getText());
-	//				contact.setPhoto(t);
 				}
 				contact.enregistrer();
 				maman.ajouterContact(contact);
 				dechargement();
 				maman.changeCouche("Contact");
-				
 			}
-
 		});
 		
-
-		
+btnChoixImage.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				maman.changeCouche("ChoixImage");
+			}
+		});
 	}
+
 private void dechargement() {
 	contact = null;
 	txtNom.setText("");
@@ -119,6 +138,8 @@ private void dechargement() {
 	txtEmail.setText("");
 	txtNumeroMobile.setText("");
 	txtNumeroTel.setText("");
+	//image.setIcon(new ImageIcon(".\\src\\photoGallerie\\default.png"));
+	//ici loan , il faut voir une soluton pour changer la taille.
 }
 
 public void setContact(Contact contact) {
@@ -132,8 +153,5 @@ public void setContact(Contact contact) {
 	txtPrenom.setText(contact.getPrenom());
 }
 
-
-
-	
 }
 
