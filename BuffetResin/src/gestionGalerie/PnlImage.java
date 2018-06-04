@@ -36,7 +36,7 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//System.err.println(monImageIcon.getDescription()); //contient l'url de l'image
+				System.err.println(monImageIcon.getDescription()); //contient l'url de l'image cette fois pour de vrai XD
 			//	System.out.println(monImageIcon.getDescription());  
 			
 			
