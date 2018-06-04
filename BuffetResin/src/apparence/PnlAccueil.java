@@ -18,7 +18,7 @@ public class PnlAccueil extends PnlCentre {
 
 		this.maman= maman;
 		
-		btnContact = new MonBouton("Contact", true);
+		btnContact = new BouttonApplication("./src/photoBoutton/Contact.png");
 		btnGalerie = new MonBouton("Galerie", true);
 		btnSecret = new MonBouton("Secret", true);	
 

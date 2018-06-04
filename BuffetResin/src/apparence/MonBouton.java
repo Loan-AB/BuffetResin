@@ -1,17 +1,27 @@
 package apparence;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
+import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.border.Border;
+
+import java.*;
+
 
 
 public class MonBouton extends JButton {
 	
-	public MonBouton(String name,Boolean isopaque  )
+	
+	
+	public MonBouton(String name,Boolean isopaque )
 	{
 		
 		this.setText(name.toString());

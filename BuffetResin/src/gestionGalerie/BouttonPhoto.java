@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 
 
 
-
 public class BouttonPhoto extends JButton{
 	
 	ImageIcon ii;

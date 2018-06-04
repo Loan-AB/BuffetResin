@@ -6,12 +6,12 @@ import java.awt.Insets;
 
 import javax.swing.border.Border;
 
- class RoudedBorder implements Border {
+ public class RoudedBorder implements Border {
 
-    private int radius;
+     int radius;
 
 
-    RoudedBorder(int radius) {
+    public RoudedBorder(int radius) {
         this.radius = radius;
     }
 
