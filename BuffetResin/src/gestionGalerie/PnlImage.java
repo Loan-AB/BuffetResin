@@ -4,22 +4,28 @@ import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
 import java.io.File;
+import java.net.URLConnection;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JWindow;
 
 import apparence.MaFenetre;
 import apparence.MonBouton;
 import apparence.PnlCentre;
 
-public class PnlImage extends PnlCentre {
+public class PnlImage extends PnlCentre implements ImageObserver {
 	JLabel image;
 	ImageIcon monImageIcon;
 	MaFenetre maman;
 	MonBouton btnDelete;
+	MesImages imagesListe =  new MesImages();
 	
 	public PnlImage(MaFenetre mama) {
 		super("Galerie");
@@ -30,22 +36,27 @@ public class PnlImage extends PnlCentre {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.err.println(monImageIcon.getDescription()); //contient l'url de l'image
-				System.out.println(monImageIcon.getDescription());  
-				File file = new File(monImageIcon.getDescription());
+				//System.err.println(monImageIcon.getDescription()); //contient l'url de l'image
+			//	System.out.println(monImageIcon.getDescription());  
+			
+			
+				
+			
+				
+			
+				
+			
+			
+			
 				
 				
+			
 				
-//				System.out.println(e.getSource().toString());
-				
-//				File file = new File(e.getSource().toString());
-//			//	System.out.println(file);
-//			String fichierSource = file.getAbsolutePath();
-//			
-//			System.out.println(fichierSource);
-//			this.remove(fichierSource);
-//			revalidate();
-//			repaint();
+			
+			
+		
+		 
+		
 			
 			}
 		});
@@ -61,6 +72,27 @@ public class PnlImage extends PnlCentre {
 		image.setIcon(photo);
 	}
 	
-
+//	private void delete(File file) {
+//		
+//		
+//		
+//		try{
+//    		
+//    		File fichier = file;
+//    		
+//    		
+//        	
+//    		if(fichier.delete()){
+//    			System.out.println(fichier.getName() + " is deleted!");
+//    		}else{
+//    			System.out.println("Delete operation is failed.");
+//    		}
+//    	   
+//    	}catch(Exception e){
+//    		
+//    		e.printStackTrace();
+//    		
+//    	}
+//    }
 
 }

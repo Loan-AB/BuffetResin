@@ -24,7 +24,7 @@ public class MonBouton extends JButton {
 		this.setBackground(Color.LIGHT_GRAY);
 		
 		
-
+		
 		
 	}
 	

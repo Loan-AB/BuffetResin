@@ -38,6 +38,8 @@ public class MonImage extends ImageIcon {
 			
 			photoSortie = new ImageIcon(newimg);
 	
+			
+			//System.out.println(photoSortie.toString());
 			//photo.getIconHeight();
 			//photo.getIconWidth();
 			

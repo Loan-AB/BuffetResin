@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -56,9 +57,10 @@ public class PnlGalerie extends PnlCentre {
 			bouttonPhoto[i].addMouseListener(new MouseAdapter()
 			 {
 				public void mouseClicked(MouseEvent e) {
-					System.out.println(((BouttonPhoto)(e.getSource())).getImageIcon());
-					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
+					System.out.println(((BouttonPhoto)(e.getSource())).getImageIcon().toString());
 					
+					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
+		
 					
 					Image image = ii.getImage(); // transform it 
 					Image newimg = image.getScaledInstance(460,600,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  

@@ -8,23 +8,29 @@ public class MesImages {
 	private static final long serialVersionUID = 1L;
 	ImageIcon images[];
 	File recherche;
-	//File ListePhoto[];
+	File listePhoto[];
 	//ImageIcon photoChoisie;
 	
 	
 	public MesImages() {
 		// TODO Auto-generated constructor stub
 		
-		File recherche = new File("./src/photoGallerie");
+		recherche = new File("./src/photoGallerie");
 		
-		File [] listePhoto = recherche.listFiles(); 
+		
+		
+		listePhoto = recherche.listFiles(); 
 		
 		images = new ImageIcon[listePhoto.length];
 		
 		for(int i=0;i<images.length;i++) 
 		{
 			String url = listePhoto[i].getAbsolutePath();
+			 
+			 
 			images[i]= new ImageIcon(url);
+			//System.out.println(url);
+			
 		}	
 	}
 	public ImageIcon recupererImage(int num) {
