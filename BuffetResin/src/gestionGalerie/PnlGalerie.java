@@ -23,13 +23,13 @@ import apparence.PnlCentre;
 public class PnlGalerie extends PnlCentre {
 
 
-	MaFenetre maman;
-	MesImages mesImages = new MesImages();
-	JPanel panelPhoto = new JPanel();
-	JScrollPane scrollPane = new JScrollPane(panelPhoto);
-	BouttonPhoto []bouttonPhoto= new BouttonPhoto[mesImages.images.length];
-	ImageIcon monImage;
-	WrapLayout wrapLayout = new WrapLayout(3);
+	protected MaFenetre maman;
+	protected MesImages mesImages = new MesImages();
+	protected JPanel panelPhoto = new JPanel();
+	protected JScrollPane scrollPane = new JScrollPane(panelPhoto);
+	protected BouttonPhoto []bouttonPhoto= new BouttonPhoto[mesImages.Size()];
+	protected ImageIcon monImage;
+	protected WrapLayout wrapLayout = new WrapLayout(3);
 	
 	CardLayout coucheGallerie  = new CardLayout();
 	
@@ -46,7 +46,7 @@ public class PnlGalerie extends PnlCentre {
 		//
 		scrollPane.setPreferredSize(new Dimension(460,600));
 		
-		for(int i=0;i<mesImages.images.length;i++) {
+		for(int i=0;i<mesImages.Size();i++) {
 			monImage = mesImages.recupererImage(i);
 			
 			bouttonPhoto[i] = new BouttonPhoto(new MonImage(i));
@@ -57,7 +57,6 @@ public class PnlGalerie extends PnlCentre {
 			bouttonPhoto[i].addMouseListener(new MouseAdapter()
 			 {
 				public void mouseClicked(MouseEvent e) {
-					System.out.println(((BouttonPhoto)(e.getSource())).getImageIcon().toString());
 					
 					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
 		
@@ -66,6 +65,7 @@ public class PnlGalerie extends PnlCentre {
 					Image newimg = image.getScaledInstance(460,600,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 					
 					ImageIcon photoAgrandieSeul = new ImageIcon(newimg);
+					photoAgrandieSeul.setDescription(ii.getDescription());
 					maman.afficherImage(photoAgrandieSeul);
 					
 				}

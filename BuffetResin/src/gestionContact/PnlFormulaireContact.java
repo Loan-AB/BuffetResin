@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,7 +14,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -27,6 +28,7 @@ import apparence.MonJtextArea;
 import apparence.MonLabel;
 import apparence.PnlCentre;
 import gestionContact.*;
+import gestionGalerie.MonImage;
 
 public class PnlFormulaireContact  extends PnlCentre { //pas sure
 
@@ -75,7 +77,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 		add(btnValider);
 		add(btnSupprimer);
 		add(btnChoixImage);
-			
+		image.setPreferredSize(new Dimension(480,200));
 		
 		btnAnnuler.addActionListener(new ActionListener() {
 			
@@ -114,6 +116,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 					contact.setEmail(txtEmail.getText());
 					contact.setNumeroMobile(txtNumeroMobile.getText());
 					contact.setNumeroTel(txtNumeroTel.getText());
+					
 				}
 				contact.enregistrer();
 				maman.ajouterContact(contact);
@@ -138,6 +141,9 @@ private void dechargement() {
 	txtEmail.setText("");
 	txtNumeroMobile.setText("");
 	txtNumeroTel.setText("");
+	image.setIcon(MonImage.transformationImage(new ImageIcon(".\\src\\photoGallerie\\default.png"), image.getWidth()));
+	
+	
 	//image.setIcon(new ImageIcon(".\\src\\photoGallerie\\default.png"));
 	//ici loan , il faut voir une soluton pour changer la taille.
 }
@@ -151,6 +157,11 @@ public void setContact(Contact contact) {
 	txtNumeroMobile.setText(contact.getNumeroMobile());
 	txtNumeroTel.setText(contact.getNumeroTel());
 	txtPrenom.setText(contact.getPrenom());
+//	image.setIcon(MonImage.transformationImage(contact.getImageIcon(), image.getWidth()));
+}
+
+public void setImage(ImageIcon description) {
+	image.setIcon(MonImage.transformationImage(description, image.getWidth()));
 }
 
 }

@@ -143,6 +143,10 @@ public class MaFenetre extends JFrame {
 		pnlImage.setImage(icon);
 		changeCouche("Image");
 	}
+	public void setImageFormulaireNouveauContact(ImageIcon description) {
+		pnlFormulaire.setImage(description);
+		
+	}
 
 	
 }

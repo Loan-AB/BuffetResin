@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 public class MesImages {
 	private static final long serialVersionUID = 1L;
-	ImageIcon images[];
+	private ImageIcon images[];
 	File recherche;
 	File listePhoto[];
 	//ImageIcon photoChoisie;
@@ -30,11 +30,14 @@ public class MesImages {
 			 
 			images[i]= new ImageIcon(url);
 			//System.out.println(url);
-			
 		}	
 	}
 	public ImageIcon recupererImage(int num) {
 		return images[num];
+	}
+	
+	public int Size() {
+		return images.length;
 	}
 
 }
