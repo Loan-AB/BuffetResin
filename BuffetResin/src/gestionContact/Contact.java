@@ -93,7 +93,7 @@ public class Contact implements Serializable, Comparable{
 		//prise du chemin relatif
 		String photoDescription = photo.getDescription();
 		StringTokenizer st = new StringTokenizer(photoDescription,".");
-		st.nextToken(); //tout ce qui est avant le premier . 
+		st.nextToken(); //tout ce qui est avant le premier . => poubelle 
 		String cheminduficherRelatif = "." + st.nextToken() + "." + st.nextToken();
 		//fin de la prise du chemin relatif
 		
