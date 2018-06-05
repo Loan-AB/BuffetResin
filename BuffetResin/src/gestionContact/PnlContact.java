@@ -38,7 +38,8 @@ public class PnlContact  extends PnlCentre {
 	MaFenetre maman;
 	DefaultListModel<Contact> lm;
 	ArrayList<Contact> lContact;
-	public PnlContact(MaFenetre maman) {
+	public PnlContact(MaFenetre maman) 
+	{
 		super("Contact");
 		this.maman = maman;
 		btnCreer = new MonBouton("Créer un nouveau contact", true);
@@ -111,7 +112,7 @@ public class PnlContact  extends PnlCentre {
 			FileInputStream fichier = new FileInputStream(".\\src\\fichierContact\\"+nomFichier);
 			ObjectInputStream ois = new ObjectInputStream(fichier);
 			Contact cs = (Contact) ois.readObject();
-			System.out.println(cs.getPhoto().getDescription() + " je suis dans les ancien O_O");
+//			System.out.println(cs.getPhoto().getDescription() + " je suis dans les ancien O_O");
 			lContact.add(cs);
 		}
 		catch (java.io.IOException e) {

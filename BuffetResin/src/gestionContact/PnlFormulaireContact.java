@@ -110,11 +110,9 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 			{
 				if(contact == null) //si on crée un nouveau contact	
 				{ 	
-							contact = new Contact(
-							txtNom.getText(), txtPrenom.getText(), 
-							txtEmail.getText(), txtNumeroMobile.getText(),
-							txtNumeroTel.getText(),
-							iiformulaire);
+					contact = new Contact(txtNom.getText(), txtPrenom.getText(), txtNumeroTel.getText(),
+							txtNumeroMobile.getText(), txtEmail.getText(), iiformulaire.getDescription().toString(), iiformulaire);
+//					System.out.println("je suis dans la création d'un new contact" + iiformulaire.getDescription());
 				}
 				else 
 				{
@@ -131,7 +129,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 				}
 				contact.enregistrer();
 				maman.ajouterContact(contact);
-				//dechargement();
+				dechargement();
 				maman.changeCouche("Contact");
 			}
 		});
@@ -171,7 +169,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 		lblImage.setIcon(contact.getPhoto());
 	//	this.iiformulaire = contact.getPhoto();
 	//	setlblImage(iiformulaire);//pour l'affichage
-		System.err.println("bonjour je set le contact" + contact.getPhoto());
+		System.err.println("bonjour je set le contact" + contact.getPhotoDescription());
 	//	iiformulaire.setDescription(contact.getImageIcon().getDescription());
 	//	setlblImage(iiformulaire);
 	//	System.out.println(contact.getImageIcon().getDescription());

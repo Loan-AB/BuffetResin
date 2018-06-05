@@ -24,36 +24,55 @@ public class Contact implements Serializable, Comparable{
 	private ImageIcon photo;
 	private String photoDescription; //crée pour garder l'url de mon image
 	
-	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email, ImageIcon photo) {
+	//si l'on précise le chemin de l'image a part. c'est utiliser pour le désézise
+	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) {
 		this.nom = nom;
 		this.prenom = prenom;
-		NumeroTel = numeroTel;
-		NumeroMobile = numeroMobile;
+		this.NumeroTel = numeroTel;
+		this.NumeroMobile = numeroMobile;
 		this.email = email;
+		//ajout de l'image
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
-	//	System.err.println(this.photo);
+		this.photo.setDescription(photoDescription);
+		System.out.println(photo.getDescription());
+		this.photoDescription = photoDescription;
+		
+		this.nomFichier = nom+prenom;
+	
+	}
+	
+	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,ImageIcon photo) {
+		this.nom = nom;
+		this.prenom = prenom;
+		this.NumeroTel = numeroTel;
+		this.NumeroMobile = numeroMobile;
+		this.email = email;
+		
+		//ajout de l'image
+		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 		this.photoDescription = this.photo.getDescription();
 		this.photo.setDescription(photoDescription);
+		
 		this.nomFichier = nom+prenom;
 	}
 //	//sans image spécifier on met celle par defaut en gros tout le temps donc trouver un moyen que cel ane sot pas le cas
-	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email) 
-	{
-		//on pourrait a la limite déterminer 4 photo par derfaut avec un aléatoire.
-		this.nom = nom;
-		this.prenom = prenom;
-		NumeroTel = numeroTel;
-		NumeroMobile = numeroMobile;
-		this.email = email;
-//		ImageIcon photo = new ImageIcon(".\\src\\photoGallerie\\default.png"); //ici ???
-		//this.photo.setDescription(".\\src\\photoGallerie\\default.png"); //loan 05.16.2018
+//	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email) 
+//	{
+//		//on pourrait a la limite déterminer 4 photo par derfaut avec un aléatoire.
+//		this.nom = nom;
+//		this.prenom = prenom;
+//		NumeroTel = numeroTel;
+//		NumeroMobile = numeroMobile;
+//		this.email = email;
+////		ImageIcon photo = new ImageIcon(".\\src\\photoGallerie\\default.png"); //ici ???
+//		//this.photo.setDescription(".\\src\\photoGallerie\\default.png"); //loan 05.16.2018
+////		System.err.println(this.photo.getDescription());
+////		System.err.println(photo.getDescription());
 //		System.err.println(this.photo.getDescription());
-//		System.err.println(photo.getDescription());
-		System.err.println(this.photo.getDescription());
-		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
-		this.photoDescription = this.photo.getDescription();
-		this.photo.setDescription(photoDescription);
-	}
+//		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
+//		this.photoDescription = this.photo.getDescription();
+//		this.photo.setDescription(photoDescription);
+//	}
 
 	@Override
 	public String toString() {
@@ -63,11 +82,12 @@ public class Contact implements Serializable, Comparable{
 	{
 		System.out.println("Votre contact " + nom+ " "+prenom + "à bien etaut modifier/crée");
 		String nomFichier = nom+prenom;
-		serializeObject( nomFichier,  nom,  prenom,  NumeroTel,  NumeroMobile,  email,  photo ); //écrire
+		String photoDescription = photo.getDescription();
+		serializeObject(nomFichier,nom,prenom,NumeroTel,NumeroMobile,email,photoDescription,photo); //écrire
 	}
-	private void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email, ImageIcon photo) {
+	private void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) {
 		System.out.println(photo.getDescription() + " je suis dans la nouveauté");
-		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photo);
+		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photoDescription,photo);
 		File f = new File(chemin+nomFichier+".txt");
 		if(f.exists()) { f.delete(); System.out.println("FICHIER SOUPRIMAY");}
 		try {
@@ -81,7 +101,6 @@ public class Contact implements Serializable, Comparable{
 			e.printStackTrace();
 		}
 	}
-	
 	private void changerNomFichier() {
 		File f = new File(chemin+nomFichier+".txt");
 		File f2 = new File(chemin+nom+prenom+".txt");
@@ -173,6 +192,13 @@ public class Contact implements Serializable, Comparable{
 
 	public String getNomFichier() {
 		return nomFichier;
+	}
+	public String getPhotoDescription() {
+		return photoDescription;
+	}
+
+	public void setPhotoDescription(String photoDescription) {
+		this.photoDescription = photoDescription;
 	}
 
 }
