@@ -112,7 +112,6 @@ public class PnlContact  extends PnlCentre {
 			FileInputStream fichier = new FileInputStream(".\\src\\fichierContact\\"+nomFichier);
 			ObjectInputStream ois = new ObjectInputStream(fichier);
 			Contact cs = (Contact) ois.readObject();
-//			System.out.println(cs.getPhoto().getDescription() + " je suis dans les ancien O_O");
 			lContact.add(cs);
 		}
 		catch (java.io.IOException e) {

@@ -116,13 +116,11 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 				}
 				else 
 				{
-					System.out.println("mon contact est plein de chose hahhaha");
 					contact.setNom(txtNom.getText());
 					contact.setPrenom(txtPrenom.getText());
 					contact.setEmail(txtEmail.getText());
 					contact.setNumeroMobile(txtNumeroMobile.getText());
 					contact.setNumeroTel(txtNumeroTel.getText());
-					System.err.println(lblImage.getIcon());
 					//lalalalalalal :D
 					contact.setPhoto(iiformulaire);
 					setImage(contact.getPhoto());						
@@ -155,6 +153,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 	}
 	public void setContact(Contact contact) 
 	{
+		//ajout des élément dsand
 		this.contact = contact;
 		txtNom.setText(contact.getNom());	
 		lblImage.setIcon(contact.getPhoto());

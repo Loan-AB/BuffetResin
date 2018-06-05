@@ -59,8 +59,7 @@ public class PnlContactGalerie extends PnlCentre {
 			bouttonPhoto[i].addMouseListener(new MouseAdapter()
 			 {
 				public void mouseClicked(MouseEvent e) {
-					//System.out.println(((BouttonPhoto)(e.getSource())).getImageIcon().getDescription());
-					
+
 					maman.setImageFormulaireNouveauContact(((BouttonPhoto)(e.getSource())).getImageIcon());
 					
 					maman.changeCouche("Formulaire");

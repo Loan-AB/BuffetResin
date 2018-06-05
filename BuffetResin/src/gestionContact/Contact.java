@@ -7,6 +7,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.CopyOption;
 import java.nio.file.Files;
+import java.util.StringTokenizer;
+
 import static java.nio.file.StandardCopyOption.*;
 import javax.swing.ImageIcon;
 
@@ -34,11 +36,16 @@ public class Contact implements Serializable, Comparable{
 		//ajout de l'image
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 		this.photo.setDescription(photoDescription);
-		System.out.println(photo.getDescription());
 		this.photoDescription = photoDescription;
-		
 		this.nomFichier = nom+prenom;
-	
+		
+		/*
+		 * Hello :D alors j'a un souci , je retounr dans ma description le chemin , même tout le chemin ...
+		 * "C:\Users\loanb\git\BuffetResin_Alpha\BuffetResin\.\src\photoGallerie\chang.jpg.\src\photoGallerie\default.png"
+		 * 
+		 */
+		
+		
 	}
 	
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,ImageIcon photo) {
@@ -80,16 +87,26 @@ public class Contact implements Serializable, Comparable{
 	}
 	public void enregistrer() 
 	{
-		System.out.println("Votre contact " + nom+ " "+prenom + "à bien etaut modifier/crée");
+		System.out.println("Votre contact " + nom+ " "+prenom + " :  modifier/crée");
 		String nomFichier = nom+prenom;
+		
+		//prise du chemin relatif
 		String photoDescription = photo.getDescription();
+		StringTokenizer st = new StringTokenizer(photoDescription,".");
+		st.nextToken(); //tout ce qui est avant le .
+		String cheminduficherRelatif = "." + st.nextToken() + "." + st.nextToken();
+		//fin de la prise du chemin relatif
+		
+		System.out.println(cheminduficherRelatif);
 		serializeObject(nomFichier,nom,prenom,NumeroTel,NumeroMobile,email,photoDescription,photo); //écrire
 	}
 	private void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) {
-		System.out.println(photo.getDescription() + " je suis dans la nouveauté");
 		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photoDescription,photo);
 		File f = new File(chemin+nomFichier+".txt");
-		if(f.exists()) { f.delete(); System.out.println("FICHIER SOUPRIMAY");}
+		if(f.exists()) 
+		{
+			f.delete();
+		}
 		try {
 			FileOutputStream fichier = new FileOutputStream(chemin+nomFichier+".txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fichier);
