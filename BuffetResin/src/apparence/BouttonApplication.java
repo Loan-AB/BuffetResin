@@ -35,7 +35,7 @@ public class BouttonApplication extends MonBouton{
 		setBorder(new RoudedBorder(10));
 		
 		
-		setPreferredSize(new Dimension(150,150));
+		setPreferredSize(new Dimension(140,140));
 		
 	}
 
