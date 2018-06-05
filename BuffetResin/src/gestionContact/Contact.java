@@ -93,12 +93,12 @@ public class Contact implements Serializable, Comparable{
 		//prise du chemin relatif
 		String photoDescription = photo.getDescription();
 		StringTokenizer st = new StringTokenizer(photoDescription,".");
-		st.nextToken(); //tout ce qui est avant le .
+		st.nextToken(); //tout ce qui est avant le premier . 
 		String cheminduficherRelatif = "." + st.nextToken() + "." + st.nextToken();
 		//fin de la prise du chemin relatif
 		
 		System.out.println(cheminduficherRelatif);
-		serializeObject(nomFichier,nom,prenom,NumeroTel,NumeroMobile,email,photoDescription,photo); //écrire
+		serializeObject(nomFichier,nom,prenom,NumeroTel,NumeroMobile,email,cheminduficherRelatif,photo); //écrire
 	}
 	private void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) {
 		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photoDescription,photo);
