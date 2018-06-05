@@ -37,70 +37,48 @@ public class PnlContact  extends PnlCentre {
 	Contact[] tabContact;
 	MaFenetre maman;
 	DefaultListModel<Contact> lm;
-	
-	
-	 ArrayList<Contact> lContact; //il n'aime pas les static on pourra le passer en paramètre je pense
-	
-	
+	ArrayList<Contact> lContact;
 	public PnlContact(MaFenetre maman) {
-		
 		super("Contact");
 		this.maman = maman;
-
 		btnCreer = new MonBouton("Créer un nouveau contact", true);
 		lblTitre = new MonLabel();
 		lblTitre.setText("Contact");
-		
 		lContact = new ArrayList<Contact>();
-		
-		System.out.println("listercontact");
+		System.out.println("Voici la liste des contacts au début du programme : ");
 		lireToutLesContact();
-		
 		add(lblTitre);
-		
-		
 		btnCreer.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				maman.changeCouche("Formulaire");
 			}
 		});
-		
-		
 		//Affichage de la Jlist avec les images
 		lm = new DefaultListModel<Contact>();
-
 		for (Contact contact : lContact) {
 			lm.addElement(contact);
 		}
-			
 		//les éléments de la liste
 		lstContact = new JList<>(lm);
 		lstContact.setCellRenderer(new ContactCellRenderer());
 		lstContact.setModel(lm);
-
 		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
 		JScrollPane scrollPane= new JScrollPane(lstContact); 
 		scrollPane.setPreferredSize(new Dimension(460,600));
 		add(scrollPane);
-		
 		lstContact.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				maman.afficherContact(lstContact.getSelectedValue());
 			}
 		});
-		
 		add(btnCreer);
 	}
-	
 	private void lireToutLesContact() {
-
 		File chemin = new File(".\\src\\fichierContact\\"); 
 		listerRepertoire(chemin);
 	}
-	
 	/*
 	 * La methode listerRepertoire 
 	 * 
@@ -110,30 +88,30 @@ public class PnlContact  extends PnlCentre {
 	 * Sortie : aucune
 	 */
 	public void listerRepertoire(File repertoire){
-
 		String [] listefichiers;
-
 		int i;
 		listefichiers=repertoire.list();
 		for(i=0;i<listefichiers.length;i++)
 			{
 				if(listefichiers[i].endsWith(".txt")) // == true
-					{
-					System.out.println(listefichiers[i].toString());
+				{
+					System.out.println("fichier : " + listefichiers[i].toString());
 					deSerializeObject(listefichiers[i].toString());
-					}
+				}
 			}
 		}
-	
 	/*
 	 * Les methodes suivante servent a la création et la lecture des fichiers
 	 * 
 	 */
-	public  void deSerializeObject(String nomFichier) { 
-		try {
+	public  void deSerializeObject(String nomFichier) 
+	{ 
+		try 
+		{
 			FileInputStream fichier = new FileInputStream(".\\src\\fichierContact\\"+nomFichier);
 			ObjectInputStream ois = new ObjectInputStream(fichier);
 			Contact cs = (Contact) ois.readObject();
+			System.out.println(cs.getPhoto().getDescription() + " je suis dans les ancien O_O");
 			lContact.add(cs);
 		}
 		catch (java.io.IOException e) {
@@ -147,6 +125,7 @@ public class PnlContact  extends PnlCentre {
 	{
 		if(!lm.contains(contact)) 
 		{
+			//pur l'ajout dans l'ordre alphabatique de manière automatique (lors de l'ajout)
 			int i=0;
 			while(i<lm.size() && lm.elementAt(i).compareTo(contact) < 0) {
 				i++;
@@ -155,8 +134,6 @@ public class PnlContact  extends PnlCentre {
 			lstContact.setSelectedIndex(-1);
 		}
 	}
-	
-	
 	public void supprimerContact(Contact contact) {
 		if(lm.contains(contact)) 
 		{

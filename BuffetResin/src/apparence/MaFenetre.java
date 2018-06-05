@@ -97,20 +97,21 @@ public class MaFenetre extends JFrame {
 		pnlAccueil.setListenerBtn(lancerContact, lancerSecret, lancerGalerie);
 		*/
 		ActionListener lancerAppli = new ActionListener() {
-			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-
+			public void actionPerformed(ActionEvent arg0) 
+			{
 					changeCouche(((MonBouton)arg0.getSource()).getText());
 			}
 		};
 		
 		ActionListener backAppli = new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(historiqueLayout.size()>1) { historiqueLayout.remove(historiqueLayout.size()-1); }
-				couche.show(pnlCentre, historiqueLayout.get(historiqueLayout.size()-1));
+				if(historiqueLayout.size()>1) //on peut supprimer la dernière couche
+				{ 
+					historiqueLayout.remove(historiqueLayout.size()-1); //on la supprime
+				}
+				couche.show(pnlCentre, historiqueLayout.get(historiqueLayout.size()-1)); //on affiche la dernière couche
 			}
 		};
 

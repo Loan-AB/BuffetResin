@@ -23,64 +23,34 @@ import apparence.MaFenetre;
 import apparence.PnlCentre;
 
 public class RecuperationImage implements MouseListener {
-
-	
-	
-	
 	BouttonPhoto bouttonPhoto[];
-	
-	
-	
-	
-	
-	
-	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		PhotoAgrandie photoAgrandie= new PhotoAgrandie(((JButton)e.getSource()).getIcon());
-		//JLabel label = new JLabel(bouttonPhoto[1].getIcon());
-		//JLabel label = new JLabel();
-		
-		
-			//coucheImage.show(new PhotoAgrandie(((JButton)e.getSource()).getIcon()),"Image");
-		
-		
-		
-		System.out.println("salut");
-	
-		
-		
-		
-	
-	
-		
-		
-		
-		
+
+		System.out.println("salut");	
 	}
 	@Override
-	public void mouseEntered(MouseEvent e) {
+	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void mouseExited(MouseEvent e) {
+	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 }	
 	
 	

@@ -15,7 +15,7 @@ import javax.swing.ListCellRenderer;
 		     Contact entry = (Contact) value;
 		 
 		     setText(value.toString());
-		     setIcon(entry.getImageIcon());
+		     setIcon(entry.getPhoto());
 		  
 		     if (isSelected) {
 		        setBackground(list.getSelectionBackground());

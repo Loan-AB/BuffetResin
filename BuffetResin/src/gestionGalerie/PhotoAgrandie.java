@@ -17,25 +17,10 @@ import apparence.PnlCentre;
 public class PhotoAgrandie extends PnlCentre {
 	ImageIcon grandeImage = new ImageIcon();
 	JLabel labelPhoto;
-	
 	public PhotoAgrandie(Icon image) {
-		// TODO Auto-generated constructor stub
 		super("photo");
 		labelPhoto=new JLabel(image);
-		//add(labelPhoto);
-		//labelPhoto.setSize(60, 60);
-		
-		//labelPhoto.getMaximumSize();
 		add(labelPhoto);
-		//setVisible(true);
 		setSize(480, 800);	
-		
-		
-		
-      
-		
 	}
-	
-	
-
 }

@@ -59,16 +59,7 @@ public class PnlContactGalerie extends PnlCentre {
 			bouttonPhoto[i].addMouseListener(new MouseAdapter()
 			 {
 				public void mouseClicked(MouseEvent e) {
-					System.out.println(((BouttonPhoto)(e.getSource())).getImageIcon().getDescription());
-					
-//					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
-//		
-//					
-//					Image image = ii.getImage(); // transform it 
-//					Image newimg = image.getScaledInstance(460,600,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-//					
-//					ImageIcon photoAgrandieSeul = new ImageIcon(newimg);
-//					maman.afficherImage(photoAgrandieSeul);
+					//System.out.println(((BouttonPhoto)(e.getSource())).getImageIcon().getDescription());
 					
 					maman.setImageFormulaireNouveauContact(((BouttonPhoto)(e.getSource())).getImageIcon());
 					

@@ -24,89 +24,50 @@ import apparence.PnlAccueil;
 import apparence.PnlCentre;
 
 public class PnlImage extends PnlCentre implements ImageObserver {
-	JLabel image;
+	JLabel lblImage;
 	ImageIcon monImageIcon;
 	MaFenetre maman;
 	MonBouton btnDelete;
 	MesImages imagesListe =  new MesImages();
-	
-	
-	
+
 	public PnlImage(MaFenetre mama) {
 		super("Galerie");
 		this.maman = maman;
-		
-		
-		
 		btnDelete = new MonBouton("Supprimer", true);
-		btnDelete.addActionListener(new ActionListener() {
-			
+		btnDelete.addActionListener(new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
-			//	System.err.println(monImageIcon.getDescription()); //contient l'url de l'image cette fois pour de vrai XD
-			//	System.out.println(monImageIcon.getDescription());  
+			public void actionPerformed(ActionEvent e) 
+			{
 			File imagePath = new File(monImageIcon.getDescription());
 			
 			System.out.println();
 			System.out.println();
-			
-			
-			
 			//controle si image dans dossier images faire une boucle pour trouver image voulue
 				// si oui supprimer si non rien.
-			for (int i = 0; i < imagesListe.listePhoto.length; i++) {
-				
-				if (imagePath.getAbsolutePath().equals(imagesListe.listePhoto[i].getAbsolutePath())) {
-					
-					
-					System.out.println(imagesListe.listePhoto[i].getAbsolutePath());
-					delete(imagesListe.listePhoto[i].getAbsolutePath());
-					mama.changeCouche("Galerie");
-					
-			}
-			}
-			
-				
-				
-			
-				
-			
-				
-			
-			
-			
-				
-				
-			
-				
-			
-			
-		
-		 
-		
-			
+				for (int i = 0; i < imagesListe.listePhoto.length; i++) 
+				{
+					if (imagePath.getAbsolutePath().equals(imagesListe.listePhoto[i].getAbsolutePath())) 
+					{
+						System.out.println(imagesListe.listePhoto[i].getAbsolutePath());
+						delete(imagesListe.listePhoto[i].getAbsolutePath());
+						mama.changeCouche("Galerie");
+					}
+				}
 			}
 		});
 		add(btnDelete,BorderLayout.NORTH);
-		
-		
+
 		// TODO Auto-generated constructor stub
-		image = new JLabel();
-		add(image);		
+		lblImage = new JLabel();
+		add(lblImage);		
 	}
 	public void setImage(ImageIcon photo) {
 		monImageIcon = photo;
-		image.setIcon(photo);
+		lblImage.setIcon(photo);
 	}
-	
 	private void delete(String file) {
-    		
     		File fichier = new File(file);
-    		
     		//fichier.delete();
-    		
-    		
-		
     }
-
 }
