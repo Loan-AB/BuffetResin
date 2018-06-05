@@ -39,7 +39,10 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 				System.err.println(monImageIcon.getDescription()); //contient l'url de l'image cette fois pour de vrai XD
 			//	System.out.println(monImageIcon.getDescription());  
 			
-			
+			//controle si image dans dossier images faire une boucle pour trouver image voulue
+				// si oui supprimer si non rien.
+			System.out.println(imagesListe.listePhoto[0].getAbsolutePath());
+				
 				
 			
 				
