@@ -162,18 +162,8 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 		txtNumeroMobile.setText(contact.getNumeroMobile());
 		txtNumeroTel.setText(contact.getNumeroTel());
 		txtPrenom.setText(contact.getPrenom());
-		//normalement ici ça devrait s'afficher lorsque l'on chang affiche le formaulaire O_O
 		//loan ajout
-	//	setImage(contact.getPhoto());
-	//	lblImage.setIcon(MonImage.transformationImage(contact.getPhoto(), lblImage.getWidth()));
-		lblImage.setIcon(contact.getPhoto());
-	//	this.iiformulaire = contact.getPhoto();
-	//	setlblImage(iiformulaire);//pour l'affichage
-		System.err.println("bonjour je set le contact" + contact.getPhotoDescription());
-	//	iiformulaire.setDescription(contact.getImageIcon().getDescription());
-	//	setlblImage(iiformulaire);
-	//	System.out.println(contact.getImageIcon().getDescription());
-	//	image.setIcon(MonImage.transformationImage((contact.getImageIcon()), image.getWidth()));
+		setImage(contact.getPhoto());	
 	}
 	public void setImage(ImageIcon laNouvelleimage) 
 	{
