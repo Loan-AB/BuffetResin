@@ -14,11 +14,11 @@ import gestionGalerie.RoudedBorder;
 public class BouttonApplication extends MonBouton{
 
 	String image= new String(); 
+	String nom;
 	
-
-	public BouttonApplication(String imageIcon) {
+	public BouttonApplication(String imageIcon,String nom) {
 		// TODO Auto-generated constructor stub
-	super("", true);
+	super(nom, true);
 		this.image=imageIcon;
 		ImageIcon entreeImage = new ImageIcon(imageIcon);
 		

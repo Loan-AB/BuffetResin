@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class PnlAccueil extends PnlCentre {
 	
-	MonBouton btnContact;
+	BouttonApplication btnContact;
 	MonBouton btnGalerie;
 	MonBouton btnSecret;
 	MaFenetre maman;
@@ -18,8 +18,8 @@ public class PnlAccueil extends PnlCentre {
 
 		this.maman= maman;
 		
-		//btnContact = new BouttonApplication("./src/photoBoutton/Contact.png");
-		btnContact = new MonBouton("Contact", true);
+		//btnContact = new BouttonApplication(");
+		btnContact = new BouttonApplication("./src/photoBoutton/Contact.png","Contact");
 		btnGalerie = new MonBouton("Galerie", true);
 		btnSecret = new MonBouton("Secret", true);	
 
