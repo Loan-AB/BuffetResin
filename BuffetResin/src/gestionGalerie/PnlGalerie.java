@@ -64,7 +64,7 @@ public class PnlGalerie extends PnlCentre {
 			 {
 				public void mouseClicked(MouseEvent e) {
 					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
-					maman.afficherImage(MonImage.transformationImage(ii.getDescription(),600));
+					maman.afficherImage(MonImage.transformationImage(ii.getDescription(),scrollPane.getWidth()));
 				}
 			});
 		}
