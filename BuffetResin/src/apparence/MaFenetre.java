@@ -144,7 +144,7 @@ public class MaFenetre extends JFrame {
 		//setResizable(false); //fix la taille
 		
 		this.setVisible(true); //ça toujours a la fin
-		this.setLocationRelativeTo(null);
+		this.setLocationRelativeTo(null); //Doit etre à la fin pour être au centre de l'écran
 		
 	}
 	public void changeCouche(String nom) {

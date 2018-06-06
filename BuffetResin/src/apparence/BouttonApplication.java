@@ -24,9 +24,9 @@ public class BouttonApplication extends MonBouton{
 		// TODO Auto-generated constructor stub
 	super(nom, true);
 		this.image=imageIcon;
-		ImageIcon entreeImage = new ImageIcon(imageIcon);
+		ImageIcon entreePhoto = new ImageIcon(imageIcon);
 		
-		Image image = entreeImage.getImage(); // transform it 
+		Image image = entreePhoto.getImage(); // transform it 
 		Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		
 		ImageIcon photoSortie = new ImageIcon(newimg);
