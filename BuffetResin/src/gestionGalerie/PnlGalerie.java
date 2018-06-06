@@ -64,11 +64,7 @@ public class PnlGalerie extends PnlCentre {
 			 {
 				public void mouseClicked(MouseEvent e) {
 					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
-					Image image = ii.getImage(); // transform it 
-					Image newimg = image.getScaledInstance(460,600,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-					ImageIcon photoAgrandieSeul = new ImageIcon(newimg);
-					photoAgrandieSeul.setDescription(ii.getDescription());
-					maman.afficherImage(photoAgrandieSeul);
+					maman.afficherImage(MonImage.transformationImage(ii.getDescription(),600));
 				}
 			});
 		}

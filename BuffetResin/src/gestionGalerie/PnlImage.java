@@ -69,5 +69,6 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 	private void delete(String file) {
     		File fichier = new File(file);
     		fichier.delete();
+    		maman.changeCouche("Gallerie");
     }
 }
