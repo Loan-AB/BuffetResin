@@ -49,6 +49,35 @@ public class MonImage extends ImageIcon {
 		//System.out.println(photo);
 	}
 	
+	public MonImage(String Photo) {
+		// TODO Auto-generated constructor stub
+		
+		//selectionner une image dans mes images
+		
+		
+			
+			//photoEntree=mesImages.recupererImage(Image);
+			ImageIcon photoEntree = new ImageIcon(Photo);
+			
+			Image image = photoEntree.getImage(); // transform it 
+			Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+			
+			photoSortie = new ImageIcon(newimg);
+			photoSortie.setDescription(photoEntree.getDescription());
+			
+			//System.out.println(photoSortie.toString());
+			//photo.getIconHeight();
+			//photo.getIconWidth();
+			
+			
+			//photo.getScaledInstance(100,100,Image.SCALE_DEFAULT);
+			
+			
+			
+			
+		//System.out.println(photo);
+	}
+	
 //	public static ImageIcon transformationImage(ImageIcon ii, int width) {
 //		BufferedImage img = null;
 //		try {

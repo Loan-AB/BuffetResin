@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 public class PnlHaut extends JPanel{
 	private java.util.Date time;
@@ -22,7 +23,8 @@ public class PnlHaut extends JPanel{
 		//test pour les composant du haut
 		lblTime = new MonLabel();
 		prbBatterie = new MaBatterie();
-
+		
+		setBorder(new LineBorder(Color.BLACK,1,false));
 		// le haut : 
 		this.add(lblTime);
 		this.add(prbBatterie);

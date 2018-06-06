@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -54,8 +55,10 @@ public class PnlGalerie extends PnlCentre {
 		lblTitre.setText("Gallerie");
 		add(lblTitre);
 		add(scrollPane,BorderLayout.CENTER);
+		panelPhoto.setBackground(Color.BLUE);
 		panelPhoto.setLayout(new WrapLayout(3));
 		scrollPane.setPreferredSize(new Dimension(460,600));
+		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));
 		for(int i=0;i<mesImages.Size();i++) {
 			monImage = mesImages.recupererImage(i);
 			bouttonPhoto[i] = new BouttonPhoto(new MonImage(i));

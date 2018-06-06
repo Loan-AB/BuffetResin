@@ -26,10 +26,10 @@ public class BouttonPhoto extends JButton{
 		
 		// TODO Auto-generated constructor stub	
 		
-		setPreferredSize(new Dimension(140,140));
+		setPreferredSize(new Dimension(100,100));
 		//
 		setIcon(ii);
-		setBorder(new RoudedBorder(20));
+		//setBorder(new RoudedBorder(20));
 		
 		
 	}

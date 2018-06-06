@@ -2,6 +2,7 @@ package apparence;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -20,6 +22,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JWindow;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+
 
 import gestionContact.*;
 import gestionGalerie.*;
@@ -41,9 +47,12 @@ public class MaFenetre extends JFrame {
 	PnlImage pnlImage;
 	ArrayList<String> historiqueLayout;
 	
+	
 
 	public MaFenetre()
+	
 	{
+		
 		pnlBas = new PnlBas();
 		pnlCentre = new PnlCentre("coucou");
 		pnlHaut = new PnlHaut();
@@ -57,14 +66,23 @@ public class MaFenetre extends JFrame {
 		//pas sure
 		pnlFormulaire = new PnlFormulaireContact(this);
 		historiqueLayout = new ArrayList<>();
-		//pour que la fenetre soit au centre
-		this.setLocationRelativeTo(null);
 		
-		//this.setLocation(5, 10); on peux choisir
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
+		
+		JLabel labelWallPaper = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
+		JPanel panelWallPaper = new JPanel();
+		add(panelWallPaper, BorderLayout.CENTER);
+		panelWallPaper.add(labelWallPaper,BorderLayout.CENTER);
+		
+		//pour que la fenetre soit au centre
+		
+		
+		//this.setLocation(0,0); //on peux choisir
+		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
+		
+		
 		
 		//setLayout(new Box(defaultCloseOperation));
-		this.setSize(480, 800);
+		this.setSize(460, 760);
 		pnlBas.setLayout(new FlowLayout());
 		pnlCentre.setLayout(new GridLayout());
 		pnlHaut.setLayout(new FlowLayout());
@@ -85,6 +103,12 @@ public class MaFenetre extends JFrame {
 		couche.show(pnlCentre, "Accueil");
 		historiqueLayout.add("Accueil");
 
+		
+		this.setUndecorated(true);//Enleve le cadre de la frame 
+		//setBackground(Color.BLACK);
+		//getRootPane().setBorder(new LineBorder(Color.BLACK, 20, false));
+		getRootPane().setBorder(BorderFactory.createMatteBorder(10, 10, 20, 20, Color.BLACK));
+		
 		//ajout dans la fenetre  , les panels
 		/*
 		ActionListener lancerGalerie = new ActionListener() {
@@ -117,9 +141,10 @@ public class MaFenetre extends JFrame {
 
 		pnlBas.setListenerBtn(lancerAppli, backAppli);
 		pnlAccueil.setListenerBtn(lancerAppli);
-		setResizable(false); //fix la taille
+		//setResizable(false); //fix la taille
 		
 		this.setVisible(true); //ça toujours a la fin
+		this.setLocationRelativeTo(null);
 		
 	}
 	public void changeCouche(String nom) {

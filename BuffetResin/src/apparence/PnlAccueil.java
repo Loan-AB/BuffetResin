@@ -1,5 +1,6 @@
 package apparence;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -18,10 +19,11 @@ public class PnlAccueil extends PnlCentre {
 
 		this.maman= maman;
 		
+		
 		//btnContact = new BouttonApplication(");
 		btnContact = new BouttonApplication("./src/photoBoutton/Contact.png","Contact");
-		btnGalerie = new MonBouton("Galerie", true);
-		btnSecret = new MonBouton("Secret", true);	
+		btnGalerie = new BouttonApplication("./src/photoBoutton/Gallerie.png","Galerie");
+		btnSecret = new BouttonApplication("./src/photoBoutton/Jeu.png","Secret");	
 
 		
 		add(btnContact);

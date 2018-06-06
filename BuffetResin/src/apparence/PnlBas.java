@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 public class PnlBas extends JPanel {
 // Panel qui contient les 3 bouttons de base
@@ -20,7 +21,7 @@ public class PnlBas extends JPanel {
 		btnHome = new MonBouton("Accueil", true);
 		btnBack = new MonBouton("retour", true);
 
-		
+		setBorder(new LineBorder(Color.BLACK,1,false));
 		this.add(btnBack);
 		this.add(btnHome);
 	}
