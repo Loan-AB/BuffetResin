@@ -30,17 +30,17 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 	MonBouton btnDelete;
 	MesImages imagesListe =  new MesImages();
 
-	public PnlImage(MaFenetre mama) {
+	public PnlImage(MaFenetre mama) 
+	{
 		super("Galerie");
 		this.maman = maman;
-		btnDelete = new MonBouton("Supprimer", true);
+		btnDelete = new MonBouton("Supprimer");
 		btnDelete.addActionListener(new ActionListener() 
 		{
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
 			File imagePath = new File(monImageIcon.getDescription());
-			
 			System.out.println();
 			System.out.println();
 			//controle si image dans dossier images faire une boucle pour trouver image voulue
@@ -62,7 +62,8 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 		lblImage = new JLabel();
 		add(lblImage);		
 	}
-	public void setImage(ImageIcon photo) {
+	public void setImage(ImageIcon photo) 
+	{
 		monImageIcon = photo;
 		lblImage.setIcon(photo);
 	}

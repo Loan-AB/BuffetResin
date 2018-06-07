@@ -42,7 +42,7 @@ public class PnlGalerie extends PnlCentre {
 	protected BouttonPhoto []bouttonPhoto= new BouttonPhoto[mesImages.Size()];
 	protected ImageIcon monImage;
 	protected WrapLayout wrapLayout = new WrapLayout(3);
-	MonBouton bouttoAjoute = new MonBouton("ajouter",true);
+	MonBouton bouttoAjoute = new MonBouton("ajouter");
 	JFileChooser fileChooser;
 	JLabel lblTitre = new JLabel();
 	private FileFilter imagesFilter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");

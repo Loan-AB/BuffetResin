@@ -16,7 +16,7 @@ public class Panel_Borderlayout extends JPanel{
 		this.setLayout(new BorderLayout());
 		JLabel monlabel = new JLabel("salut");
 		
-		this.add(new MonBouton("test", true), BorderLayout.CENTER);
+		this.add(new MonBouton("test"), BorderLayout.CENTER);
 		this.add(monlabel,BorderLayout.NORTH);
 	}
 	

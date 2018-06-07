@@ -1,6 +1,7 @@
 package apparence;
 
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -11,41 +12,37 @@ public class PnlAccueil extends PnlCentre {
 	
 	MonBouton btnContact;
 	MonBouton btnGalerie;
-	MonBouton btnSecret;
+	MonBouton btnCalculatrice;
 	MaFenetre maman;
 
-	public PnlAccueil(MaFenetre maman) {
+	public PnlAccueil(MaFenetre maman) 
+	{
 		super("Acceuil");
 
 		this.maman= maman;
 		
-		
-		//btnContact = new BouttonApplication(");
-		btnContact = new MonBouton("Contact",true,"./src/photoDefault/Contact1.png");
-		btnGalerie = new MonBouton("Galerie",true,"./src/photoDefault/Gallery.png");
-		btnSecret = new MonBouton("Secret",true,"./src/photoDefault/Calculator.png");	
+		btnContact = new MonBouton("Contact","./src/photoDefault/Contact1.png");
+		btnGalerie = new MonBouton("Galerie","./src/photoDefault/Gallery.png");
+		btnCalculatrice = new MonBouton("Calculatrice","./src/photoDefault/Calculator.png");	
 
-		
 		add(btnContact);
 		add(btnGalerie);
-		add(btnSecret);
-		
-		
+		add(btnCalculatrice);
 	}
 
-	public void setListenerBtn(ActionListener lancerContact, ActionListener lancerSecret,
-			ActionListener lancerGalerie) {
+	public void setListenerBtn(ActionListener lancerContact, ActionListener lancerSecret,ActionListener lancerGalerie) 
+	{
 		btnContact.addActionListener(lancerContact);
 		btnGalerie.addActionListener(lancerGalerie);
-		btnSecret.addActionListener(lancerSecret);
+		btnCalculatrice.addActionListener(lancerSecret);
 		
 	}
 	
-	public void setListenerBtn(ActionListener lancerAppli) {
+	public void setListenerBtn(ActionListener lancerAppli) 
+	{
 		btnContact.addActionListener(lancerAppli);
 		btnGalerie.addActionListener(lancerAppli);
-		btnSecret.addActionListener(lancerAppli);
-		
+		btnCalculatrice.addActionListener(lancerAppli);
 	}
 	
 }

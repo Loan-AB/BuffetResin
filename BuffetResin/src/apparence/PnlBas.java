@@ -18,8 +18,8 @@ public class PnlBas extends JPanel {
 		setSize(480, 70);
 		setBackground(Color.orange);
 		//test pour les composant du bas
-		btnHome = new MonBouton("Accueil", true);
-		btnBack = new MonBouton("retour", true);
+		btnHome = new MonBouton("Accueil");
+		btnBack = new MonBouton("retour");
 
 		setBorder(new LineBorder(Color.BLACK,1,false));
 		this.add(btnBack);

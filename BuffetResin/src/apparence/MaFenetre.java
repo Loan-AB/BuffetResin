@@ -25,8 +25,7 @@ import javax.swing.JWindow;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-
-
+import gestionCalculatrice.PnlCalculatrice;
 import gestionContact.*;
 import gestionGalerie.*;
 
@@ -40,7 +39,7 @@ public class MaFenetre extends JFrame {
 	PnlAccueil pnlAccueil;
 	PnlContactGalerie pnlContactGalerie;
 	CardLayout couche;
-	PnlSecret pnlSecret;
+	PnlCalculatrice pnlCalculatrice;
 	PnlContact pnlContact;
 	PnlGalerie pnlGalerie;
 	PnlFormulaireContact pnlFormulaire;
@@ -59,7 +58,7 @@ public class MaFenetre extends JFrame {
 		couche = new CardLayout();
 		pnlAccueil = new PnlAccueil(this);
 		pnlContact = new PnlContact(this);
-		pnlSecret = new PnlSecret(this);
+		pnlCalculatrice = new PnlCalculatrice(this);
 		pnlGalerie = new PnlGalerie(this);
 		pnlImage = new PnlImage(this);
 		pnlContactGalerie = new PnlContactGalerie(this);
@@ -92,15 +91,17 @@ public class MaFenetre extends JFrame {
 		add(pnlBas, BorderLayout.SOUTH);
 		
 		pnlCentre.setLayout(couche);
-		pnlCentre.add(pnlAccueil, "Accueil");
-		pnlCentre.add(pnlContact, "Contact");
-		pnlCentre.add(pnlSecret, "Secret");
+		pnlCentre.add(pnlAccueil,"Accueil");
+		pnlCentre.add(pnlContact,"Contact");
+		pnlCentre.add(pnlCalculatrice,"Calculatrice");
 		pnlCentre.add(pnlGalerie,"Galerie");
-		pnlCentre.add(pnlFormulaire, "Formulaire");
-		pnlCentre.add(pnlImage, "Image");
-		pnlCentre.add(pnlContactGalerie, "ChoixImage");
+		pnlCentre.add(pnlFormulaire,"Formulaire");
+		pnlCentre.add(pnlImage,"Image");
+		pnlCentre.add(pnlContactGalerie,"ChoixImage");
 		
 		couche.show(pnlCentre, "Accueil");
+//		couche.show(pnlCentre, "Calculatrice");
+		
 		historiqueLayout.add("Accueil");
 
 		

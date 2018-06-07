@@ -42,7 +42,7 @@ public class PnlContact  extends PnlCentre {
 	{
 		super("Contact");
 		this.maman = maman;
-		btnCreer = new MonBouton("Créer un nouveau contact", true);
+		btnCreer = new MonBouton("Créer un nouveau contact");
 		lblTitre = new MonLabel();
 		lblTitre.setText("Contact");
 		lContact = new ArrayList<Contact>();

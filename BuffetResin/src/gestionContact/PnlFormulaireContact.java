@@ -54,10 +54,10 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 	public PnlFormulaireContact(MaFenetre maman) {
 		super("Formulaire");
 		this.maman = maman;
-		btnAnnuler = new MonBouton("Annuler", true);
-		btnValider = new MonBouton("Valider", true);
-		btnSupprimer = new MonBouton("Suprimmer", true);
-		btnChoixImage = new MonBouton("ChoixImage", true);
+		btnAnnuler = new MonBouton("Annuler");
+		btnValider = new MonBouton("Valider");
+		btnSupprimer = new MonBouton("Suprimmer");
+		btnChoixImage = new MonBouton("ChoixImage");
 		txtNom = new MonJtextArea("Nom");
 		txtPrenom = new MonJtextArea("Prenom");
 		txtNumeroTel = new MonJtextArea("Telephonne");
