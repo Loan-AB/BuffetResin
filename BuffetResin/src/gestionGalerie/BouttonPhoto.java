@@ -35,8 +35,10 @@ public class BouttonPhoto extends JButton{
 		//
 		setIcon(ii);
 		//setBorder(new RoudedBorder(20));
+		
 		setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
-		setBorder(new RoudedBorder(5));
+		//setBorder(new RoudedBorder(5));
+		
 	}
 	
 	public ImageIcon getImageIcon() {

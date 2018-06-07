@@ -27,7 +27,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import apparence.BouttonApplication;
+
 import apparence.MaFenetre;
 import apparence.MonBouton;
 import apparence.MonLabel;

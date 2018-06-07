@@ -21,9 +21,9 @@ public class PnlAccueil extends PnlCentre {
 		
 		
 		//btnContact = new BouttonApplication(");
-		btnContact = new MonBouton("Contact",true,"./src/photoDefault/Contact3.png");
+		btnContact = new MonBouton("Contact",true,"./src/photoDefault/Contact1.png");
 		btnGalerie = new MonBouton("Galerie",true,"./src/photoDefault/Gallery.png");
-		btnSecret = new MonBouton("Secret",true,"./src/photoDefault/Jeu.png");	
+		btnSecret = new MonBouton("Secret",true,"./src/photoDefault/Calculator.png");	
 
 		
 		add(btnContact);
