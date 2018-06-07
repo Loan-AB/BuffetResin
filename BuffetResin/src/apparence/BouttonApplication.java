@@ -30,16 +30,18 @@ public class BouttonApplication extends MonBouton{
 		Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 		
 		ImageIcon photoSortie = new ImageIcon(newimg);
-		JLabel Label = new JLabel(photoSortie);
-		setIcon(photoSortie);
+		
+		JLabel label = new JLabel(photoSortie);
+		
+		
+		//setBackground(new Color(0.0f, 0.0f, 0.0f,0.0f));
 		
 		
 		
+		setBorder(new RoudedBorder(20));
 		
-		setBorder(new RoudedBorder(10));
 		
-		
-		setPreferredSize(new Dimension(140,140));
+		setPreferredSize(new Dimension(150,150));
 		
 	}
 

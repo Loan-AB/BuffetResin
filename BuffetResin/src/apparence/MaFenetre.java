@@ -105,9 +105,10 @@ public class MaFenetre extends JFrame {
 
 		
 		this.setUndecorated(true);//Enleve le cadre de la frame 
-		//setBackground(Color.BLACK);
-		//getRootPane().setBorder(new LineBorder(Color.BLACK, 20, false));
-		getRootPane().setBorder(BorderFactory.createMatteBorder(10, 10, 20, 20, Color.BLACK));
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		getRootPane().setBorder(new LineBorder(Color.BLACK, 20, true));
+	
+		//getRootPane().setBorder(BorderFactory.createMatteBorder(20, 20, 20, 20, Color.BLACK));
 		
 		//ajout dans la fenetre  , les panels
 		/*

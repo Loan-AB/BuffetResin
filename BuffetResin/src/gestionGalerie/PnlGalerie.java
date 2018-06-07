@@ -57,10 +57,11 @@ public class PnlGalerie extends PnlCentre {
 		add(scrollPane,BorderLayout.CENTER);
 		panelPhoto.setBackground(Color.BLUE);
 		panelPhoto.setLayout(new WrapLayout(3));
-		scrollPane.setPreferredSize(new Dimension(460,600));
+		scrollPane.setPreferredSize(new Dimension(460,590));
 		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));
 		for(int i=0;i<mesImages.Size();i++) {
 			monImage = mesImages.recupererImage(i);
+			
 			bouttonPhoto[i] = new BouttonPhoto(new MonImage(i));
 			panelPhoto.add(bouttonPhoto[i]);
 			bouttonPhoto[i].addMouseListener(new MouseAdapter()

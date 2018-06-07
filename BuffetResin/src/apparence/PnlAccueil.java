@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 @SuppressWarnings("serial")
 public class PnlAccueil extends PnlCentre {
 	
-	BouttonApplication btnContact;
+	MonBouton btnContact;
 	MonBouton btnGalerie;
 	MonBouton btnSecret;
 	MaFenetre maman;
@@ -21,9 +21,9 @@ public class PnlAccueil extends PnlCentre {
 		
 		
 		//btnContact = new BouttonApplication(");
-		btnContact = new BouttonApplication("./src/photoBoutton/Contact.png","Contact");
-		btnGalerie = new BouttonApplication("./src/photoBoutton/Gallerie.png","Galerie");
-		btnSecret = new BouttonApplication("./src/photoBoutton/Jeu.png","Secret");	
+		btnContact = new MonBouton("Contact",true,"./src/photoDefault/Contact3.png");
+		btnGalerie = new MonBouton("Galerie",true,"./src/photoDefault/Gallery.png");
+		btnSecret = new MonBouton("Secret",true,"./src/photoDefault/Jeu.png");	
 
 		
 		add(btnContact);
