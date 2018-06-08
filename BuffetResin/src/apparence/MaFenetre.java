@@ -110,7 +110,7 @@ public class MaFenetre extends JFrame {
 		
 		
 		
-		getRootPane().setBorder(new LineBorder(Color.DARK_GRAY, 20, true));
+		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true));
 	
 		//getRootPane().setBorder(BorderFactory.createMatteBorder(20, 20, 20, 20, Color.BLACK));
 		

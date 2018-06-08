@@ -37,7 +37,7 @@ public class BouttonPhoto extends JButton{
 		//setBorder(new RoudedBorder(20));
 		
 		setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
-		//setBorder(new RoudedBorder(5));
+		setBorderPainted(false);;
 		
 	}
 	

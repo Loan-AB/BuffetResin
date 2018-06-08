@@ -55,10 +55,11 @@ public class PnlGalerie extends PnlCentre {
 		lblTitre.setText("Gallerie");
 		add(lblTitre);
 		add(scrollPane,BorderLayout.CENTER);
-		panelPhoto.setBackground(Color.BLUE);
+		
+		panelPhoto.setBackground(Color.LIGHT_GRAY);
 		panelPhoto.setLayout(new WrapLayout(4));
 		scrollPane.getVerticalScrollBar().setUnitIncrement(50); //choisir vizesse
-		scrollPane.setPreferredSize(new Dimension(460,590));
+		scrollPane.setPreferredSize(new Dimension(460,580));
 		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));
 		for(int i=0;i<mesImages.Size();i++) {
 			monImage = mesImages.recupererImage(i);

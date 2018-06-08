@@ -3,8 +3,11 @@ package apparence;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
+
+import gestionGalerie.MonImage;
 
 public class PnlBas extends JPanel {
 // Panel qui contient les 3 bouttons de base
@@ -22,6 +25,8 @@ public class PnlBas extends JPanel {
 		btnBack = new MonBouton("retour");
 
 		setBorder(new LineBorder(Color.BLACK,1,false));
+		btnHome.setIcon(MonImage.transformationImage( new ImageIcon("./src/photoDefault/Home.png"), 15));
+		btnBack.setIcon(MonImage.transformationImage( new ImageIcon("./src/photoDefault/Back.png"), 15));
 		this.add(btnBack);
 		this.add(btnHome);
 	}

@@ -3,6 +3,7 @@ package gestionContact;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -28,6 +30,7 @@ import apparence.MonBouton;
 import apparence.MonJtextArea;
 import apparence.MonLabel;
 import apparence.PnlCentre;
+import gestionCalculatrice.monBoutonCalculatrice;
 import gestionContact.*;
 import gestionGalerie.BouttonPhoto;
 import gestionGalerie.MonImage;
@@ -51,9 +54,12 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 	Contact contact;
 	JLabel lblImage;
 	ImageIcon iiformulaire;
+	
+	MonLabel lblTitre;
 	public PnlFormulaireContact(MaFenetre maman) {
 		super("Formulaire");
 		this.maman = maman;
+	
 		btnAnnuler = new MonBouton("Annuler");
 		btnValider = new MonBouton("Valider");
 		btnSupprimer = new MonBouton("Suprimmer");
@@ -65,14 +71,57 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 		txtEmail = new MonJtextArea("Email");
 		txtNom.addFocusListener(null);
 		
+	
+		
+		
+		
 		lblImage = new JLabel("",JLabel.CENTER);
+		lblTitre = new MonLabel();
+		//lblTitre.setSize(new Dimension(100, 100));
+		
+		
+		
+		
 		
 		add(lblImage);
+		lblTitre = new MonLabel();
+		lblTitre.setText("Nom : ");
+		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
+		lblTitre.setPreferredSize(new Dimension(200, 50));
+		add(lblTitre);
+		
+		
 		add(txtNom);
-		add(txtNom);
+		
+		lblTitre = new MonLabel();
+		lblTitre.setText("Prénom : ");
+		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
+		lblTitre.setPreferredSize(new Dimension(200, 50));
+		add(lblTitre);
+		
 		add(txtPrenom);
+		
+		lblTitre = new MonLabel();
+		lblTitre.setText("E-Mail : ");
+		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
+		lblTitre.setPreferredSize(new Dimension(200, 50));
+		add(lblTitre);
 		add(txtNumeroTel);
+		
+		lblTitre = new MonLabel();
+		lblTitre.setText("Tél. Mobile : ");
+		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
+		lblTitre.setPreferredSize(new Dimension(200, 50));
+		
+		add(lblTitre);
 		add(txtNumeroMobile);
+		
+		lblTitre = new MonLabel();
+		lblTitre.setText("Tél. Fixe : ");
+		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
+		lblTitre.setPreferredSize(new Dimension(200,50));
+		
+		add(lblTitre);
 		add(txtEmail);
 		add(btnAnnuler ); 
 		add(btnValider);

@@ -25,9 +25,10 @@ public class PnlCentre extends JPanel {
     
 	
 	public PnlCentre(String nom) {
+		
 		setSize(480,200);
 		this.nom = nom;
-		setBackground(Color.blue);
+		setBackground(Color.DARK_GRAY);
 		//add(label);
 		
 		
