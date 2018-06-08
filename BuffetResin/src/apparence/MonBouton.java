@@ -25,7 +25,7 @@ public class MonBouton extends JButton {
 		this.setBackground(Color.LIGHT_GRAY);
 	}
 	
-	public MonBouton(String coucou,String path)
+	public MonBouton(String coucou,String path )
 	{
 		super("");
 		this.setBorderPainted(false); //pour ne pas voir les bordures
@@ -35,6 +35,19 @@ public class MonBouton extends JButton {
 		this.setSize(new Dimension(100,100));
 		this.setOpaque(false); //pour que le fond soit opaque
 		this.setIcon(MonImage.transformationImage( new ImageIcon(path), 100));
+		this.setBackground(Color.BLACK);
+	}
+	
+	public MonBouton(String coucou,String path,int taille )
+	{
+		super("");
+		this.setBorderPainted(false); //pour ne pas voir les bordures
+		this.coucou = coucou;
+		super.setText("");
+		this.setFocusPainted(false);
+		this.setSize(new Dimension(50,50));
+		this.setOpaque(false); //pour que le fond soit opaque
+		this.setIcon(MonImage.transformationImage( new ImageIcon(path),taille));
 		this.setBackground(Color.BLACK);
 	}
 	
