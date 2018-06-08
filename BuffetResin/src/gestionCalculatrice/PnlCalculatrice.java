@@ -3,6 +3,7 @@ package gestionCalculatrice;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -27,15 +28,15 @@ public class PnlCalculatrice extends PnlCentre {
 		super("Calculatrice");
 		this.maman = maman;
 		lblCalcul = new MonLabel();
-		tabBouton =  new monBoutonCalculatrice[8];
+//		Font police = new Font("Arial", Font.BOLD, 200);
+		tabBouton =  new monBoutonCalculatrice[10];
 		//Alors les char => 0-9 c'est 48-57
 		lblCalcul.setText("salut");
-		lblCalcul.setText("");
-		lblCalcul.setHorizontalAlignment(JLabel.RIGHT);
-		lblCalcul.setPreferredSize(new Dimension(480, 100));
+		lblCalcul.setForeground(Color.BLACK);
+		lblCalcul.setPreferredSize(new Dimension(200, 100));
 	    
 	    JPanel panEcran = new JPanel();
-	    panEcran.setPreferredSize(new Dimension(480, 200));
+	    panEcran.setPreferredSize(new Dimension(320, 225));
 
 	    /*
 	     * 
@@ -44,12 +45,22 @@ public class PnlCalculatrice extends PnlCentre {
 	     */
 	    
 	    JPanel chiffre = new JPanel();
-	    chiffre.setPreferredSize(new Dimension(165, 225));
+	    chiffre.setPreferredSize(new Dimension(240, 225));
 		for (int i = 0; i < tabBouton.length; i++) 
 		{
-			tabBouton[i]= new monBoutonCalculatrice (Integer.toString(i), this);
-			tabBouton[i].setBackground(Color.PINK);
-			chiffre.add(tabBouton[i]);
+			
+			if (i == 9) 
+			{
+				tabBouton[i]= new monBoutonCalculatrice (Integer.toString(i-9), this);
+				tabBouton[i].setBackground(Color.PINK);
+				chiffre.add(tabBouton[i]);
+			}
+			else
+			{
+				tabBouton[i]= new monBoutonCalculatrice (Integer.toString(i+1), this);
+				tabBouton[i].setBackground(Color.PINK);
+				chiffre.add(tabBouton[i]);
+			}
 		}
 		
 		/*
@@ -59,22 +70,21 @@ public class PnlCalculatrice extends PnlCentre {
 		 */
 		
 		JPanel operateur = new JPanel();      
-	    operateur.setPreferredSize(new Dimension(55, 225));
+	    operateur.setPreferredSize(new Dimension(160,280 ));
 		operateur.add(new monBoutonCalculatrice("+", this));
 	    operateur.add(new monBoutonCalculatrice("-", this));
 	    operateur.add(new monBoutonCalculatrice("/", this));
 	    operateur.add(new monBoutonCalculatrice("*", this));
 	    operateur.add(new monBoutonCalculatrice("=", this));
+//	    operateur.add(new monBoutonCalculatrice("C", this));
+//	    operateur.add(new monBoutonCalculatrice("<=", this));
+	    panEcran.setBackground(Color.CYAN);
 	    
 	    panEcran.add(lblCalcul);
 	    panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
 	    this.add(panEcran, BorderLayout.NORTH);
-	    this.add(chiffre, BorderLayout.CENTER);
+	    this.add(chiffre, BorderLayout.WEST);
 	    this.add(operateur, BorderLayout.EAST);
-
-		lblCalcul = new MonLabel();
-		lblCalcul.setPreferredSize(new Dimension(100,20));
-		add(lblCalcul);
 	}
 	
 	

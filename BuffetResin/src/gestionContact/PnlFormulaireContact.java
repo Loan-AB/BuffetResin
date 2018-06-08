@@ -40,7 +40,7 @@ public class PnlFormulaireContact  extends PnlCentre
 
 	//concernant les lbl globaux vraiment important ? //loan
 	
-	MonBouton btnValiderContact;
+	MonBouton btnValider;
 	MonBouton btnAnnuler;
 	MonBouton btnSupprimer;
 	MonBouton btnChoixImage;
@@ -63,7 +63,7 @@ public class PnlFormulaireContact  extends PnlCentre
 		this.maman = maman;
 	
 		btnAnnuler = new MonBouton("Annuler");
-		btnValiderContact = new MonBouton("Valider");
+		btnValider = new MonBouton("Valider");
 		btnSupprimer = new MonBouton("Suprimmer");
 		btnChoixImage = new MonBouton("ChoixImage");
 		txtNom = new MonJtextArea("Nom");
@@ -104,7 +104,7 @@ public class PnlFormulaireContact  extends PnlCentre
 		add(txtEmail);
 		
 		add(btnAnnuler ); 
-		add(btnValiderContact);
+		add(btnValider);
 		add(btnSupprimer);
 		add(btnChoixImage);
 		
@@ -126,13 +126,14 @@ public class PnlFormulaireContact  extends PnlCentre
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				contact.suppressioncontact();
+				System.out.println("cc");
 				maman.supprimerContact(contact);
 				//réaffiche les contact
 				dechargement();
 				maman.changeCouche("Contact");
 			}
 		});
-		btnValiderContact.addActionListener(new ActionListener() 
+		btnValider.addActionListener(new ActionListener() 
 		{
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
@@ -153,11 +154,11 @@ public class PnlFormulaireContact  extends PnlCentre
 					contact.setNumeroMobile(txtNumeroMobile.getText());
 					contact.setEmail(txtEmail.getText());
 					contact.setPhotoDescription(iiformulaire.getDescription());
-					contact.setPhoto(iiformulaire);
-					setImage(contact.getPhoto());			
+					contact.setPhoto(MonImage.transformationImage(iiformulaire.getDescription(), 120, 120));
+					contact.setPhotoDescription(iiformulaire.getDescription());
 					//mais si on modifier ya un pb :/
 				}
-				
+				System.err.println(maman.toString());
 				contact.enregistrer();
 				maman.ajouterContact(contact);
 				dechargement();
@@ -197,18 +198,17 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtNumeroMobile.setText(contact.getNumeroMobile());
 		txtNumeroTel.setText(contact.getNumeroTel());
 		txtPrenom.setText(contact.getPrenom());
-		//loan ajout
-		setImage(contact.getPhoto());	
+		setImage(new ImageIcon (contact.getPhotoDescription()));	
+		
 	}
 	public void setImage(ImageIcon laNouvelleimage) 
 	{
-		this.iiformulaire = laNouvelleimage;
-		
-		setlblImage(iiformulaire);//pour l'affichage
+		setlblImage(laNouvelleimage);//pour l'affichage
 	}
 
 	private void setlblImage (ImageIcon MaFutureIcone) //affichage du label avec la bonne image
 	{
+		this.iiformulaire = MaFutureIcone;
 		lblImage.setIcon(MonImage.transformationImage(MaFutureIcone.getDescription(), lblImage.getWidth()));
 	}
 

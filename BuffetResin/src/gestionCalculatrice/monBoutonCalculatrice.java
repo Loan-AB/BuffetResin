@@ -2,6 +2,7 @@ package gestionCalculatrice;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,7 +19,9 @@ public class monBoutonCalculatrice extends MonBouton{
 	
 	public monBoutonCalculatrice(String value, PnlCalculatrice maman)
 	{
+	
 		super(value);
+		setPreferredSize(new Dimension(70, 50));
 		try {
 			s = new Nombre(Double.parseDouble(value));
 		}

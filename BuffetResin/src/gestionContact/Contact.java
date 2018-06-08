@@ -37,7 +37,7 @@ public class Contact implements Serializable, Comparable{
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 		this.photo.setDescription(photoDescription);
 		this.photoDescription = photoDescription;
-		this.nomFichier = nom+prenom+numeroMobile;
+		this.nomFichier = nom+prenom;
 		
 		/*
 		 * Hello :D alors j'a un souci , je retounr dans ma description le chemin , même tout le chemin ...
@@ -60,7 +60,7 @@ public class Contact implements Serializable, Comparable{
 		this.photoDescription = this.photo.getDescription();
 		this.photo.setDescription(photoDescription);
 		
-		this.nomFichier = nom+prenom+numeroMobile;
+		this.nomFichier = nom+prenom;
 	}
 
 	@Override
@@ -70,12 +70,11 @@ public class Contact implements Serializable, Comparable{
 	public void enregistrer() 
 	{
 		System.out.println("Votre contact " + nom+ " "+prenom + " :  modifier/crée");
-		String nomFichier = nom+prenom+numeroMobile;
+		String nomFichier = nom+prenom;
 		
-		//prise du chemin relatif
-		String photoDescription = photo.getDescription();
 		StringTokenizer st = new StringTokenizer(photoDescription,".");
-		st.nextToken(); //tout ce qui est avant le premier . => poubelle 
+		if(st.countTokens() >=3)
+			st.nextToken(); //tout ce qui est avant le premier . => poubelle 
 		String cheminduficherRelatif = "." + st.nextToken() + "." + st.nextToken();
 		//fin de la prise du chemin relatif
 		
@@ -109,12 +108,12 @@ public class Contact implements Serializable, Comparable{
 		catch (Exception e) {
 			// TODO: handle exception
 		}
-		nomFichier = nom + prenom+ numeroMobile;
+		nomFichier = nom+prenom;
 	}
 	public void suppressioncontact()
 	{
 		File f = new File(chemin+nomFichier+".txt");
-		System.out.println("votre fichier " + chemin+nomFichier+".txt" + "as été supprimer");
+		System.out.println("votre fichier " + chemin+nomFichier+".txt" + " as été supprimer");
 		f.delete(); 
 	}
 	@Override

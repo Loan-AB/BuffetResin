@@ -88,6 +88,7 @@ public class PnlImage extends PnlCentre implements ImageObserver {
     }
 	public void setbContactBouton(boolean bContact) { //loan
 		btnValiderPhotoContact.setVisible(bContact);
+		btnDelete.setVisible(!bContact);
 		
 	}
 

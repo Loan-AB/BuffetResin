@@ -119,10 +119,11 @@ public class MaFenetre extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(historiqueLayout.size()>1) //on peut supprimer la dernière couche
 				{ 
-					if (historiqueLayout.get(historiqueLayout.size()-2).equals("Contact"))
-					{
-						pnlFormulaire.dechargement();
-					}
+//					if (historiqueLayout.get(historiqueLayout.size()-2).equals("Contact"))
+//					{
+//						pnlFormulaire.dechargement();
+//					}
+					
 					historiqueLayout.remove(historiqueLayout.size()-1); //on la supprime
 				}
 				couche.show(pnlCentre, historiqueLayout.get(historiqueLayout.size()-1)); //on affiche la dernière couche
@@ -138,6 +139,7 @@ public class MaFenetre extends JFrame {
 		
 	}
 	public void changeCouche(String nom) {
+		System.out.println(nom+ " a tenté de s'ouvrire");
 		if(!(historiqueLayout.get(historiqueLayout.size()-1).equals(nom))) {
 			historiqueLayout.add( nom);
 			couche.show(pnlCentre, nom);
@@ -165,7 +167,6 @@ public class MaFenetre extends JFrame {
 	}
 	public void setbContact(boolean b) {
 		pnlImage.setbContactBouton(b);
-
 	}
 
 	
