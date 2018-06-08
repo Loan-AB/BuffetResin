@@ -64,7 +64,8 @@ public class Contact implements Serializable, Comparable{
 	}
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
 		return  getNom() + " " + getPrenom() + " " + getNumeroMobile(); //cela s'affichera dans la jlist
 	}
 	public void enregistrer() 
