@@ -81,31 +81,28 @@ public class PnlFormulaireContact  extends PnlCentre
 		lblTitre = new MonLabel();
 		lblTitre.setText("Nom :\t ");
 		add(lblTitre);
-		
 		add(txtNom);
 		
 		lblTitre = new MonLabel();
 		lblTitre.setText("Prénom :\t ");
 		add(lblTitre);
-		
 		add(txtPrenom);
 		
 		lblTitre = new MonLabel();
-		lblTitre.setText("E-Mail :\t ");
+		lblTitre.setText("Tél. Fixe :\t ");
 		add(lblTitre);
 		add(txtNumeroTel);
 		
 		lblTitre = new MonLabel();
 		lblTitre.setText("Tél. Mobile :\t ");
-		
 		add(lblTitre);
 		add(txtNumeroMobile);
 		
 		lblTitre = new MonLabel();
-		lblTitre.setText("Tél. Fixe :\t ");
-
+		lblTitre.setText("E-Mail :\t ");
 		add(lblTitre);
 		add(txtEmail);
+		
 		add(btnAnnuler ); 
 		add(btnValiderContact);
 		add(btnSupprimer);
@@ -144,19 +141,23 @@ public class PnlFormulaireContact  extends PnlCentre
 				{ 	
 					contact = new Contact(txtNom.getText(), txtPrenom.getText(), txtNumeroTel.getText(),
 							txtNumeroMobile.getText(), txtEmail.getText(), iiformulaire.getDescription().toString(), iiformulaire);
-//					System.out.println("je suis dans la création d'un new contact" + iiformulaire.getDescription());
+					
+					//lors de la création pas de pb
+					//car on clique qu'une seule fois sur choix image
 				}
 				else 
 				{
 					contact.setNom(txtNom.getText());
 					contact.setPrenom(txtPrenom.getText());
-					contact.setEmail(txtEmail.getText());
-					contact.setNumeroMobile(txtNumeroMobile.getText());
 					contact.setNumeroTel(txtNumeroTel.getText());
-					//je doti faire qqch par la pour la size des images je pense //loan 08.06.2018
+					contact.setNumeroMobile(txtNumeroMobile.getText());
+					contact.setEmail(txtEmail.getText());
+					contact.setPhotoDescription(iiformulaire.getDescription());
 					contact.setPhoto(iiformulaire);
-					setImage(contact.getPhoto());						
+					setImage(contact.getPhoto());			
+					//mais si on modifier ya un pb :/
 				}
+				
 				contact.enregistrer();
 				maman.ajouterContact(contact);
 				dechargement();

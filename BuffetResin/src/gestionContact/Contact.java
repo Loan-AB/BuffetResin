@@ -20,8 +20,8 @@ public class Contact implements Serializable, Comparable{
 
 	private String nom;
 	private String prenom;
-	private String NumeroTel;
-	private String NumeroMobile;
+	private String numeroTel;
+	private String numeroMobile;
 	private String email;
 	private ImageIcon photo;
 	private String photoDescription; //crée pour garder l'url de mon image
@@ -30,14 +30,14 @@ public class Contact implements Serializable, Comparable{
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) {
 		this.nom = nom;
 		this.prenom = prenom;
-		this.NumeroTel = numeroTel;
-		this.NumeroMobile = numeroMobile;
+		this.numeroTel = numeroTel;
+		this.numeroMobile = numeroMobile;
 		this.email = email;
 		//ajout de l'image
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
 		this.photo.setDescription(photoDescription);
 		this.photoDescription = photoDescription;
-		this.nomFichier = nom+prenom;
+		this.nomFichier = nom+prenom+numeroMobile;
 		
 		/*
 		 * Hello :D alors j'a un souci , je retounr dans ma description le chemin , même tout le chemin ...
@@ -51,8 +51,8 @@ public class Contact implements Serializable, Comparable{
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,ImageIcon photo) {
 		this.nom = nom;
 		this.prenom = prenom;
-		this.NumeroTel = numeroTel;
-		this.NumeroMobile = numeroMobile;
+		this.numeroTel = numeroTel;
+		this.numeroMobile = numeroMobile;
 		this.email = email;
 		
 		//ajout de l'image
@@ -60,26 +60,8 @@ public class Contact implements Serializable, Comparable{
 		this.photoDescription = this.photo.getDescription();
 		this.photo.setDescription(photoDescription);
 		
-		this.nomFichier = nom+prenom;
+		this.nomFichier = nom+prenom+numeroMobile;
 	}
-//	//sans image spécifier on met celle par defaut en gros tout le temps donc trouver un moyen que cel ane sot pas le cas
-//	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email) 
-//	{
-//		//on pourrait a la limite déterminer 4 photo par derfaut avec un aléatoire.
-//		this.nom = nom;
-//		this.prenom = prenom;
-//		NumeroTel = numeroTel;
-//		NumeroMobile = numeroMobile;
-//		this.email = email;
-////		ImageIcon photo = new ImageIcon(".\\src\\photoGallerie\\default.png"); //ici ???
-//		//this.photo.setDescription(".\\src\\photoGallerie\\default.png"); //loan 05.16.2018
-////		System.err.println(this.photo.getDescription());
-////		System.err.println(photo.getDescription());
-//		System.err.println(this.photo.getDescription());
-//		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
-//		this.photoDescription = this.photo.getDescription();
-//		this.photo.setDescription(photoDescription);
-//	}
 
 	@Override
 	public String toString() {
@@ -88,7 +70,7 @@ public class Contact implements Serializable, Comparable{
 	public void enregistrer() 
 	{
 		System.out.println("Votre contact " + nom+ " "+prenom + " :  modifier/crée");
-		String nomFichier = nom+prenom;
+		String nomFichier = nom+prenom+numeroMobile;
 		
 		//prise du chemin relatif
 		String photoDescription = photo.getDescription();
@@ -98,7 +80,7 @@ public class Contact implements Serializable, Comparable{
 		//fin de la prise du chemin relatif
 		
 		System.out.println(cheminduficherRelatif);
-		serializeObject(nomFichier,nom,prenom,NumeroTel,NumeroMobile,email,cheminduficherRelatif,photo); //écrire
+		serializeObject(nomFichier,nom,prenom,numeroTel,numeroMobile,email,cheminduficherRelatif,photo); //écrire
 	}
 	private void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) {
 		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photoDescription,photo);
@@ -127,7 +109,7 @@ public class Contact implements Serializable, Comparable{
 		catch (Exception e) {
 			// TODO: handle exception
 		}
-		nomFichier = nom + prenom;
+		nomFichier = nom + prenom+ numeroMobile;
 	}
 	public void suppressioncontact()
 	{
@@ -165,19 +147,19 @@ public class Contact implements Serializable, Comparable{
 	}
 
 	public String getNumeroTel() {
-		return NumeroTel;
+		return numeroTel;
 	}
 
 	public void setNumeroTel(String numeroTel) {
-		NumeroTel = numeroTel;
+		numeroTel = numeroTel;
 	}
 
 	public String getNumeroMobile() {
-		return NumeroMobile;
+		return numeroMobile;
 	}
 
 	public void setNumeroMobile(String numeroMobile) {
-		NumeroMobile = numeroMobile;
+		numeroMobile = numeroMobile;
 	}
 
 	public String getEmail() {
