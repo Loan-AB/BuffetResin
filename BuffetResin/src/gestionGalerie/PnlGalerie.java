@@ -41,7 +41,7 @@ public class PnlGalerie extends PnlCentre {
 	protected JScrollPane scrollPane = new JScrollPane(panelPhoto);
 	protected BouttonPhoto []bouttonPhoto= new BouttonPhoto[mesImages.Size()];
 	protected ImageIcon monImage;
-	protected WrapLayout wrapLayout = new WrapLayout(3);
+	protected WrapLayout wrapLayout = new WrapLayout();
 	MonBouton bouttoAjoute = new MonBouton("ajouter");
 	JFileChooser fileChooser;
 	JLabel lblTitre = new JLabel();
@@ -59,7 +59,10 @@ public class PnlGalerie extends PnlCentre {
 		panelPhoto.setBackground(Color.LIGHT_GRAY);
 		panelPhoto.setLayout(new WrapLayout(4));
 		scrollPane.getVerticalScrollBar().setUnitIncrement(50); //choisir vizesse
+		
 		scrollPane.setPreferredSize(new Dimension(460,580));
+		//scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));//Determine la taille de la scrollBar vetical
+		
 		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));
 		for(int i=0;i<mesImages.Size();i++) {
 			monImage = mesImages.recupererImage(i);

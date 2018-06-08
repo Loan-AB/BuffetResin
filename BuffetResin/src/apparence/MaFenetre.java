@@ -67,10 +67,7 @@ public class MaFenetre extends JFrame {
 		historiqueLayout = new ArrayList<>();
 		
 		
-		JLabel labelWallPaper = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
-		JPanel panelWallPaper = new JPanel();
-		add(panelWallPaper, BorderLayout.CENTER);
-		panelWallPaper.add(labelWallPaper,BorderLayout.CENTER);
+		
 		
 		//pour que la fenetre soit au centre
 		
@@ -112,7 +109,7 @@ public class MaFenetre extends JFrame {
 		
 		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true));
 	
-		//getRootPane().setBorder(BorderFactory.createMatteBorder(20, 20, 20, 20, Color.BLACK));
+		//getRootPane().setBorder(BorderFactory.createMatteBorder(20, 10, 20, 20, Color.BLACK));
 		
 		//ajout dans la fenetre  , les panels
 		/*

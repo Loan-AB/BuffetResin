@@ -66,7 +66,11 @@ public class PnlContact  extends PnlCentre {
 		lstContact.setModel(lm);
 		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
 		JScrollPane scrollPane= new JScrollPane(lstContact); 
-		scrollPane.setPreferredSize(new Dimension(460,580));
+		scrollPane.setPreferredSize(new Dimension(420,580));
+		scrollPane.getVerticalScrollBar().setUnitIncrement(50);
+		
+		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));//Determine la taille de la scrollBar vetical
+		
 		add(scrollPane);
 		lstContact.addMouseListener(new MouseAdapter() {
 			@Override
