@@ -37,14 +37,27 @@ public class PnlCalculatrice extends PnlCentre {
 	    JPanel panEcran = new JPanel();
 	    panEcran.setPreferredSize(new Dimension(480, 200));
 
+	    /*
+	     * 
+	     * les chiffres
+	     * 
+	     */
+	    
 	    JPanel chiffre = new JPanel();
-//	    chiffre.setPreferredSize(new Dimension(165, 225));
+	    chiffre.setPreferredSize(new Dimension(165, 225));
 		for (int i = 0; i < tabBouton.length; i++) 
 		{
 			tabBouton[i]= new monBoutonCalculatrice (Integer.toString(i), this);
 			tabBouton[i].setBackground(Color.PINK);
 			chiffre.add(tabBouton[i]);
 		}
+		
+		/*
+		 * 
+		 * les opérations
+		 * 
+		 */
+		
 		JPanel operateur = new JPanel();      
 	    operateur.setPreferredSize(new Dimension(55, 225));
 		operateur.add(new monBoutonCalculatrice("+", this));
@@ -59,7 +72,6 @@ public class PnlCalculatrice extends PnlCentre {
 	    this.add(chiffre, BorderLayout.CENTER);
 	    this.add(operateur, BorderLayout.EAST);
 
-	   
 		lblCalcul = new MonLabel();
 		lblCalcul.setPreferredSize(new Dimension(100,20));
 		add(lblCalcul);
