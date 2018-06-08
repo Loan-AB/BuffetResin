@@ -7,6 +7,7 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 	//pour les images (pas bien compris pkoi)
+		@SuppressWarnings("serial")
 		class ContactCellRenderer extends DefaultListCellRenderer implements ListCellRenderer<Object>
 		{
 		 

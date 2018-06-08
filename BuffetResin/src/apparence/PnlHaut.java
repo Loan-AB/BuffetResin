@@ -19,7 +19,6 @@ import gestionGalerie.MonImage;
 public class PnlHaut extends JPanel{
 	private java.util.Date time;
 	private MonLabel lblTime;
-	private MaBatterie prbBatterie;
 	private	DateFormat df;
 	MonBouton BtnFermer ;
 	
@@ -31,12 +30,10 @@ public class PnlHaut extends JPanel{
 		df = new SimpleDateFormat("dd/MM/yyy HH:mm");
 		//test pour les composant du haut
 		lblTime = new MonLabel();
-		prbBatterie = new MaBatterie();
 		
 		setBorder(new LineBorder(Color.BLACK,1,false));
 		// le haut : 
 		this.add(lblTime);
-		this.add(prbBatterie);
 		lblTime.setText(df.format(time)); //sera réglé par un timer ou prise du temps du pc
 		this.add(BtnFermer);
 		

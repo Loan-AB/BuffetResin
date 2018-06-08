@@ -25,8 +25,8 @@ public class PnlBas extends JPanel {
 		btnBack = new MonBouton("retour");
 
 		setBorder(new LineBorder(Color.BLACK,1,false));
-		btnHome.setIcon(MonImage.transformationImage( new ImageIcon("./src/photoDefault/Home.png"), 15));
-		btnBack.setIcon(MonImage.transformationImage( new ImageIcon("./src/photoDefault/Back.png"), 15));
+		btnHome.setIcon(MonImage.transformationImage( "./src/photoDefault/Home.png", 15));
+		btnBack.setIcon(MonImage.transformationImage( "./src/photoDefault/Back.png", 15));
 		this.add(btnBack);
 		this.add(btnHome);
 	}

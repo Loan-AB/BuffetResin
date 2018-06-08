@@ -11,56 +11,57 @@ import gestionGalerie.MonImage;
 
 public class MonBouton extends JButton {
 	
-	String coucou;
-	public MonBouton(String coucou)
+//	String nom;
+	public MonBouton(String nom)
 	{
-		super("");
-		this.coucou = coucou;
-		//this.setText(coucou);
+		super(" ");
+		this.setActionCommand(nom);
+		this.setText(nom);
 		this.setContentAreaFilled(false);
 		this.setFocusPainted(false);
-		
 		this.setOpaque(true);
 		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 		this.setBackground(Color.LIGHT_GRAY);
 	}
-	
-	public MonBouton(String coucou,String path )
-	{
-		super("");
-		this.setBorderPainted(false); //pour ne pas voir les bordures
-		this.coucou = coucou;
-		super.setText("");
+	public MonBouton(String nom, boolean b) {
+		super(" ");
+		this.setActionCommand(nom);
+		this.setText(nom);
+		this.setContentAreaFilled(false);
 		this.setFocusPainted(false);
-		this.setSize(new Dimension(100,100));
+		this.setVisible(b);
+		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+		this.setBackground(Color.LIGHT_GRAY);
+	}
+	
+	public MonBouton(String nom,String path )
+	{
+		
+		
+		super(" ");
+		this.setBorderPainted(false); //pour ne 5pas voir les bordures
+		this.setActionCommand(nom);
+		super.setText(" ");
+		this.setFocusPainted(false);
+//		this.setSize(new Dimension(50,50));
 		this.setOpaque(false); //pour que le fond soit opaque
-		this.setIcon(MonImage.transformationImage( new ImageIcon(path), 100));
+		MonImage m = new MonImage(); //instencier
+		this.setIcon(m.transformationImage(path,70)); //la je ne sais pas ce que je fait XD
 		this.setBackground(Color.BLACK);
 	}
-	
-	public MonBouton(String coucou,String path,int taille )
-	{
-		super("");
-		this.setBorderPainted(false); //pour ne pas voir les bordures
-		this.coucou = coucou;
-		super.setText("");
+	public MonBouton(String nom, String path, int taille) {
+		super(" ");
+		this.setBorderPainted(false); //pour ne 5pas voir les bordures
+		this.setActionCommand(nom);
+		super.setText(" ");
 		this.setFocusPainted(false);
-		this.setSize(new Dimension(50,50));
+//		this.setSize(new Dimension(50,50));
 		this.setOpaque(false); //pour que le fond soit opaque
-		this.setIcon(MonImage.transformationImage( new ImageIcon(path),taille));
+		MonImage m = new MonImage(); //instencier
+		this.setIcon(m.transformationImage(path,taille)); //la je ne sais pas ce que je fait XD
 		this.setBackground(Color.BLACK);
 	}
+
 	
-	public String getText() {
-		return coucou;
-	}
-	
-	@Override
-	public void setText(String text) {
-		if(getIcon() == null) {
-			super.setText(text);
-		}
-		coucou = text;
-	}
 
 }

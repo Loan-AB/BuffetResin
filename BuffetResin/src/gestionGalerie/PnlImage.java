@@ -29,8 +29,9 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 	MaFenetre maman;
 	MonBouton btnDelete;
 	MesImages imagesListe =  new MesImages();
+	MonBouton btnValiderPhotoContact;
 
-	public PnlImage(MaFenetre mama) 
+	public PnlImage(MaFenetre maman) 
 	{
 		super("Galerie");
 		this.maman = maman;
@@ -41,8 +42,6 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 			public void actionPerformed(ActionEvent e) 
 			{
 			File imagePath = new File(monImageIcon.getDescription());
-			System.out.println();
-			System.out.println();
 			//controle si image dans dossier images faire une boucle pour trouver image voulue
 				// si oui supprimer si non rien.
 				for (int i = 0; i < imagesListe.listePhoto.length; i++) 
@@ -51,25 +50,45 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 					{
 						System.out.println(imagesListe.listePhoto[i].getAbsolutePath());
 						delete(imagesListe.listePhoto[i].getAbsolutePath());
-						mama.changeCouche("Galerie");
+						maman.changeCouche("Galerie");
 					}
 				}
 			}
 		});
+		btnValiderPhotoContact = new MonBouton("Valider",false);
+		
+		btnValiderPhotoContact.addActionListener(new ActionListener() 
+		{
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				System.out.println("clicker valider :D");
+				System.out.println(monImageIcon.getDescription());
+				maman.setImageFormulaireNouveauContact(monImageIcon);
+				maman.changeCouche("Formulaire");
+			}
+		});
 		add(btnDelete,BorderLayout.NORTH);
-
+		add(btnValiderPhotoContact);
 		// TODO Auto-generated constructor stub
 		lblImage = new JLabel();
 		add(lblImage);		
 	}
-	public void setImage(ImageIcon photo) 
+	public void setImage(ImageIcon monImageIcon , String description) //loan 08.06.2018
 	{
-		monImageIcon = photo;
-		lblImage.setIcon(photo);
+		this.monImageIcon = monImageIcon;
+		this.monImageIcon.setDescription(description);
+		System.out.println(monImageIcon.getDescription());
+		lblImage.setIcon(monImageIcon);
 	}
 	private void delete(String file) {
     		File fichier = new File(file);
     		fichier.delete();
     		maman.changeCouche("Gallerie");
     }
+	public void setbContactBouton(boolean bContact) { //loan
+		btnValiderPhotoContact.setVisible(bContact);
+		
+	}
+
 }

@@ -35,11 +35,12 @@ import gestionContact.*;
 import gestionGalerie.BouttonPhoto;
 import gestionGalerie.MonImage;
 
-public class PnlFormulaireContact  extends PnlCentre { //pas sure
+public class PnlFormulaireContact  extends PnlCentre 
+{ //pas sure
 
-	//concernant les lbl globaux vraiment important ?
+	//concernant les lbl globaux vraiment important ? //loan
 	
-	MonBouton btnValider;
+	MonBouton btnValiderContact;
 	MonBouton btnAnnuler;
 	MonBouton btnSupprimer;
 	MonBouton btnChoixImage;
@@ -56,12 +57,13 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 	ImageIcon iiformulaire;
 	
 	MonLabel lblTitre;
-	public PnlFormulaireContact(MaFenetre maman) {
+	public PnlFormulaireContact(MaFenetre maman) 
+{
 		super("Formulaire");
 		this.maman = maman;
 	
 		btnAnnuler = new MonBouton("Annuler");
-		btnValider = new MonBouton("Valider");
+		btnValiderContact = new MonBouton("Valider");
 		btnSupprimer = new MonBouton("Suprimmer");
 		btnChoixImage = new MonBouton("ChoixImage");
 		txtNom = new MonJtextArea("Nom");
@@ -70,61 +72,42 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 		txtNumeroMobile = new MonJtextArea("Mobile");
 		txtEmail = new MonJtextArea("Email");
 		txtNom.addFocusListener(null);
-		
-	
-		
-		
-		
+
 		lblImage = new JLabel("",JLabel.CENTER);
 		lblTitre = new MonLabel();
-		//lblTitre.setSize(new Dimension(100, 100));
-		
-		
-		
-		
-		
+		lblTitre.setSize(new Dimension(100, 100));
+
 		add(lblImage);
 		lblTitre = new MonLabel();
-		lblTitre.setText("Nom : ");
-		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
-		lblTitre.setPreferredSize(new Dimension(200, 50));
+		lblTitre.setText("Nom :\t ");
 		add(lblTitre);
-		
 		
 		add(txtNom);
 		
 		lblTitre = new MonLabel();
-		lblTitre.setText("Prénom : ");
-		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
-		lblTitre.setPreferredSize(new Dimension(200, 50));
+		lblTitre.setText("Prénom :\t ");
 		add(lblTitre);
 		
 		add(txtPrenom);
 		
 		lblTitre = new MonLabel();
-		lblTitre.setText("E-Mail : ");
-		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
-		lblTitre.setPreferredSize(new Dimension(200, 50));
+		lblTitre.setText("E-Mail :\t ");
 		add(lblTitre);
 		add(txtNumeroTel);
 		
 		lblTitre = new MonLabel();
-		lblTitre.setText("Tél. Mobile : ");
-		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
-		lblTitre.setPreferredSize(new Dimension(200, 50));
+		lblTitre.setText("Tél. Mobile :\t ");
 		
 		add(lblTitre);
 		add(txtNumeroMobile);
 		
 		lblTitre = new MonLabel();
-		lblTitre.setText("Tél. Fixe : ");
-		lblTitre.setFont(new Font("Arial",Font.ITALIC, 24));
-		lblTitre.setPreferredSize(new Dimension(200,50));
-		
+		lblTitre.setText("Tél. Fixe :\t ");
+
 		add(lblTitre);
 		add(txtEmail);
 		add(btnAnnuler ); 
-		add(btnValider);
+		add(btnValiderContact);
 		add(btnSupprimer);
 		add(btnChoixImage);
 		
@@ -152,7 +135,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 				maman.changeCouche("Contact");
 			}
 		});
-		btnValider.addActionListener(new ActionListener() 
+		btnValiderContact.addActionListener(new ActionListener() 
 		{
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
@@ -170,7 +153,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 					contact.setEmail(txtEmail.getText());
 					contact.setNumeroMobile(txtNumeroMobile.getText());
 					contact.setNumeroTel(txtNumeroTel.getText());
-					//lalalalalalal :D
+					//je doti faire qqch par la pour la size des images je pense //loan 08.06.2018
 					contact.setPhoto(iiformulaire);
 					setImage(contact.getPhoto());						
 				}
@@ -186,11 +169,12 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				maman.changeCouche("ChoixImage");
+				maman.setbContact(true);
+				maman.changeCouche("Galerie");
 			}
 		});
 	}
-	private void dechargement() 
+	public void dechargement() 
 	{
 		contact = null;
 		txtNom.setText("");
@@ -198,7 +182,9 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 		txtEmail.setText("");
 		txtNumeroMobile.setText("");
 		txtNumeroTel.setText("");
+		maman.setbContact(false);
 		setImage(new ImageIcon(".\\src\\photoGallerie\\default.png")); 
+		
 	}
 	public void setContact(Contact contact) 
 	{
@@ -216,6 +202,7 @@ public class PnlFormulaireContact  extends PnlCentre { //pas sure
 	public void setImage(ImageIcon laNouvelleimage) 
 	{
 		this.iiformulaire = laNouvelleimage;
+		
 		setlblImage(iiformulaire);//pour l'affichage
 	}
 

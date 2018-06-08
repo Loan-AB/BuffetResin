@@ -60,17 +60,14 @@ public class PnlContact  extends PnlCentre {
 		for (Contact contact : lContact) {
 			lm.addElement(contact);
 		}
+		
 		//les éléments de la liste
 		lstContact = new JList<>(lm);
 		lstContact.setCellRenderer(new ContactCellRenderer());
 		lstContact.setModel(lm);
 		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
 		JScrollPane scrollPane= new JScrollPane(lstContact); 
-		scrollPane.setPreferredSize(new Dimension(420,580));
-		scrollPane.getVerticalScrollBar().setUnitIncrement(50);
-		
-		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));//Determine la taille de la scrollBar vetical
-		
+		scrollPane.setPreferredSize(new Dimension(460,580));
 		add(scrollPane);
 		lstContact.addMouseListener(new MouseAdapter() {
 			@Override
@@ -130,20 +127,25 @@ public class PnlContact  extends PnlCentre {
 		if(!lm.contains(contact)) 
 		{
 			//pur l'ajout dans l'ordre alphabatique de manière automatique (lors de l'ajout)
+			//je pense que c'est ici pour les trucs de la size de l'image
 			int i=0;
-			while(i<lm.size() && lm.elementAt(i).compareTo(contact) < 0) {
+			while(i<lm.size() && lm.elementAt(i).compareTo(contact) < 0) 
+			{
 				i++;
 			}
 			lm.add(i, contact);
+			//qqch avec celler //loan help
 			lstContact.setSelectedIndex(-1);
 		}
 	}
-	public void supprimerContact(Contact contact) {
+	public void supprimerContact(Contact contact) 
+	{
 		if(lm.contains(contact)) 
 		{
 			int i = 0 ;
 
-		while(i<lm.size() && !lm.elementAt(i).equals(contact)) {
+		while(i<lm.size() && !lm.elementAt(i).equals(contact)) 
+		{
 			i++;
 		}
 		lm.remove(i);

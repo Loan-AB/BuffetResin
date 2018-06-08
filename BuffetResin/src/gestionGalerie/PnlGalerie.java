@@ -73,7 +73,8 @@ public class PnlGalerie extends PnlCentre {
 			 {
 				public void mouseClicked(MouseEvent e) {
 					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
-					maman.afficherImage(MonImage.transformationImage(ii.getDescription(),scrollPane.getWidth()));
+					maman.afficherImage(MonImage.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription());//loan 08.06.2018
+					
 				}
 			});
 		}

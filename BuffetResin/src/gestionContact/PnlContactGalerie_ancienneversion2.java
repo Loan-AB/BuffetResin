@@ -23,7 +23,7 @@ import gestionGalerie.MonImage;
 import gestionGalerie.PnlGalerie;
 import gestionGalerie.WrapLayout;
 
-public class PnlContactGalerie extends PnlCentre {
+public class PnlContactGalerie_ancienneversion2 extends PnlCentre {
 
 	protected MaFenetre maman;
 	protected MesImages mesImages = new MesImages();
@@ -35,7 +35,7 @@ public class PnlContactGalerie extends PnlCentre {
 	
 	CardLayout coucheGallerie  = new CardLayout();
 	
-	public PnlContactGalerie(MaFenetre maman) {
+	public PnlContactGalerie_ancienneversion2(MaFenetre maman) {
 		super("Galerie");
 		
 		this.maman = maman;	

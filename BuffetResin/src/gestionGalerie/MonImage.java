@@ -9,97 +9,51 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-public class MonImage extends ImageIcon {
+public class MonImage extends ImageIcon 
+{
 	
 	
 	MesImages mesImages = new MesImages();
 	
-	//ImageIcon [] imageRecupération = new MonImage[mesImages.images.length];
 	ImageIcon photoEntree;
 	ImageIcon photoSortie;
-	//int numImage=0;
-	//ImageIcon imageModifiee;
 
-	public MonImage(int numImage) {
-		// TODO Auto-generated constructor stub
-		
-		//selectionner une image dans mes images
-		
-		
-			
-			photoEntree=mesImages.recupererImage(numImage);
-			
-			
-			Image image = photoEntree.getImage(); // transform it 
-			Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-			
-			photoSortie = new ImageIcon(newimg);
-			photoSortie.setDescription(photoEntree.getDescription());
-			
-			//System.out.println(photoSortie.toString());
-			//photo.getIconHeight();
-			//photo.getIconWidth();
-			
-			
-			//photo.getScaledInstance(100,100,Image.SCALE_DEFAULT);
-			
-			
-			
-			
-		//System.out.println(photo);
-	}
+
+		public MonImage(int numImage) 
+		{
+				photoEntree=mesImages.recupererImage(numImage);
 	
-	public MonImage(String Photo) {
-		// TODO Auto-generated constructor stub
-		
-		//selectionner une image dans mes images
-		
-		
-			
-			//photoEntree=mesImages.recupererImage(Image);
-			ImageIcon photoEntree = new ImageIcon(Photo);
-			
-			Image image = photoEntree.getImage(); // transform it 
-			Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-			
-			photoSortie = new ImageIcon(newimg);
-			photoSortie.setDescription(photoEntree.getDescription());
-			
-			//System.out.println(photoSortie.toString());
-			//photo.getIconHeight();
-			//photo.getIconWidth();
-			
-			
-			//photo.getScaledInstance(100,100,Image.SCALE_DEFAULT);
-			
-			
-			
-			
-		//System.out.println(photo);
-	}
+				Image image = photoEntree.getImage(); // transform it 
+				Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+				
+				photoSortie = new ImageIcon(newimg);
+				photoSortie.setDescription(photoEntree.getDescription());
+		}
 	
-//	public static ImageIcon transformationImage(ImageIcon ii, int width) {
-//		BufferedImage img = null;
-//		try {
-//		    img = ImageIO.read(new File(ii.getDescription()));
-//		} catch (IOException e) {
-//		    e.printStackTrace();
-//		}
-//		double ratio = (double)width/img.getWidth();
-//		return new ImageIcon(ii.getImage().getScaledInstance((int)(img.getWidth()*ratio), (int)(img.getHeight()*ratio), Image.SCALE_DEFAULT));
-//	}
-//	
-	public static ImageIcon transformationImage(String path, int width) {
+		public MonImage(String chemin) 
+		{
+	
+				ImageIcon photoEntree = new ImageIcon(chemin);
+				
+				Image image = photoEntree.getImage(); // transform it 
+				Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+				
+				photoSortie = new ImageIcon(newimg);
+				photoSortie.setDescription(photoEntree.getDescription());
+		}
+	
+		public MonImage() 
+		{
+				
+		}
+
+	public static ImageIcon transformationImage(String path, int width) 
+	{
 		ImageIcon ii = new ImageIcon(path);
 		double ratio = (double)width/ii.getIconWidth();
 		System.out.println("MonImage je retourne votre description " +ii.getDescription());
 		return new ImageIcon(ii.getImage().getScaledInstance((int)(ii.getIconWidth()*ratio), (int)(ii.getIconHeight()*ratio), Image.SCALE_DEFAULT));
 	}
 	
-	public static ImageIcon transformationImage(ImageIcon image, int width) {
-		
-		return transformationImage(image.getDescription(), width);
-		
-	}
 
 }
