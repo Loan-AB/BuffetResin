@@ -1,10 +1,10 @@
 package gestionCalculatrice;
 
-public class OperDiv extends Operation {
+public class OperSoustraction extends Operation {
 
 	@Override
 	public double doOper(double nb1, double nb2) {
-		return nb1*nb2;
+		return nb1-nb2; 	
 	}
 
 }

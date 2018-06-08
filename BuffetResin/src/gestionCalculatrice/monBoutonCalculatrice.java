@@ -20,14 +20,14 @@ public class monBoutonCalculatrice extends MonBouton{
 	{
 		super(value);
 		try {
-			s = new Number(Double.parseDouble(value));
+			s = new Nombre(Double.parseDouble(value));
 		}
 			catch (Exception e) {
 				switch(value) {
-				case "+":this.s = new OperAdd();break;
-				case "-":this.s = new OperSub();break;
-				case "*":this.s = new OperMul();break;
-				case "/":this.s = new OperDiv();break;
+				case "+":this.s = new OperAddition();break;
+				case "-":this.s = new OperSoustraction();break;
+				case "*":this.s = new OperMultiplication();break;
+				case "/":this.s = new OperDivision();break;
 				default:this.s=new OperEgal();
 			}
 		}

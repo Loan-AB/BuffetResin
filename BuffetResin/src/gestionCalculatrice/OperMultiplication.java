@@ -1,6 +1,6 @@
 package gestionCalculatrice;
 
-public class OperMul extends Operation {
+public class OperMultiplication extends Operation {
 
 	@Override
 	public double doOper(double nb1, double nb2) {

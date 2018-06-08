@@ -1,9 +1,9 @@
 package gestionCalculatrice;
 
-public class Number extends Symbole{
+public class Nombre extends Symbole{
 	private double valeur;
 	
-	public Number(double val) {
+	public Nombre(double val) {
 		valeur = val;
 	}
 	
