@@ -17,21 +17,18 @@ public class MonBouton extends JButton {
 		super(" ");
 		this.setActionCommand(nom);
 		this.setText(nom);
-		this.setContentAreaFilled(false);
-		this.setFocusPainted(false);
-		this.setOpaque(true);
-		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-		this.setBackground(Color.LIGHT_GRAY);
+//		this.setContentAreaFilled(false);
+//		this.setFocusPainted(false);
+//		this.setOpaque(true);
+//		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
+//		this.setBackground(Color.LIGHT_GRAY);
 	}
 	public MonBouton(String nom, boolean b) {
 		super(" ");
 		this.setActionCommand(nom);
 		this.setText(nom);
-		this.setContentAreaFilled(false);
-		this.setFocusPainted(false);
 		this.setVisible(b);
-		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
-		this.setBackground(Color.LIGHT_GRAY);
+
 	}
 	
 	public MonBouton(String nom,String path )

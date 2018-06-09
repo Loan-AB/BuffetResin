@@ -36,7 +36,6 @@ public class monBoutonCalculatrice extends MonBouton{
 		}
 
 		this.maman = maman;
-		setBackground(Color.PINK);
 		
 		this.addActionListener(new ActionListener() {
 			

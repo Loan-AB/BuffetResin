@@ -5,34 +5,21 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JWindow;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import gestionCalculatrice.PnlCalculatrice;
 import gestionContact.*;
 import gestionGalerie.*;
 
-
 @SuppressWarnings("serial")
 public class MaFenetre extends JFrame {
-	
+
+	private ArrayList<String> coucheAutorisee = new ArrayList<String>();
 	PnlBas pnlBas;
 	PnlHaut pnlHaut;
 	PnlCentre pnlCentre;
@@ -45,12 +32,9 @@ public class MaFenetre extends JFrame {
 	PnlImage pnlImage;
 	ArrayList<String> historiqueLayout;
 	
-	
-
 	public MaFenetre()
-	
 	{
-		
+		coucheAutorisee.add("Accueil");coucheAutorisee.add("Galerie");coucheAutorisee.add("Calculatrice");coucheAutorisee.add("Contact");
 		pnlBas = new PnlBas();
 		pnlCentre = new PnlCentre("coucou");
 		pnlHaut = new PnlHaut();
@@ -64,16 +48,10 @@ public class MaFenetre extends JFrame {
 		pnlFormulaire = new PnlFormulaireContact(this);
 		historiqueLayout = new ArrayList<>();
 		
-		
-		
-		
 		//pour que la fenetre soit au centre
-		
 		
 		//this.setLocation(0,0); //on peux choisir
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
-		
-		
 		
 		//setLayout(new Box(defaultCloseOperation));
 		this.setSize(460, 760);
@@ -98,11 +76,8 @@ public class MaFenetre extends JFrame {
 		
 		historiqueLayout.add("Accueil");
 
-		
 		this.setUndecorated(true);//Enleve le cadre de la frame 
 		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
-		
-		
 		
 //		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true)); //loan 08.06.2018
 	
@@ -119,10 +94,10 @@ public class MaFenetre extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(historiqueLayout.size()>1) //on peut supprimer la dernière couche
 				{ 
-					if (historiqueLayout.get(historiqueLayout.size()-2).equals("Contact"))
-					{
-						pnlFormulaire.dechargement();
-					}
+//					if (historiqueLayout.get(historiqueLayout.size()-2).equals("Contact"))
+//					{
+//						pnlFormulaire.dechargement();
+//					}
 					
 					historiqueLayout.remove(historiqueLayout.size()-1); //on la supprime
 				}
@@ -136,12 +111,19 @@ public class MaFenetre extends JFrame {
 		
 		this.setVisible(true); //ça toujours a la fin
 		this.setLocationRelativeTo(null); //Doit etre à la fin pour être au centre de l'écran
-		
 	}
 	public void changeCouche(String nom) {
 		System.out.println(nom+ " a tenté de s'ouvrire");
-		if(!(historiqueLayout.get(historiqueLayout.size()-1).equals(nom))) {
-			historiqueLayout.add( nom);
+		if(!(historiqueLayout.get(historiqueLayout.size()-1).equals(nom))) 
+		{
+			
+			if(coucheAutorisee.contains(historiqueLayout.get(historiqueLayout.size()-1))) 
+			{
+				historiqueLayout.add(nom);
+			}
+			else {
+				historiqueLayout.set(historiqueLayout.size()-1, nom);
+			}
 			couche.show(pnlCentre, nom);
 		}
 	}
@@ -154,7 +136,6 @@ public class MaFenetre extends JFrame {
 		{
 			pnlFormulaire.dechargement();
 		}
-	
 		changeCouche("Formulaire");
 	}
 	
@@ -165,7 +146,6 @@ public class MaFenetre extends JFrame {
 	public void supprimerContact(Contact contact) 
 	{
 		pnlContact.supprimerContact(contact);
-		
 	}
 	public void afficherImage(ImageIcon icon , String description, int numImage) 
 	{
@@ -181,11 +161,9 @@ public class MaFenetre extends JFrame {
 	{
 		pnlImage.setbContactBouton(b);
 	}
-	public void supprimerImage(int numImage) {
+	public void supprimerImage(int numImage) 
+	{
 		pnlGalerie.supprimerImage(numImage);
-		
 	}
-
-	
 }
 
