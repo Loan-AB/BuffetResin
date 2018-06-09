@@ -199,7 +199,24 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtNumeroMobile.setText(contact.getNumeroMobile());
 		txtNumeroTel.setText(contact.getNumeroTel());
 		txtPrenom.setText(contact.getPrenom());
-		setImage(new ImageIcon (contact.getPhotoDescription()));	
+
+		//ici contrôler si le l'image existe toujours
+		
+		if ( new ImageIcon (contact.getPhotoDescription()).getImageLoadStatus() != 8)
+		{
+			setImage(new ImageIcon (iiDefaut.getDescription()));
+			contact.setPhoto(MonImage.transformationImage(iiDefaut.getDescription(), 120, 120));
+			contact.setPhotoDescription(iiDefaut.getDescription());
+		}
+		else
+		{
+			setImage(new ImageIcon (contact.getPhotoDescription()));	
+		}
+//		System.out.println("donne moir le statuts" + new ImageIcon (contact.getPhotoDescription()).getImageLoadStatus());
+		
+//			setImage(new ImageIcon (contact.getPhotoDescription()));	
+		
+		
 		
 	}
 	public void setImage(ImageIcon laNouvelleimage) 

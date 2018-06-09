@@ -12,6 +12,8 @@ import java.util.StringTokenizer;
 import static java.nio.file.StandardCopyOption.*;
 import javax.swing.ImageIcon;
 
+import gestionGalerie.MonImage;
+
 public class Contact implements Serializable, Comparable{
 
 	private static final long serialVersionUID = 1L;
@@ -35,17 +37,20 @@ public class Contact implements Serializable, Comparable{
 		this.email = email;
 		//ajout de l'image
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
-		this.photo.setDescription(photoDescription);
-		this.photoDescription = photoDescription;
+		System.out.println(new ImageIcon (getPhotoDescription()).getImageLoadStatus() +"");
+//		if ( new ImageIcon (getPhotoDescription()).getImageLoadStatus() != 8)
+//		{
+			
+//			setPhoto(MonImage.transformationImage(".\\src\\photoDefault\\default.png", 120, 120));
+//			setPhotoDescription(".\\src\\photoDefault\\default.png");
+//		}
+//		else
+//		{
+			this.photo.setDescription(photoDescription);
+			this.photoDescription = photoDescription;
+//		}
+		
 		this.nomFichier = nom+prenom;
-		
-		/*
-		 * Hello :D alors j'a un souci , je retounr dans ma description le chemin , même tout le chemin ...
-		 * "C:\Users\loanb\git\BuffetResin_Alpha\BuffetResin\.\src\photoGallerie\chang.jpg.\src\photoGallerie\default.png"
-		 * 
-		 */
-		
-		
 	}
 	
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,ImageIcon photo) {
@@ -57,6 +62,8 @@ public class Contact implements Serializable, Comparable{
 		
 		//ajout de l'image
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
+		
+		
 		this.photoDescription = this.photo.getDescription();
 		this.photo.setDescription(photoDescription);
 		
