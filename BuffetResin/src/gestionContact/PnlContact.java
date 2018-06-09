@@ -52,6 +52,7 @@ public class PnlContact  extends PnlCentre {
 		btnCreer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				maman.afficherContact(null); //pour que l'image par defaut apparait 
 				maman.changeCouche("Formulaire");
 			}
 		});

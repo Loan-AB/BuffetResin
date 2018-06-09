@@ -56,6 +56,7 @@ public class PnlFormulaireContact  extends PnlCentre
 	JLabel lblImage;
 	ImageIcon iiformulaire;
 	
+	ImageIcon iiDefaut;
 	MonLabel lblTitre;
 	public PnlFormulaireContact(MaFenetre maman) 
 {
@@ -72,7 +73,7 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtNumeroMobile = new MonJtextArea("Mobile");
 		txtEmail = new MonJtextArea("Email");
 		txtNom.addFocusListener(null);
-
+		iiDefaut = new ImageIcon(".\\src\\photoDefault\\default.png");
 		lblImage = new JLabel("",JLabel.CENTER);
 		lblTitre = new MonLabel();
 		lblTitre.setSize(new Dimension(100, 100));
@@ -185,7 +186,7 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtNumeroMobile.setText("");
 		txtNumeroTel.setText("");
 		maman.setbContact(false);
-		setImage(new ImageIcon(".\\src\\photoGallerie\\default.png")); 
+		setImage(iiDefaut); 
 		
 	}
 	public void setContact(Contact contact) 

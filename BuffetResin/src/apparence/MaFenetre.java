@@ -119,10 +119,10 @@ public class MaFenetre extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				if(historiqueLayout.size()>1) //on peut supprimer la dernière couche
 				{ 
-//					if (historiqueLayout.get(historiqueLayout.size()-2).equals("Contact"))
-//					{
-//						pnlFormulaire.dechargement();
-//					}
+					if (historiqueLayout.get(historiqueLayout.size()-2).equals("Contact"))
+					{
+						pnlFormulaire.dechargement();
+					}
 					
 					historiqueLayout.remove(historiqueLayout.size()-1); //on la supprime
 				}
@@ -146,26 +146,39 @@ public class MaFenetre extends JFrame {
 		}
 	}
 	public void afficherContact(Contact contact) {
-		pnlFormulaire.setContact(contact);
+		if (contact != null) 
+		{
+			pnlFormulaire.setContact(contact);
+		}
+		else 
+		{
+			pnlFormulaire.dechargement();
+		}
+	
 		changeCouche("Formulaire");
 	}
 	
-	public void ajouterContact(Contact contact) {
+	public void ajouterContact(Contact contact) 
+	{
 		pnlContact.ajouterContact(contact);
 	}
-	public void supprimerContact(Contact contact) {
+	public void supprimerContact(Contact contact) 
+	{
 		pnlContact.supprimerContact(contact);
 		
 	}
-	public void afficherImage(ImageIcon icon , String description) {
+	public void afficherImage(ImageIcon icon , String description) 
+	{
 		pnlImage.setImage(icon,description);
 		changeCouche("Image");
 	}
-	public void setImageFormulaireNouveauContact(ImageIcon ii) {
+	public void setImageFormulaireNouveauContact(ImageIcon ii) 
+	{
 		pnlFormulaire.setImage(ii);
 		
 	}
-	public void setbContact(boolean b) {
+	public void setbContact(boolean b) 
+	{
 		pnlImage.setbContactBouton(b);
 	}
 
