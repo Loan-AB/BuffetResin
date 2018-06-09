@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 
+import javax.management.relation.RelationServiceNotRegisteredException;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -95,13 +96,37 @@ public class PnlCalculatrice extends PnlCentre {
 				chiffre2=os.doOper(chiffre2, chiffre);
 				lblCalcul.setText(Double.toString(chiffre2));
 			}
-			else {
+			else if(s instanceof Sigle){
+				switch (((Sigle)s).getSigne()) {
+				case ".":
+					
+					break;
+				case "C":
+					chiffre=0;
+					chiffre2=0;
+					lblCalcul.setText("0");
+					break;
+				case "<=":
+					double aRetirer=0;
+					double multiplicateur=0.1;
+					while(aRetirer == 0) {
+						aRetirer = chiffre % multiplicateur;
+						multiplicateur*=10;
+					}
+					chiffre = (chiffre-aRetirer)/(multiplicateur*10);
+					lblCalcul.setText(Double.toString(chiffre));
+					break;
+				default:
+					break;
+				}
+			}
+			else{
+	
 				os=(Operation)s;
 				chiffre2=chiffre;
 				chiffre = 0;
 				lblCalcul.setText(Double.toString(chiffre));
 			}
-		
 		}
 	}
 	public void setChiffre1 (int chiffre)
