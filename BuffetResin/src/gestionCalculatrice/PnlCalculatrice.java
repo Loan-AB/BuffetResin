@@ -76,8 +76,6 @@ public class PnlCalculatrice extends PnlCentre {
 	    operateur.add(new monBoutonCalculatrice("/", this));
 	    operateur.add(new monBoutonCalculatrice("*", this));
 	    operateur.add(new monBoutonCalculatrice("=", this));
-//	    operateur.add(new monBoutonCalculatrice("C", this));
-//	    operateur.add(new monBoutonCalculatrice("<=", this));
 	    panEcran.setBackground(Color.CYAN);
 	    
 	    panEcran.add(lblCalcul);

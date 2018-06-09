@@ -167,9 +167,9 @@ public class MaFenetre extends JFrame {
 		pnlContact.supprimerContact(contact);
 		
 	}
-	public void afficherImage(ImageIcon icon , String description) 
+	public void afficherImage(ImageIcon icon , String description, int numImage) 
 	{
-		pnlImage.setImage(icon,description);
+		pnlImage.setImage(icon,description, numImage);
 		changeCouche("Image");
 	}
 	public void setImageFormulaireNouveauContact(ImageIcon ii) 
@@ -180,6 +180,10 @@ public class MaFenetre extends JFrame {
 	public void setbContact(boolean b) 
 	{
 		pnlImage.setbContactBouton(b);
+	}
+	public void supprimerImage(int numImage) {
+		pnlGalerie.supprimerImage(numImage);
+		
 	}
 
 	

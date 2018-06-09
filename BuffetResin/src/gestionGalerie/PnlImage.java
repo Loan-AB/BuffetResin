@@ -30,6 +30,7 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 	MonBouton btnDelete;
 	MesImages imagesListe =  new MesImages();
 	MonBouton btnValiderPhotoContact;
+	int numImage;
 
 	public PnlImage(MaFenetre maman) 
 	{
@@ -44,15 +45,17 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 			File imagePath = new File(monImageIcon.getDescription());
 			//controle si image dans dossier images faire une boucle pour trouver image voulue
 				// si oui supprimer si non rien.
-				for (int i = 0; i < imagesListe.listePhoto.length; i++) 
-				{
-					if (imagePath.getAbsolutePath().equals(imagesListe.listePhoto[i].getAbsolutePath())) 
-					{
-						System.out.println(imagesListe.listePhoto[i].getAbsolutePath());
-						delete(imagesListe.listePhoto[i].getAbsolutePath());
-						maman.changeCouche("Galerie");
-					}
-				}
+//				for (int i = 0; i < imagesListe.listePhoto.length; i++) 
+//				{
+//					if (imagePath.getAbsolutePath().equals(imagesListe.listePhoto[i].getAbsolutePath())) 
+//					{
+//						System.out.println(imagesListe.listePhoto[i].getAbsolutePath());
+//						delete(imagesListe.listePhoto[i].getAbsolutePath());
+//						maman.changeCouche("Galerie");
+//					}
+//				}
+				delete(monImageIcon.getDescription());
+				maman.changeCouche("Galerie");
 			}
 		});
 		btnValiderPhotoContact = new MonBouton("Valider",false);
@@ -74,8 +77,9 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 		lblImage = new JLabel();
 		add(lblImage);		
 	}
-	public void setImage(ImageIcon monImageIcon , String description) //loan 08.06.2018
+	public void setImage(ImageIcon monImageIcon , String description, int numImage) //loan 08.06.2018
 	{
+		this.numImage = numImage;
 		this.monImageIcon = monImageIcon;
 		this.monImageIcon.setDescription(description);
 		System.out.println(monImageIcon.getDescription());
@@ -85,11 +89,11 @@ public class PnlImage extends PnlCentre implements ImageObserver {
     		File fichier = new File(file);
     		fichier.delete();
     		maman.changeCouche("Gallerie");
+    		maman.supprimerImage(numImage);
     }
 	public void setbContactBouton(boolean bContact) { //loan
 		btnValiderPhotoContact.setVisible(bContact);
 		btnDelete.setVisible(!bContact);
-		
 	}
 
 }

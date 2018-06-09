@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -66,30 +67,60 @@ public class PnlGalerie extends PnlCentre {
 		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));
 		for(int i=0;i<mesImages.Size();i++) {
 			monImage = mesImages.recupererImage(i);
-			
+			int p = i;
 			bouttonPhoto[i] = new BouttonPhoto(new MonImage(i));
 			panelPhoto.add(bouttonPhoto[i]);
 			bouttonPhoto[i].addMouseListener(new MouseAdapter()
 			 {
 				public void mouseClicked(MouseEvent e) {
 					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
-					maman.afficherImage(MonImage.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription());//loan 08.06.2018
+					maman.afficherImage(MonImage.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),p);//loan 08.06.2018
 					
 				}
 			});
 		}
 		add(bouttoAjoute);
-	bouttoAjoute.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JFileChooser fileChooser = new JFileChooser("./src/photoGallerie");
-			fileChooser.setDialogTitle("Specify a file to save");   
-			int userSelection = fileChooser.showSaveDialog(new JFrame());
-			if (userSelection == JFileChooser.APPROVE_OPTION) {
-			    File fileToSave = fileChooser.getSelectedFile();
-			    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+		bouttoAjoute.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fileChooser = new JFileChooser("C:\\Users\\loanb\\Pictures");
+				fileChooser.setDialogTitle("Specify a file to save");   
+				int userSelection = fileChooser.showSaveDialog(new JFrame());
+				if (userSelection == JFileChooser.APPROVE_OPTION) {
+				    File fileToSave = fileChooser.getSelectedFile();
+				    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+				    try {
+						Files.copy(fileToSave.toPath(),new File("./src/photoGallerie/" + fileToSave.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				    BouttonPhoto btnP = new BouttonPhoto(new MonImage("./src/photoGallerie/" + fileToSave.getName()));
+				    
+				    panelPhoto.add(btnP);
+				    int numeroImage = bouttonPhoto.length;
+					BouttonPhoto[] temp = new BouttonPhoto[bouttonPhoto.length+1];
+					for(int i =0;i<bouttonPhoto.length;i++) { temp[i] = bouttonPhoto[i];}
+					temp[bouttonPhoto.length] = btnP;
+					bouttonPhoto = temp;
+					btnP.addMouseListener(new MouseAdapter()
+					 {
+						public void mouseClicked(MouseEvent e) {
+							ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
+							System.err.println(numeroImage);
+							maman.afficherImage(MonImage.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),numeroImage);//loan 08.06.2018
+							
+						}
+					});
+
+					maman.changeCouche("Accueil");
+					maman.changeCouche("Galerie");
+					
+				}
 			}
-		}
-	});		
+		});		
+	}
+	public void supprimerImage(int numImage) {
+		System.out.println(numImage);
+		panelPhoto.remove(bouttonPhoto[numImage]);
 	}
 }
