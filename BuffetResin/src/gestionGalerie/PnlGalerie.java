@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -52,6 +53,8 @@ public class PnlGalerie extends PnlCentre {
 	JTextField sourceFileTextField;
     JTextField destinationFileTextField;
     
+    FileFilter imagesFilter = new FileNameExtensionFilter("Images", "jpg", "jpeg", "png"); //Filtre que les images
+    
     
 	public PnlGalerie(MaFenetre maman) {
 		super("Galerie");
@@ -66,9 +69,9 @@ public class PnlGalerie extends PnlCentre {
 		panelPhoto.setLayout(new WrapLayout(4));
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20); //Permet de choisir la vitesse de la scrollbar Verticale
 		
-		scrollPane.setPreferredSize(new Dimension(460,580));
-		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));//Determine la taille de la scrollBar vetical
-		
+		scrollPane.setPreferredSize(new Dimension(450,580));
+		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(12, 0));//Determine la taille de la scrollBar vetical
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));// Bordure avec ligne noire , "false" car bordure non arrondi
 		
@@ -93,6 +96,10 @@ public class PnlGalerie extends PnlCentre {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fileChooser = new JFileChooser("C:\\Users\\loanb\\Pictures");//Permet d'ajouter un image dans la gallerie
+				
+				fileChooser.addChoosableFileFilter(imagesFilter);	// Ajouter un choix du Filtre 
+				fileChooser.setAcceptAllFileFilterUsed(false);		// N'Accepte pas tout les types de fichier
+				
 				fileChooser.setDialogTitle("Specify a file to save");   
 				int userSelection = fileChooser.showSaveDialog(new JFrame());
 				if (userSelection == JFileChooser.APPROVE_OPTION) {

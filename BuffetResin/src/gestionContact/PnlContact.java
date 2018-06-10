@@ -78,10 +78,11 @@ public class PnlContact  extends PnlCentre {
 		lstContact = new JList<>(lm);
 		lstContact.setCellRenderer(new ContactCellRenderer());
 		lstContact.setModel(lm);
+		lstContact.setBackground(Color.LIGHT_GRAY);
 		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
 		JScrollPane scrollPane= new JScrollPane(lstContact); 
 		scrollPane.setPreferredSize(new Dimension(460,580));
-		lstContact.setBackground(new Color(0.0f, 0.0f, 0.0f,0.0f));
+		
 		scrollPane.setBackground(Color.WHITE);
 		add(scrollPane,BorderLayout.CENTER);
 		lstContact.addMouseListener(new MouseAdapter() {
