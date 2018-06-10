@@ -12,12 +12,12 @@ import apparence.MonBouton;
 
 
 
-public class monBoutonCalculatrice extends MonBouton{
+public class MonBoutonCalculatrice extends MonBouton{
 
 	Symbole s;
 	PnlCalculatrice maman;
 	
-	public monBoutonCalculatrice(String value, PnlCalculatrice maman)
+	public MonBoutonCalculatrice(String value, PnlCalculatrice maman)
 	{
 	
 		super(value);

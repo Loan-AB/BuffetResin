@@ -21,7 +21,7 @@ public class PnlCalculatrice extends PnlCentre
 {
 	
 	MaFenetre maman;
-	monBoutonCalculatrice [] tabBouton;
+	MonBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
 	double chiffre,chiffre2;
 	OperationStrategy os;
@@ -32,7 +32,7 @@ public class PnlCalculatrice extends PnlCentre
 		super("Calculatrice");
 		this.maman = maman;
 		lblCalcul = new MonLabel();
-		tabBouton =  new monBoutonCalculatrice[9];
+		tabBouton =  new MonBoutonCalculatrice[9];
 		lblCalcul.setText("0.0");
 		lblCalcul.setFont( new Font("Arial", Font.BOLD, 50));
 		lblCalcul.setForeground(Color.BLACK);
@@ -54,20 +54,20 @@ public class PnlCalculatrice extends PnlCentre
 			System.out.println(tabBouton.length);
 			System.out.println(i);
 			
-				tabBouton[i]= new monBoutonCalculatrice (Integer.toString(i+1), this);
+				tabBouton[i]= new MonBoutonCalculatrice (Integer.toString(i+1), this);
 				chiffre.add(tabBouton[i]);
 			
 		}
-		chiffre.add(new monBoutonCalculatrice(".", this));
-		chiffre.add(new monBoutonCalculatrice("0",this));
-		chiffre.add(new monBoutonCalculatrice("=", this));
+		chiffre.add(new MonBoutonCalculatrice(".", this));
+		chiffre.add(new MonBoutonCalculatrice("0",this));
+		chiffre.add(new MonBoutonCalculatrice("=", this));
 	    operateur.setOpaque(false);
-		operateur.add(new monBoutonCalculatrice("+", this));
-	    operateur.add(new monBoutonCalculatrice("-", this));
-	    operateur.add(new monBoutonCalculatrice("/", this));
-	    operateur.add(new monBoutonCalculatrice("*", this));
-	    operateur.add(new monBoutonCalculatrice("C", this));
-	    operateur.add(new monBoutonCalculatrice("<=", this));
+		operateur.add(new MonBoutonCalculatrice("+", this));
+	    operateur.add(new MonBoutonCalculatrice("-", this));
+	    operateur.add(new MonBoutonCalculatrice("/", this));
+	    operateur.add(new MonBoutonCalculatrice("*", this));
+	    operateur.add(new MonBoutonCalculatrice("C", this));
+	    operateur.add(new MonBoutonCalculatrice("<=", this));
 	    panEcran.add(lblCalcul);
 	    panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
 	    this.add(panEcran, BorderLayout.NORTH);

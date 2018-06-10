@@ -38,7 +38,7 @@ import apparence.MonBouton;
 import apparence.MonJtextArea;
 import apparence.MonLabel;
 import apparence.PnlCentre;
-import gestionCalculatrice.monBoutonCalculatrice;
+import gestionCalculatrice.MonBoutonCalculatrice;
 import gestionContact.*;
 import gestionGalerie.BouttonPhoto;
 import gestionGalerie.MonImage;
