@@ -1,13 +1,18 @@
 package gestionGalerie;
 
 import java.io.File;
+import java.io.FilenameFilter;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MesImages {
 	private static final long serialVersionUID = 1L;
 	private ImageIcon images[];
 	File recherche;
+	
 	File listePhoto[];
 	//ImageIcon photoChoisie;
 	
@@ -19,7 +24,9 @@ public class MesImages {
 		
 		
 		
-		listePhoto = recherche.listFiles(); 
+		
+		
+		listePhoto = recherche.listFiles(new FileFilterImage());
 		
 		images = new ImageIcon[listePhoto.length];
 		
