@@ -35,6 +35,7 @@ public class MonBoutonCalculatrice extends MonBouton
 				case "/":this.s = new OperDivision();break;
 				case "C":this.s = new SigEffacer("C");break;
 				case "<=":this.s = new SigRetour("<=");break;
+				case ".":this.s = new SigPoint(".");break;
 				default:this.s=new OperEgal();
 			}
 		}

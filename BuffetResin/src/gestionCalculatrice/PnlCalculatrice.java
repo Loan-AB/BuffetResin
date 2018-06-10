@@ -23,18 +23,19 @@ public class PnlCalculatrice extends PnlCentre
 	MaFenetre maman;
 	MonBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
-	double chiffreStocker = 0,chiffreAfficher= 0;
+	double chiffreStocker,chiffreAfficher  , chiffreAfficherVirgule;
 	OperationStrategy os;
 	Sigle sig;
 	JPanel panEcran;
 	JPanel chiffreStockers;
 	JPanel operateur;
+	double sens;
 	
 	public PnlCalculatrice(MaFenetre maman) 
 	{
 		super("Calculatrice");
 		this.maman = maman;
-		
+		sens = 10;
 		configurerLabel();
 		creationPanels();
 		ajoutContenu();
@@ -99,8 +100,20 @@ public class PnlCalculatrice extends PnlCentre
 	{
 		if(s instanceof Nombre) 
 		{
-			chiffreAfficher = chiffreAfficher*10 +((Nombre)s).getValeur(); //*10 pour les dizaine , dentaine etc
-			lblCalcul.setText(Double.toString(chiffreAfficher));
+			if (sens == 10) 
+			{
+				chiffreAfficher = chiffreAfficher*10 +((Nombre)s).getValeur(); //*10 pour les dizaine , dentaine etc
+			}
+			else
+			{
+				
+//				System.out.println(chiffreAfficherVirgule + "av");
+				chiffreAfficherVirgule =  chiffreAfficherVirgule*10 +((Nombre)s).getValeur();
+//				System.out.println(chiffreAfficherVirgule + "ap");
+//				chiffreAfficher = 	chiffreAfficher+chiffreAfficherVirgule;
+			}
+
+			lblCalcul.setText(chiffreAfficher+"."+chiffreAfficherVirgule);
 		}
 		else 
 		{
@@ -114,15 +127,12 @@ public class PnlCalculatrice extends PnlCentre
 				switch (((Sigle)s).getSigne()) 
 				{//bon je suis perdue XD
 					case ".":
-						//lorsque l'on clique dessus on ne doit plus faire *10
-						//on doit écrire a droite du . 
-						//un truc comme changement du sens `?
-						 
-						
+						sens=0.1;
 						break;
 					case "C":
 						chiffreStocker=0;
 						chiffreAfficher=0;
+						chiffreAfficherVirgule = 0;
 						lblCalcul.setText("0");
 						break;
 					case "<=": //questions :(
@@ -144,7 +154,7 @@ public class PnlCalculatrice extends PnlCentre
 			else
 			{
 				os=(Operation)s;
-				chiffreStocker = chiffreAfficher;
+				chiffreStocker = Double.parseDouble(lblCalcul.getText());
 				chiffreAfficher = 0;
 				lblCalcul.setText(Double.toString(chiffreAfficher));
 			}
