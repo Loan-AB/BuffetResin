@@ -23,7 +23,7 @@ public class PnlCalculatrice extends PnlCentre
 	MaFenetre maman;
 	MonBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
-	double chiffreStocker,chiffreStockerAfficher;
+	double chiffreStocker = 0,chiffreAfficher= 0;
 	OperationStrategy os;
 	Sigle sig;
 	JPanel panEcran;
@@ -99,53 +99,54 @@ public class PnlCalculatrice extends PnlCentre
 	{
 		if(s instanceof Nombre) 
 		{
-			chiffreStocker = chiffreStocker*10 +((Nombre)s).getValeur(); //*10 pour les dizaine , dentaine etc
-			lblCalcul.setText(Double.toString(chiffreStocker));
+			chiffreAfficher = chiffreAfficher*10 +((Nombre)s).getValeur(); //*10 pour les dizaine , dentaine etc
+			lblCalcul.setText(Double.toString(chiffreAfficher));
 		}
 		else 
 		{
 			if(s instanceof OperEgal) 
 			{
-				chiffreStockerAfficher=os.doOper(chiffreStockerAfficher, chiffreStocker);
-				lblCalcul.setText(Double.toString(chiffreStockerAfficher));
+				chiffreAfficher=os.doOper(chiffreStocker, chiffreAfficher);
+				lblCalcul.setText(Double.toString(chiffreAfficher));
 			}
 			else if(s instanceof Sigle)
 			{
 				switch (((Sigle)s).getSigne()) 
 				{//bon je suis perdue XD
 					case ".":
+						//lorsque l'on clique dessus on ne doit plus faire *10
+						//on doit écrire a droite du . 
+						//un truc comme changement du sens `?
+						 
 						
 						break;
 					case "C":
 						chiffreStocker=0;
-						chiffreStockerAfficher=0;
+						chiffreAfficher=0;
 						lblCalcul.setText("0");
 						break;
-					case "<=":
+					case "<=": //questions :(
 						
-//						double aRetirer=0;
-//						double multiplicateur=0.1;
-//						while(aRetirer == 0) 
-//						{
-//							aRetirer = chiffreStocker % multiplicateur;
-//							multiplicateur*=10;
-//						}
-//						chiffreStocker = (chiffreStocker-aRetirer)/(multiplicateur*10);
-//						lblCalcul.setText(Double.toString(chiffreStocker));
-						
-						
-						
-						break;
-					default:
+						if (lblCalcul.getText().length() > 0) //donc si ce n'est pas vide
+						{
+						StringBuilder strB = new StringBuilder(lblCalcul.getText());
+						strB.deleteCharAt(lblCalcul.getText().length()-1);
+						lblCalcul.setText(strB.toString());
+						chiffreAfficher = Double.parseDouble(lblCalcul.getText()); 
+						System.out.println(chiffreAfficher + "actu");
+						System.out.println(chiffreStocker + "stock");
+						}
+						// merci https://www.youtube.com/watch?v=Ym9_qF4iGHg
+						// pour la solution est l'explication du code
 						break;
 				}
 			}
 			else
 			{
 				os=(Operation)s;
-				chiffreStockerAfficher=chiffreStocker;
-				chiffreStocker = 0;
-				lblCalcul.setText(Double.toString(chiffreStocker));
+				chiffreStocker = chiffreAfficher;
+				chiffreAfficher = 0;
+				lblCalcul.setText(Double.toString(chiffreAfficher));
 			}
 		}
 	}
