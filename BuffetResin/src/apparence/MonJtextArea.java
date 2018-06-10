@@ -10,7 +10,7 @@ public class MonJtextArea extends JTextArea {
 
 	String textHolder;
 	public MonJtextArea(String textHolder) {
-		super(1,30);
+		super(1,25);
 		this.textHolder = textHolder;
 		setForeground(Color.darkGray);
 		setText(textHolder);

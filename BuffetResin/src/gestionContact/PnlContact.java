@@ -81,7 +81,7 @@ public class PnlContact  extends PnlCentre {
 		lstContact.setBackground(Color.LIGHT_GRAY);
 		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
 		JScrollPane scrollPane= new JScrollPane(lstContact); 
-		scrollPane.setPreferredSize(new Dimension(460,580));
+		scrollPane.setPreferredSize(new Dimension(450,580));
 		
 		scrollPane.setBackground(Color.WHITE);
 		add(scrollPane,BorderLayout.CENTER);

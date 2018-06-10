@@ -28,8 +28,7 @@ public class PnlCentre extends JPanel {
 	        g.drawImage(new ImageIcon("./src/photoDefault/wallpaper1.png").getImage(), 0, 0, null);
 	}
 	
-    
-	
+    	
 	public PnlCentre(String nom) {
 		
 		//panelWallPaper.add(labelWallPaper,BorderLayout.CENTER);
@@ -38,7 +37,7 @@ public class PnlCentre extends JPanel {
 		setSize(480,200);
 		//add(labelWallPaper,BorderLayout.CENTER);
 		this.nom = nom;
-		setBackground(Color.GRAY);
+//		setBackground(Color.black);
 		setOpaque(true);
 		
 		//setOpaque(true);

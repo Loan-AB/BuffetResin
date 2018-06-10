@@ -34,7 +34,8 @@ public class PnlHaut extends JPanel{
 		setBorder(new LineBorder(Color.BLACK,1,false));
 		// le haut : 
 		this.add(lblTime);
-		lblTime.setText(df.format(time)); //sera réglé par un timer ou prise du temps du pc
+		lblTime.setText(df.format(time));
+		lblTime.setForeground(Color.BLACK);
 		this.add(BtnFermer);
 		
 		
@@ -50,11 +51,4 @@ public class PnlHaut extends JPanel{
 		this.setLayout(new BorderLayout());
 	}
 	
-	public void majDate() {
-		lblTime.setText(df.format(time));
-	}
-	
-	public void majBatterie() {
-		//
-	}
 }
