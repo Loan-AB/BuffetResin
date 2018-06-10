@@ -17,10 +17,9 @@ public class PnlBackGround extends JPanel {
 		
 		// TODO Auto-generated constructor stub
 		
-		
-		
 		add(panelWallPaper, BorderLayout.CENTER);
 		panelWallPaper.add(labelWallPaper,BorderLayout.CENTER);
+		setOpaque(false);
 	}
 
 }

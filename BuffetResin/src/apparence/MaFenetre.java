@@ -54,7 +54,7 @@ public class MaFenetre extends JFrame {
 		pnlFormulaire = new PnlFormulaireContact(this);
 		historiqueLayout = new ArrayList<>();
 		
-		
+
 		//pour que la fenetre soit au centre
 		
 		//this.setLocation(0,0); //on peux choisir

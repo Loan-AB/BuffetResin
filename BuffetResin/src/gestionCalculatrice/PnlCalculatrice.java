@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 
 import javax.management.relation.RelationServiceNotRegisteredException;
 import javax.swing.BorderFactory;
@@ -21,10 +22,17 @@ public class PnlCalculatrice extends PnlCentre {
 	MaFenetre maman;
 	monBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
-	JLabel fondCalculatrice = new JLabel(new ImageIcon("./src/photoDefault/wallpaper2.png"));
+	//JLabel fondCalculatrice = new JLabel(new ImageIcon("./src/photoDefault/wallpaper2.png"));
 	
 	double chiffre,chiffre2;
 	OperationStrategy os;
+	
+//	@Override
+//	  protected void paintComponent(Graphics g) {
+//
+//	    super.paintComponent(g);
+//	        g.drawImage(new ImageIcon("./src/photoDefault/wallpaper1.png").getImage(), 0, 0, null);
+//	}
 	
 	public PnlCalculatrice(MaFenetre maman) 
 	{
@@ -85,10 +93,9 @@ public class PnlCalculatrice extends PnlCentre {
 	    this.add(chiffre, BorderLayout.CENTER);
 	    this.add(operateur, BorderLayout.EAST);
 	    //lblCalcul.setOpaque(true);
-	    add(fondCalculatrice);
+	    //add(fondCalculatrice);
 	}
-	
-	
+
 	public void doOper(Symbole s) 
 	{
 		if(s instanceof Nombre) {
@@ -134,6 +141,7 @@ public class PnlCalculatrice extends PnlCentre {
 			}
 		}
 	}
+	
 	public void setChiffre1 (int chiffre)
 	{
 		System.out.println(chiffre);
