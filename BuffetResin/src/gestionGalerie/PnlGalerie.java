@@ -62,8 +62,9 @@ public class PnlGalerie extends PnlCentre {
 		panelPhoto.setLayout(new WrapLayout(4));
 		scrollPane.getVerticalScrollBar().setUnitIncrement(50); //choisir vizesse
 		scrollPane.setBackground(new Color(0.0f, 0.0f, 0.0f,0.0f));
-		scrollPane.setPreferredSize(new Dimension(460,580));
-		//scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(0, 0));//Determine la taille de la scrollBar vetical
+		scrollPane.setPreferredSize(new Dimension(430,580));
+		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));//Determine la taille de la scrollBar vetical
+		
 		
 		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));
 		for(int i=0;i<mesImages.Size();i++) {

@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import gestionCalculatrice.PnlCalculatrice;
 import gestionContact.*;
@@ -92,7 +93,7 @@ public class MaFenetre extends JFrame {
 		this.setUndecorated(true);//Enleve le cadre de la frame 
 		//setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 		
-//		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true)); //loan 08.06.2018
+		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true)); //loan 08.06.2018
 	
 		ActionListener lancerAppli = new ActionListener() {
 			@Override
