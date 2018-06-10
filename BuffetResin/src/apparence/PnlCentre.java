@@ -21,7 +21,7 @@ public class PnlCentre extends JPanel {
 	// Modele pour les appli
 	String nom;
 	JLabel labelWallPaper = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
-	JPanel panelWallPaper = new JPanel();
+	
 	
 	
     
@@ -33,9 +33,11 @@ public class PnlCentre extends JPanel {
 		
 		//add(label);
 		setSize(480,200);
+		//add(labelWallPaper,BorderLayout.CENTER);
 		this.nom = nom;
-		setBackground(Color.DARK_GRAY);
+		setBackground(Color.GRAY);
 		
+		//setOpaque(true);
 		
 		
 	}

@@ -1,5 +1,7 @@
 package gestionContact;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,8 +19,9 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -31,6 +34,8 @@ import gestionContact .*;
 
 public class PnlContact  extends PnlCentre {
 
+	
+	
 	MonLabel lblTitre;
 	MonBouton btnCreer;
 	JList<Contact> lstContact;
@@ -38,10 +43,17 @@ public class PnlContact  extends PnlCentre {
 	MaFenetre maman;
 	DefaultListModel<Contact> lm;
 	ArrayList<Contact> lContact;
+
+	
 	public PnlContact(MaFenetre maman) 
 	{
+		
 		super("Contact");
+		//add(labelWallPaper);
+		
 		this.maman = maman;
+		
+		
 		btnCreer = new MonBouton("Créer un nouveau contact");
 		lblTitre = new MonLabel();
 		lblTitre.setText("Contact");
@@ -69,7 +81,9 @@ public class PnlContact  extends PnlCentre {
 		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
 		JScrollPane scrollPane= new JScrollPane(lstContact); 
 		scrollPane.setPreferredSize(new Dimension(460,580));
-		add(scrollPane);
+		lstContact.setBackground(new Color(0.0f, 0.0f, 0.0f,0.0f));
+		scrollPane.setBackground(Color.WHITE);
+		add(scrollPane,BorderLayout.CENTER);
 		lstContact.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -77,6 +91,7 @@ public class PnlContact  extends PnlCentre {
 			}
 		});
 		add(btnCreer);
+		
 	}
 	private void lireToutLesContact() {
 		File chemin = new File(".\\src\\fichierContact\\"); 

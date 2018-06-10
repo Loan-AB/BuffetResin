@@ -1,5 +1,7 @@
 package apparence;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.event.ActionListener;
@@ -14,6 +16,7 @@ public class PnlAccueil extends PnlCentre {
 	MonBouton btnGalerie;
 	MonBouton btnCalculatrice;
 	MaFenetre maman;
+	JLabel labelWallPaper = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
 
 	public PnlAccueil(MaFenetre maman) 
 	{
@@ -26,8 +29,12 @@ public class PnlAccueil extends PnlCentre {
 		btnCalculatrice = new MonBouton("Calculatrice","./src/photoDefault/Calculator.png");	
 		
 		add(btnContact);
+		
 		add(btnGalerie);
 		add(btnCalculatrice);
+		
+		add(labelWallPaper);
+		
 	}
 
 	public void setListenerBtn(ActionListener lancerContact, ActionListener lancerSecret,ActionListener lancerGalerie) 

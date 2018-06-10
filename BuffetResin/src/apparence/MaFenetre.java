@@ -11,6 +11,8 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import gestionCalculatrice.PnlCalculatrice;
 import gestionContact.*;
@@ -31,10 +33,12 @@ public class MaFenetre extends JFrame {
 	PnlFormulaireContact pnlFormulaire;
 	PnlImage pnlImage;
 	ArrayList<String> historiqueLayout;
+	JLabel fondCalculatrice = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
 	
 	public MaFenetre()
 	{
 		coucheAutorisee.add("Accueil");coucheAutorisee.add("Galerie");coucheAutorisee.add("Calculatrice");coucheAutorisee.add("Contact");
+		
 		pnlBas = new PnlBas();
 		pnlCentre = new PnlCentre("coucou");
 		pnlHaut = new PnlHaut();
@@ -44,9 +48,11 @@ public class MaFenetre extends JFrame {
 		pnlCalculatrice = new PnlCalculatrice(this);
 		pnlGalerie = new PnlGalerie(this);
 		pnlImage = new PnlImage(this);
+		
 		//pas sure
 		pnlFormulaire = new PnlFormulaireContact(this);
 		historiqueLayout = new ArrayList<>();
+		
 		
 		//pour que la fenetre soit au centre
 		
@@ -54,16 +60,23 @@ public class MaFenetre extends JFrame {
 		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
 		
 		//setLayout(new Box(defaultCloseOperation));
+		
+		
 		this.setSize(460, 760);
 		pnlBas.setLayout(new FlowLayout());
 		pnlCentre.setLayout(new GridLayout());
 		pnlHaut.setLayout(new FlowLayout());
 		
+		
 		add(pnlHaut,BorderLayout.NORTH);
-		add(pnlCentre);
+		
+		add(pnlCentre,BorderLayout.CENTER);
+	
 		add(pnlBas, BorderLayout.SOUTH);
 		
+		
 		pnlCentre.setLayout(couche);
+		
 		pnlCentre.add(pnlAccueil,"Accueil");
 		pnlCentre.add(pnlContact,"Contact");
 		pnlCentre.add(pnlCalculatrice,"Calculatrice");
@@ -75,9 +88,9 @@ public class MaFenetre extends JFrame {
 //		couche.show(pnlCentre, "Calculatrice");
 		
 		historiqueLayout.add("Accueil");
-
+		
 		this.setUndecorated(true);//Enleve le cadre de la frame 
-		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		//setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 		
 //		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true)); //loan 08.06.2018
 	

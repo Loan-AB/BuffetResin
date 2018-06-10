@@ -7,6 +7,7 @@ import java.awt.Font;
 
 import javax.management.relation.RelationServiceNotRegisteredException;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import apparence.MaFenetre;
@@ -20,6 +21,7 @@ public class PnlCalculatrice extends PnlCentre {
 	MaFenetre maman;
 	monBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
+	JLabel fondCalculatrice = new JLabel(new ImageIcon("./src/photoDefault/wallpaper2.png"));
 	
 	double chiffre,chiffre2;
 	OperationStrategy os;
@@ -34,7 +36,7 @@ public class PnlCalculatrice extends PnlCentre {
 		lblCalcul.setFont( new Font("Arial", Font.BOLD, 50));
 		lblCalcul.setForeground(Color.BLACK);
 		lblCalcul.setPreferredSize(new Dimension(380, 75));
-	    
+	   // lblCalcul.setOpaque(true);
 	    JPanel panEcran = new JPanel();
 	    panEcran.setPreferredSize(new Dimension(390, 100));
 
@@ -77,10 +79,13 @@ public class PnlCalculatrice extends PnlCentre {
 	    operateur.add(new monBoutonCalculatrice("<=", this));
 	    
 	    panEcran.add(lblCalcul);
+	   
 	    panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
 	    this.add(panEcran, BorderLayout.NORTH);
 	    this.add(chiffre, BorderLayout.CENTER);
 	    this.add(operateur, BorderLayout.EAST);
+	    //lblCalcul.setOpaque(true);
+	    add(fondCalculatrice);
 	}
 	
 	
