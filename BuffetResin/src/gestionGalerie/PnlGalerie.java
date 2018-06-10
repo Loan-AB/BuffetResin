@@ -85,7 +85,8 @@ public class PnlGalerie extends PnlCentre {
 			 {
 				public void mouseClicked(MouseEvent e) {
 					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
-					maman.afficherImage(MonImage.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),p);//loan 08.06.2018
+					MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+					maman.afficherImage(m.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),p);//loan 08.06.2018
 					
 				}
 			});
@@ -124,7 +125,8 @@ public class PnlGalerie extends PnlCentre {
 						public void mouseClicked(MouseEvent e) {
 							ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
 							System.err.println(numeroImage);
-							maman.afficherImage(MonImage.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),numeroImage);//loan 08.06.2018
+							MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+							maman.afficherImage(m.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),numeroImage);//loan 08.06.2018
 							
 						}
 					});

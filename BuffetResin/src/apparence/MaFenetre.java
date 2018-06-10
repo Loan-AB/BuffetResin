@@ -20,7 +20,8 @@ import gestionContact.*;
 import gestionGalerie.*;
 
 @SuppressWarnings("serial")
-public class MaFenetre extends JFrame {
+public class MaFenetre extends JFrame 
+{
 
 	private ArrayList<String> coucheAutorisee = new ArrayList<String>();
 	PnlBas pnlBas;
@@ -34,7 +35,6 @@ public class MaFenetre extends JFrame {
 	PnlFormulaireContact pnlFormulaire;
 	PnlImage pnlImage;
 	ArrayList<String> historiqueLayout;
-	JLabel fondCalculatrice = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
 	
 	public MaFenetre()
 	{
@@ -50,34 +50,20 @@ public class MaFenetre extends JFrame {
 		pnlGalerie = new PnlGalerie(this);
 		pnlImage = new PnlImage(this);
 		
-		//pas sure
 		pnlFormulaire = new PnlFormulaireContact(this);
 		historiqueLayout = new ArrayList<>();
-		
-
-		//pour que la fenetre soit au centre
-		
-		//this.setLocation(0,0); //on peux choisir
-		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //car la prorpiétl et statique cêst pour ça que on a accès
-		
-		//setLayout(new Box(defaultCloseOperation));
-		
 		
 		this.setSize(460, 760);
 		pnlBas.setLayout(new FlowLayout());
 		pnlCentre.setLayout(new GridLayout());
 		pnlHaut.setLayout(new FlowLayout());
 		
-		
 		add(pnlHaut,BorderLayout.NORTH);
-		
 		add(pnlCentre,BorderLayout.CENTER);
-	
 		add(pnlBas, BorderLayout.SOUTH);
 		
-		
 		pnlCentre.setLayout(couche);
-		
+
 		pnlCentre.add(pnlAccueil,"Accueil");
 		pnlCentre.add(pnlContact,"Contact");
 		pnlCentre.add(pnlCalculatrice,"Calculatrice");
@@ -95,7 +81,8 @@ public class MaFenetre extends JFrame {
 		
 		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true)); //loan 08.06.2018
 		
-		ActionListener lancerAppli = new ActionListener() {
+		ActionListener lancerAppli = new ActionListener() 
+		{
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -103,16 +90,13 @@ public class MaFenetre extends JFrame {
 			}
 		};
 		
-		ActionListener backAppli = new ActionListener() {
+		ActionListener backAppli = new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) 
+			{
 				if(historiqueLayout.size()>1) //on peut supprimer la dernière couche
 				{ 
-//					if (historiqueLayout.get(historiqueLayout.size()-2).equals("Contact"))
-//					{
-//						pnlFormulaire.dechargement();
-//					}
-					
 					historiqueLayout.remove(historiqueLayout.size()-1); //on la supprime
 				}
 				couche.show(pnlCentre, historiqueLayout.get(historiqueLayout.size()-1)); //on affiche la dernière couche
@@ -121,12 +105,13 @@ public class MaFenetre extends JFrame {
 
 		pnlBas.setListenerBtn(lancerAppli, backAppli);
 		pnlAccueil.setListenerBtn(lancerAppli);
-		//setResizable(false); //fix la taille
 		
 		this.setVisible(true); //ça toujours a la fin
 		this.setLocationRelativeTo(null); //Doit etre à la fin pour être au centre de l'écran
 	}
-	public void changeCouche(String nom) {
+	
+	public void changeCouche(String nom) 
+	{
 		System.out.println(nom+ " a tenté de s'ouvrire");
 		if(!(historiqueLayout.get(historiqueLayout.size()-1).equals(nom))) 
 		{
@@ -141,7 +126,9 @@ public class MaFenetre extends JFrame {
 			couche.show(pnlCentre, nom);
 		}
 	}
-	public void afficherContact(Contact contact) {
+	
+	public void afficherContact(Contact contact) 
+	{
 		if (contact != null) 
 		{
 			pnlFormulaire.setContact(contact);
@@ -157,24 +144,28 @@ public class MaFenetre extends JFrame {
 	{
 		pnlContact.ajouterContact(contact);
 	}
+	
 	public void supprimerContact(Contact contact) 
 	{
 		pnlContact.supprimerContact(contact);
 	}
+	
 	public void afficherImage(ImageIcon icon , String description, int numImage) 
 	{
 		pnlImage.setImage(icon,description, numImage);
 		changeCouche("Image");
 	}
+	
 	public void setImageFormulaireNouveauContact(ImageIcon ii) 
 	{
 		pnlFormulaire.setImage(ii);
-		
 	}
+	
 	public void setbContact(boolean b) 
 	{
 		pnlImage.setbContactBouton(b);
 	}
+	
 	public void supprimerImage(int numImage) 
 	{
 		pnlGalerie.supprimerImage(numImage);

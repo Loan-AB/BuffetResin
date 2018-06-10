@@ -22,7 +22,8 @@ public class PnlHaut extends JPanel{
 	private	DateFormat df;
 	MonBouton BtnFermer ;
 	
-	public PnlHaut() {
+	public PnlHaut() 
+	{
 		setSize(480, 100);
 		setBackground(Color.CYAN);
 		BtnFermer= new MonBouton("Exit","./src/photoDefault/On.png",20);
@@ -30,7 +31,6 @@ public class PnlHaut extends JPanel{
 		df = new SimpleDateFormat("dd/MM/yyy HH:mm");
 		//test pour les composant du haut
 		lblTime = new MonLabel();
-		
 		setBorder(new LineBorder(Color.BLACK,1,false));
 		// le haut : 
 		this.add(lblTime);
@@ -38,11 +38,11 @@ public class PnlHaut extends JPanel{
 		lblTime.setForeground(Color.BLACK);
 		this.add(BtnFermer);
 		
-		
-		BtnFermer.addActionListener(new ActionListener() {
-			
+		BtnFermer.addActionListener(new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				// TODO Auto-generated method stub
 			System.exit(0);
 				

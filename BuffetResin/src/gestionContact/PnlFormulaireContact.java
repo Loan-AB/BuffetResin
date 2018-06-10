@@ -259,7 +259,8 @@ public class PnlFormulaireContact  extends PnlCentre
 							contact.setNumeroMobile(txtNumeroMobile.getText());
 							contact.setEmail(txtEmail.getText());
 							contact.setPhotoDescription(iiformulaire.getDescription());
-							contact.setPhoto(MonImage.transformationImage(iiformulaire.getDescription(), 120, 120));
+							MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+							contact.setPhoto(m.transformationImage(iiformulaire.getDescription(), 120, 120));
 							contact.setPhotoDescription(iiformulaire.getDescription());
 							//mais si on modifier ya un pb :/
 						}
@@ -313,7 +314,8 @@ public class PnlFormulaireContact  extends PnlCentre
 		if ( new ImageIcon (contact.getPhotoDescription()).getImageLoadStatus() != 8)
 		{
 			setImage(new ImageIcon (iiDefaut.getDescription()));
-			contact.setPhoto(MonImage.transformationImage(iiDefaut.getDescription(), 120, 120));
+			MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+			contact.setPhoto(m.transformationImage(iiDefaut.getDescription(), 120, 120));
 			contact.setPhotoDescription(iiDefaut.getDescription());
 		}
 		else
@@ -335,7 +337,8 @@ public class PnlFormulaireContact  extends PnlCentre
 	private void setlblImage (ImageIcon MaFutureIcone) //affichage du label avec la bonne image
 	{
 		this.iiformulaire = MaFutureIcone;
-		lblImage.setIcon(MonImage.transformationImage(MaFutureIcone.getDescription(), lblImage.getWidth()));
+		MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+		lblImage.setIcon(m.transformationImage(MaFutureIcone.getDescription(), lblImage.getWidth()));
 	}
 
 }

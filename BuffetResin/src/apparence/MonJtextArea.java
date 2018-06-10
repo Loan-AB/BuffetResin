@@ -6,28 +6,34 @@ import java.awt.event.FocusListener;
 import java.awt.Color;
 import javax.swing.JTextArea;
 
-public class MonJtextArea extends JTextArea {
+public class MonJtextArea extends JTextArea 
+{
 
 	String textHolder;
-	public MonJtextArea(String textHolder) {
+	public MonJtextArea(String textHolder) 
+	{
 		super(1,25);
 		this.textHolder = textHolder;
 		setForeground(Color.darkGray);
 		setText(textHolder);
-		this.addFocusListener(new FocusListener() {
-			
+		this.addFocusListener(new FocusListener() 
+		{
 			@Override
-			public void focusLost(FocusEvent arg0) {
-				if(txt().equals("")) {
+			public void focusLost(FocusEvent arg0) 
+			{
+				if(txt().equals("")) 
+				{
 					setForeground(Color.darkGray);
 					txt(textHolder);
 				}
 			}
 			
 			@Override
-			public void focusGained(FocusEvent arg0) {
+			public void focusGained(FocusEvent arg0) 
+			{
 				// TODO Auto-generated method stub
-				if(txt().equals(textHolder)) {
+				if(txt().equals(textHolder)) 
+				{
 					setForeground(Color.black);
 					txt("");
 				}
@@ -36,36 +42,38 @@ public class MonJtextArea extends JTextArea {
 		
 	}
 	
-	private String txt() {
+	private String txt() 
+	{
 		return super.getText();
 	}
 	
-	private void txt(String s) {
+	private void txt(String s) 
+	{
 		super.setText(s);
 	}
 	
-	public String getText() {
-
-		if (super.getText().equals(textHolder) ) {
+	public String getText() 
+	{
+		if (super.getText().equals(textHolder) ) 
+		{
 			return "";
 		}
-		else {
+		else 
+		{
 			return super.getText();
 		}
 	}
 	
-	public void setText(String donneeText) {
+	public void setText(String donneeText) 
+	{
 		setForeground(Color.BLACK);
-		if(donneeText.equals("")) {
+		if(donneeText.equals("")) 
+		{
 			setForeground(Color.darkGray);			
 			super.setText(textHolder);
-		}else {
+		}else 
+		{
 			super.setText(donneeText);	
 		}
-		
-		
 	}
-
-	
-	
 }

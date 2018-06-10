@@ -52,7 +52,7 @@ public class MonImage extends ImageIcon
 				
 		}
 
-	public static ImageIcon transformationImage(String path, int width) 
+	public  ImageIcon transformationImage(String path, int width) 
 	{
 		ImageIcon ii = new ImageIcon(path);
 		double ratio = (double)width/ii.getIconWidth();
@@ -60,7 +60,7 @@ public class MonImage extends ImageIcon
 		return new ImageIcon(ii.getImage().getScaledInstance((int)(ii.getIconWidth()*ratio), (int)(ii.getIconHeight()*ratio), Image.SCALE_DEFAULT));
 	}
 
-	public static ImageIcon transformationImage(String description, int i, int j) {
+	public  ImageIcon transformationImage(String description, int i, int j) {
 		ImageIcon ii = new ImageIcon(description);
 		System.out.println("MonImage je retourne votre description " +ii.getDescription());
 		return new ImageIcon(ii.getImage().getScaledInstance(i, j, Image.SCALE_DEFAULT));

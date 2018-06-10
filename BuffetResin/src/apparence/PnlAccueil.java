@@ -10,7 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 @SuppressWarnings("serial")
-public class PnlAccueil extends PnlCentre {
+public class PnlAccueil extends PnlCentre 
+{
 	
 	MonBouton btnContact;
 	MonBouton btnGalerie;
@@ -21,18 +22,15 @@ public class PnlAccueil extends PnlCentre {
 	public PnlAccueil(MaFenetre maman) 
 	{
 		super("Acceuil");
-
 		this.maman= maman;
-		
+
 		btnContact = new MonBouton("Contact","./src/photoDefault/Contact1.png");
 		btnGalerie = new MonBouton("Galerie","./src/photoDefault/Gallery.png");
 		btnCalculatrice = new MonBouton("Calculatrice","./src/photoDefault/Calculator.png");	
 		setOpaque(false);
 		add(btnContact);
-		
 		add(btnGalerie);
 		add(btnCalculatrice);
-		
 		add(labelWallPaper);
 		
 	}
@@ -42,7 +40,6 @@ public class PnlAccueil extends PnlCentre {
 		btnContact.addActionListener(lancerContact);
 		btnGalerie.addActionListener(lancerGalerie);
 		btnCalculatrice.addActionListener(lancerSecret);
-		
 	}
 	
 	public void setListenerBtn(ActionListener lancerAppli) 

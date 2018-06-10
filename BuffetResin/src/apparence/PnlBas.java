@@ -9,15 +9,15 @@ import javax.swing.border.LineBorder;
 
 import gestionGalerie.MonImage;
 
-public class PnlBas extends JPanel {
+public class PnlBas extends JPanel 
+{
 // Panel qui contient les 3 bouttons de base
 	
 	private MonBouton btnHome;
 	private MonBouton btnBack;
-	//private MonBouton btnretour;
-	//private MonBouton btnsuivant;
 	
-	public PnlBas() {
+	public PnlBas()
+	{
 		setSize(480, 70);
 		setBackground(Color.CYAN);
 		//test pour les composant du bas
@@ -25,15 +25,15 @@ public class PnlBas extends JPanel {
 		btnBack = new MonBouton("retour");
 
 		setBorder(new LineBorder(Color.BLACK,1,false));
-		btnHome.setIcon(MonImage.transformationImage( "./src/photoDefault/Home.png", 15));
-		btnBack.setIcon(MonImage.transformationImage( "./src/photoDefault/Back.png", 15));
+		MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+		btnHome.setIcon(m.transformationImage( "./src/photoDefault/Home.png", 15));
+		btnBack.setIcon(m.transformationImage( "./src/photoDefault/Back.png", 15));
 		this.add(btnBack);
 		this.add(btnHome);
 	}
-
-	public void setListenerBtn(ActionListener home, ActionListener back) {
+	public void setListenerBtn(ActionListener home, ActionListener back) 
+	{
 		btnHome.addActionListener(home);
 		btnBack.addActionListener(back);
-		
 	}
 }

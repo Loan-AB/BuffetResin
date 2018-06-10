@@ -17,22 +17,15 @@ import apparence.PnlCentre;
 
 
 @SuppressWarnings("serial")
-public class PnlCalculatrice extends PnlCentre {
+public class PnlCalculatrice extends PnlCentre 
+{
 	
 	MaFenetre maman;
 	monBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
-	//JLabel fondCalculatrice = new JLabel(new ImageIcon("./src/photoDefault/wallpaper2.png"));
-	
 	double chiffre,chiffre2;
 	OperationStrategy os;
 	
-//	@Override
-//	  protected void paintComponent(Graphics g) {
-//
-//	    super.paintComponent(g);
-//	        g.drawImage(new ImageIcon("./src/photoDefault/wallpaper1.png").getImage(), 0, 0, null);
-//	}
 	
 	public PnlCalculatrice(MaFenetre maman) 
 	{
@@ -44,19 +37,18 @@ public class PnlCalculatrice extends PnlCentre {
 		lblCalcul.setFont( new Font("Arial", Font.BOLD, 50));
 		lblCalcul.setForeground(Color.BLACK);
 		lblCalcul.setPreferredSize(new Dimension(380, 75));
-	   // lblCalcul.setOpaque(true);
+		
+		//création des differente zone : 
 	    JPanel panEcran = new JPanel();
 	    panEcran.setPreferredSize(new Dimension(390, 100));
-
-	    /*
-	     * 
-	     * les chiffres
-	     * 
-	     */
-	    
 	    JPanel chiffre = new JPanel();
 	    chiffre.setPreferredSize(new Dimension(240, 225));
 	    chiffre.setOpaque(false);
+	    JPanel operateur = new JPanel();      
+	    operateur.setPreferredSize(new Dimension(150,225 ));
+	    
+	    //remplissage des zones
+	    
 		for (int i = 0; i < tabBouton.length; i++) 
 		{
 			System.out.println(tabBouton.length);
@@ -66,18 +58,9 @@ public class PnlCalculatrice extends PnlCentre {
 				chiffre.add(tabBouton[i]);
 			
 		}
-		 chiffre.add(new monBoutonCalculatrice(".", this));
-		 chiffre.add(new monBoutonCalculatrice("0",this));
-		 chiffre.add(new monBoutonCalculatrice("=", this));
-		
-		/*
-		 * 
-		 * les opérations
-		 * 
-		 */
-		
-		JPanel operateur = new JPanel();      
-	    operateur.setPreferredSize(new Dimension(150,225 ));
+		chiffre.add(new monBoutonCalculatrice(".", this));
+		chiffre.add(new monBoutonCalculatrice("0",this));
+		chiffre.add(new monBoutonCalculatrice("=", this));
 	    operateur.setOpaque(false);
 		operateur.add(new monBoutonCalculatrice("+", this));
 	    operateur.add(new monBoutonCalculatrice("-", this));
@@ -85,9 +68,7 @@ public class PnlCalculatrice extends PnlCentre {
 	    operateur.add(new monBoutonCalculatrice("*", this));
 	    operateur.add(new monBoutonCalculatrice("C", this));
 	    operateur.add(new monBoutonCalculatrice("<=", this));
-	    
 	    panEcran.add(lblCalcul);
-	   
 	    panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
 	    this.add(panEcran, BorderLayout.NORTH);
 	    this.add(chiffre, BorderLayout.CENTER);
@@ -95,7 +76,6 @@ public class PnlCalculatrice extends PnlCentre {
 	    //lblCalcul.setOpaque(true);
 	    //add(fondCalculatrice);
 	}
-
 	public void doOper(Symbole s) 
 	{
 		if(s instanceof Nombre) {
@@ -141,19 +121,8 @@ public class PnlCalculatrice extends PnlCentre {
 			}
 		}
 	}
-	
 	public void setChiffre1 (int chiffre)
 	{
 		System.out.println(chiffre);
 	}
-}
-
-//class ResetListener implements ActionListener {
-//    public void actionPerformed(ActionEvent arg0){
-//      clicOperateur = false;
-//      update = true;
-//      chiffre1 = 0;
-//      operateur = "";
-//      ecran.setText("");
-//    }
-//  }      
+}   
