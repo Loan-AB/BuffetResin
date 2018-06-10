@@ -7,9 +7,11 @@ import javax.swing.SwingUtilities;
 //source : http://www.camick.com/java/source/WrapLayout.java
 //https://tips4java.wordpress.com/2008/11/06/wrap-layout/
 
+
 /**
  *  FlowLayout subclass that fully supports wrapping of components.
  */
+//Sous-classe FlowLayout qui prend entièrement en charge l'encapsulation des composants.
 public  class WrapLayout extends FlowLayout
 {
 	private Dimension preferredLayoutSize;
@@ -18,6 +20,12 @@ public  class WrapLayout extends FlowLayout
 	* Constructs a new <code>WrapLayout</code> with a left
 	* alignment and a default 5-unit horizontal and vertical gap.
 	*/
+	
+	/**
+	 * Construit un nouveau <code>WrapLayout</code> avec un code gauche.
+	 * alignement et un espace par défaut de 5 unités horizontales et verticales.
+	*/
+	
 	public WrapLayout()
 	{
 		super();
@@ -31,6 +39,15 @@ public  class WrapLayout extends FlowLayout
 	* or <code>WrapLayout</code>.
 	* @param align the alignment value
 	*/
+	
+	/**Construit un nouveau <code>FlowLayout</code> avec le code spécifié.
+	 * alignement et un espace par défaut de 5 unités horizontales et verticales.
+	 * La valeur de l'argument d'alignement doit être l'une des valeurs suivantes
+	 * <code>WrapLayout</code>, <code>WrapLayout</code>,
+	 * ou <code>WrapLayout</code>.
+	 * @param aligner la valeur d'alignement
+	 */
+	
 	public WrapLayout(int align)
 	{
 		super(align);
@@ -47,6 +64,18 @@ public  class WrapLayout extends FlowLayout
 	* @param hgap the horizontal gap between components
 	* @param vgap the vertical gap between components
 	*/
+	
+	/**	Crée un nouveau gestionnaire de disposition des flux avec l'alignement indiqué.
+	  *	et les espaces horizontaux et verticaux indiqués.
+	  *	<p>
+	  * La valeur de l'argument d'alignement doit être l'une des valeurs suivantes
+	  * <code>WrapLayout</code>, <code>WrapLayout</code>,
+	  * ou <code>WrapLayout</code>.
+	  * @param aligner la valeur d'alignement
+	  * @param hgap l'écart horizontal entre les composants.
+	  *	@param vgap l'écart vertical entre les composants.
+	  */
+
 	public WrapLayout(int align, int hgap, int vgap)
 	{
 		super(align, hgap, vgap);
@@ -59,6 +88,14 @@ public  class WrapLayout extends FlowLayout
 	* @return the preferred dimensions to lay out the
 	* subcomponents of the specified container
 	*/
+	
+	/**
+	 * Retourne les dimensions préférées pour cette mise en page compte tenu de l'option
+	 * <i>visible</i> composants dans le conteneur cible spécifié.
+	 * @param cible le composant qui doit être disposé.
+	 * @return Retourne les dimensions préférées pour la mise en page de l'image.
+	 * Sous-composants du conteneur spécifié.
+	 */
 	@Override
 	public Dimension preferredLayoutSize(Container target)
 	{
@@ -72,6 +109,15 @@ public  class WrapLayout extends FlowLayout
 	* @return the minimum dimensions to lay out the
 	* subcomponents of the specified container
 	*/
+	
+	/**
+	 * Retourne les dimensions minimales nécessaires à la mise en page de la page <i>visible</i>i>.
+	 * composants contenus dans le conteneur cible spécifié.
+	 * @param cible le composant qui doit être disposé.
+	 * Retourne les dimensions minimales pour la mise en page de l'image.
+	 * Sous-composants du conteneur spécifié.
+	 */
+	
 	@Override
 	public Dimension minimumLayoutSize(Container target)
 	{
@@ -88,6 +134,17 @@ public  class WrapLayout extends FlowLayout
 	* @param preferred should preferred size be calculated
 	* @return the dimension to layout the target container
 	*/
+	
+	/**
+	 * Retourne la dimension minimale ou préférée nécessaire à la mise en page de la cible.
+	 * conteneur.
+	
+	 * @param cible cible cible pour obtenir la taille de la mise en page pour
+	 * @param preferred should preferred size should preferred size be calculated
+	 * Retourne la dimension pour mettre en page le conteneur cible.
+	
+	*/
+	
 	private Dimension layoutSize(Container target, boolean preferred)
 	{
 	synchronized (target.getTreeLock())
@@ -96,6 +153,14 @@ public  class WrapLayout extends FlowLayout
 		//  When the container width = 0, the preferred width of the container
 		//  has not yet been calculated so lets ask for the maximum.
 
+		/**
+		 * 
+		 * Chaque rangée doit correspondre à la largeur allouée au contenant.
+		 * Lorsque la largeur du conteneur = 0, la largeur préférée du conteneur.
+		 * n'a pas encore été calculé, alors demandons le maximum.
+		
+		 */
+		
 		int targetWidth = target.getSize().width;
 		Container container = target;
 
@@ -116,6 +181,7 @@ public  class WrapLayout extends FlowLayout
 		int maxWidth = targetWidth - horizontalInsetsAndGap;
 
 		//  Fit components into the allowed width
+		//  Monter les composants dans la largeur autorisée.
 
 		Dimension dim = new Dimension(0, 0);
 		int rowWidth = 0;
@@ -133,6 +199,8 @@ public  class WrapLayout extends FlowLayout
 
 				//  Can't add the component to current row. Start a new row.
 
+				//  Impossible d'ajouter le composant à la ligne courante. Commencez une nouvelle rangée.
+				
 				if (rowWidth + d.width > maxWidth)
 				{
 					addRow(dim, rowWidth, rowHeight);
@@ -141,6 +209,7 @@ public  class WrapLayout extends FlowLayout
 				}
 
 				//  Add a horizontal gap for all components after the first
+				//  Ajouter un espace horizontal pour tous les composants après le premier.
 
 				if (rowWidth != 0)
 				{
@@ -161,7 +230,12 @@ public  class WrapLayout extends FlowLayout
 		//  make sure the preferred size is less than the size of the
 		//  target containter so shrinking the container size works
 		//  correctly. Removing the horizontal gap is an easy way to do this.
-
+		
+		/** Lorsque vous utilisez un panneau de défilement ou le DecoratedLookAndFeel nous avons besoin de
+		 *  s'assurer que la taille préférée est inférieure à la taille de l'objet.
+		 *  Le conteneur cible pour réduire la taille du conteneur fonctionne.
+		 *  correctement. L'élimination de l'espace horizontal est un moyen facile de le faire.
+		 */
 		Container scrollPane = SwingUtilities.getAncestorOfClass(JScrollPane.class, target);
 
 		if (scrollPane != null && target.isValid())
@@ -180,6 +254,15 @@ public  class WrapLayout extends FlowLayout
 	 *  @param dim update the width and height when appropriate
 	 *  @param rowWidth the width of the row to add
 	 *  @param rowHeight the height of the row to add
+	 */
+	
+	/*
+	 * Une nouvelle ligne a été complétée. Utilisez les dimensions de cette rangée
+	 * pour mettre à jour la taille préférée pour le conteneur.
+	 *
+	 * @param dim met à jour la largeur et la hauteur lorsque c'est approprié.
+	 * @param rowWidth Largeur de la largeur de la rangée à ajouter
+	 * @param rowHauteur de la hauteur de la ligne à ajouter
 	 */
 	private void addRow(Dimension dim, int rowWidth, int rowHeight)
 	{

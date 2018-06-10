@@ -49,7 +49,7 @@ public class PnlContact  extends PnlCentre {
 	{
 		
 		super("Contact");
-		//add(labelWallPaper);
+		
 		
 		this.maman = maman;
 		

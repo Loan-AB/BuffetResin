@@ -23,6 +23,8 @@ import apparence.MonBouton;
 import apparence.PnlAccueil;
 import apparence.PnlCentre;
 
+//Panel ou est affiché l'image seul
+
 public class PnlImage extends PnlCentre implements ImageObserver {
 	JLabel lblImage;
 	ImageIcon monImageIcon;

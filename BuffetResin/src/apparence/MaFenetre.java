@@ -91,10 +91,10 @@ public class MaFenetre extends JFrame {
 		historiqueLayout.add("Accueil");
 		
 		this.setUndecorated(true);//Enleve le cadre de la frame 
-		//setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
 		
 		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true)); //loan 08.06.2018
-	
+		
 		ActionListener lancerAppli = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) 

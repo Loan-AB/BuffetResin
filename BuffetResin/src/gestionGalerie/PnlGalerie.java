@@ -35,6 +35,8 @@ import apparence.MonLabel;
 import apparence.PnlCentre;
 import javafx.stage.FileChooser;
 
+//Classe du panel de la galerie photo
+
 public class PnlGalerie extends PnlCentre {
 	protected MaFenetre maman;
 	protected MesImages mesImages = new MesImages();
@@ -46,9 +48,11 @@ public class PnlGalerie extends PnlCentre {
 	MonBouton bouttoAjoute = new MonBouton("ajouter");
 	JFileChooser fileChooser;
 	JLabel lblTitre = new JLabel();
-	private FileFilter imagesFilter = new FileNameExtensionFilter("Image Files", "jpg", "png", "gif", "jpeg");
+	
 	JTextField sourceFileTextField;
     JTextField destinationFileTextField;
+    
+    
 	public PnlGalerie(MaFenetre maman) {
 		super("Galerie");
 		this.maman = maman;	
@@ -57,16 +61,18 @@ public class PnlGalerie extends PnlCentre {
 		add(lblTitre);
 		add(scrollPane,BorderLayout.CENTER);
 		
-		//panelPhoto.setBackground(Color.LIGHT_GRAY);
-		panelPhoto.setBackground(new Color(0.0f, 0.0f, 0.0f,0.0f));
+		panelPhoto.setBackground(Color.LIGHT_GRAY);
+		
 		panelPhoto.setLayout(new WrapLayout(4));
-		scrollPane.getVerticalScrollBar().setUnitIncrement(50); //choisir vizesse
-		scrollPane.setBackground(new Color(0.0f, 0.0f, 0.0f,0.0f));
-		scrollPane.setPreferredSize(new Dimension(430,580));
+		scrollPane.getVerticalScrollBar().setUnitIncrement(20); //Permet de choisir la vitesse de la scrollbar Verticale
+		
+		scrollPane.setPreferredSize(new Dimension(460,580));
 		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(10, 0));//Determine la taille de la scrollBar vetical
 		
 		
-		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));
+		scrollPane.setBorder(new LineBorder(Color.BLACK,1,false));// Bordure avec ligne noire , "false" car bordure non arrondi
+		
+		//Création du tableau de boutons avec des images
 		for(int i=0;i<mesImages.Size();i++) {
 			monImage = mesImages.recupererImage(i);
 			int p = i;
@@ -82,16 +88,18 @@ public class PnlGalerie extends PnlCentre {
 			});
 		}
 		add(bouttoAjoute);
+		//Action du bouton ajouter une photo
 		bouttoAjoute.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser("C:\\Users\\loanb\\Pictures");
+				JFileChooser fileChooser = new JFileChooser("C:\\Users\\loanb\\Pictures");//Permet d'ajouter un image dans la gallerie
 				fileChooser.setDialogTitle("Specify a file to save");   
 				int userSelection = fileChooser.showSaveDialog(new JFrame());
 				if (userSelection == JFileChooser.APPROVE_OPTION) {
 				    File fileToSave = fileChooser.getSelectedFile();
 				    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
 				    try {
+				    	//Donne le lien pour enregistrer le fichier voulu
 						Files.copy(fileToSave.toPath(),new File("./src/photoGallerie/" + fileToSave.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
 					} catch (IOException e1) {
 						e1.printStackTrace();

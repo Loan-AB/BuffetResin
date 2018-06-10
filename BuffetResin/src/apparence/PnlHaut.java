@@ -24,7 +24,7 @@ public class PnlHaut extends JPanel{
 	
 	public PnlHaut() {
 		setSize(480, 100);
-		setBackground(Color.red);
+		setBackground(Color.CYAN);
 		BtnFermer= new MonBouton("Exit","./src/photoDefault/On.png",20);
 		time  = new java.util.Date();
 		df = new SimpleDateFormat("dd/MM/yyy HH:mm");

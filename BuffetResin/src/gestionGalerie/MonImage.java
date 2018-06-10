@@ -9,6 +9,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
+
+//Cette classe permet de récupèrer une photo
 public class MonImage extends ImageIcon 
 {
 	
@@ -18,21 +20,24 @@ public class MonImage extends ImageIcon
 	ImageIcon photoEntree;
 	ImageIcon photoSortie;
 
-
+	// Récupération d'une image par son numéro dans un tableau
 		public MonImage(int numImage) 
 		{
 				photoEntree=mesImages.recupererImage(numImage);
-	
-				Image image = photoEntree.getImage(); // transform it 
+				
+				//Transforme l'ImageIcon  en Image
+				Image image = photoEntree.getImage();
+				//la nouvelle image et mise à l'échelle
 				Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 				
+				//la newimg est transformée en  ImageIcon
 				photoSortie = new ImageIcon(newimg);
 				photoSortie.setDescription(photoEntree.getDescription());
 		}
-	
+	//Récupération d'une image par son lien
 		public MonImage(String chemin) 
 		{
-	
+				
 				ImageIcon photoEntree = new ImageIcon(chemin);
 				
 				Image image = photoEntree.getImage(); // transform it 
