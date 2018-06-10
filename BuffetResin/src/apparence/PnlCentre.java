@@ -2,6 +2,7 @@ package apparence;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Label;
 
@@ -20,9 +21,12 @@ public class PnlCentre extends JPanel {
 	// Panel d'application (centre)
 	// Modele pour les appli
 	String nom;
-	JLabel labelWallPaper = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
 	
-	
+	@Override
+	  protected void paintComponent(Graphics g) {
+	    super.paintComponent(g);
+	        g.drawImage(new ImageIcon("./src/photoDefault/wallpaper1.png").getImage(), 0, 0, null);
+	}
 	
     
 	
@@ -30,12 +34,12 @@ public class PnlCentre extends JPanel {
 		
 		//panelWallPaper.add(labelWallPaper,BorderLayout.CENTER);
 		//add(panelWallPaper, BorderLayout.CENTER);
-		
 		//add(label);
 		setSize(480,200);
 		//add(labelWallPaper,BorderLayout.CENTER);
 		this.nom = nom;
 		setBackground(Color.GRAY);
+		setOpaque(true);
 		
 		//setOpaque(true);
 		
