@@ -23,44 +23,43 @@ public class PnlCalculatrice extends PnlCentre
 	MaFenetre maman;
 	MonBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
-	double chiffre,chiffre2;
+	double chiffreStocker,chiffreStockerAfficher;
 	OperationStrategy os;
-	
+	Sigle sig;
+	JPanel panEcran;
+	JPanel chiffreStockers;
+	JPanel operateur;
 	
 	public PnlCalculatrice(MaFenetre maman) 
 	{
 		super("Calculatrice");
 		this.maman = maman;
-		lblCalcul = new MonLabel();
-		tabBouton =  new MonBoutonCalculatrice[9];
-		lblCalcul.setText("0.0");
-		lblCalcul.setFont( new Font("Arial", Font.BOLD, 50));
-		lblCalcul.setForeground(Color.BLACK);
-		lblCalcul.setPreferredSize(new Dimension(380, 75));
 		
-		//création des differente zone : 
-	    JPanel panEcran = new JPanel();
-	    panEcran.setPreferredSize(new Dimension(390, 100));
-	    JPanel chiffre = new JPanel();
-	    chiffre.setPreferredSize(new Dimension(240, 225));
-	    chiffre.setOpaque(false);
-	    JPanel operateur = new JPanel();      
-	    operateur.setPreferredSize(new Dimension(150,225 ));
-	    
-	    //remplissage des zones
-	    
+		configurerLabel();
+		creationPanels();
+		ajoutContenu();
+		
+		//ajout des composant
+	    this.add(panEcran, BorderLayout.NORTH);
+	    this.add(chiffreStockers, BorderLayout.CENTER);
+	    this.add(operateur, BorderLayout.EAST);
+	}
+	private void ajoutContenu() 
+	{ 
+		tabBouton =  new MonBoutonCalculatrice[9];
 		for (int i = 0; i < tabBouton.length; i++) 
 		{
 			System.out.println(tabBouton.length);
 			System.out.println(i);
 			
 				tabBouton[i]= new MonBoutonCalculatrice (Integer.toString(i+1), this);
-				chiffre.add(tabBouton[i]);
+				chiffreStockers.add(tabBouton[i]);
 			
 		}
-		chiffre.add(new MonBoutonCalculatrice(".", this));
-		chiffre.add(new MonBoutonCalculatrice("0",this));
-		chiffre.add(new MonBoutonCalculatrice("=", this));
+		chiffreStockers.add(new MonBoutonCalculatrice(".", this));
+		chiffreStockers.add(new MonBoutonCalculatrice("0",this));
+		chiffreStockers.add(new MonBoutonCalculatrice("=", this));
+		
 	    operateur.setOpaque(false);
 		operateur.add(new MonBoutonCalculatrice("+", this));
 	    operateur.add(new MonBoutonCalculatrice("-", this));
@@ -68,61 +67,90 @@ public class PnlCalculatrice extends PnlCentre
 	    operateur.add(new MonBoutonCalculatrice("*", this));
 	    operateur.add(new MonBoutonCalculatrice("C", this));
 	    operateur.add(new MonBoutonCalculatrice("<=", this));
+	    
 	    panEcran.add(lblCalcul);
 	    panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
-	    this.add(panEcran, BorderLayout.NORTH);
-	    this.add(chiffre, BorderLayout.CENTER);
-	    this.add(operateur, BorderLayout.EAST);
-	    //lblCalcul.setOpaque(true);
-	    //add(fondCalculatrice);
 	}
+	private void creationPanels() 
+	{
+	    panEcran = new JPanel();
+	    panEcran.setPreferredSize(new Dimension(390, 100));
+	    
+	    chiffreStockers = new JPanel();
+	    chiffreStockers.setPreferredSize(new Dimension(240, 225));
+	    chiffreStockers.setOpaque(false);
+	    
+	    operateur = new JPanel();      
+	    operateur.setPreferredSize(new Dimension(150,225 ));
+		
+	}
+	
+	private void configurerLabel() {
+
+		lblCalcul = new MonLabel();
+		lblCalcul.setText("0");
+		lblCalcul.setFont( new Font("Arial", Font.BOLD, 50));
+		lblCalcul.setForeground(Color.BLACK);
+		lblCalcul.setPreferredSize(new Dimension(380, 75));
+		lblCalcul.setHorizontalAlignment(JLabel.RIGHT);
+	}
+	
 	public void doOper(Symbole s) 
 	{
-		if(s instanceof Nombre) {
-			chiffre = chiffre*10 +((Nombre)s).getValeur();
-			lblCalcul.setText(Double.toString(chiffre));
+		if(s instanceof Nombre) 
+		{
+			chiffreStocker = chiffreStocker*10 +((Nombre)s).getValeur(); //*10 pour les dizaine , dentaine etc
+			lblCalcul.setText(Double.toString(chiffreStocker));
 		}
-		else {
+		else 
+		{
 			if(s instanceof OperEgal) 
 			{
-				chiffre2=os.doOper(chiffre2, chiffre);
-				lblCalcul.setText(Double.toString(chiffre2));
+				chiffreStockerAfficher=os.doOper(chiffreStockerAfficher, chiffreStocker);
+				lblCalcul.setText(Double.toString(chiffreStockerAfficher));
 			}
-			else if(s instanceof Sigle){
-				switch (((Sigle)s).getSigne()) {
-				case ".":
-					
-					break;
-				case "C":
-					chiffre=0;
-					chiffre2=0;
-					lblCalcul.setText("0");
-					break;
-				case "<=":
-					double aRetirer=0;
-					double multiplicateur=0.1;
-					while(aRetirer == 0) {
-						aRetirer = chiffre % multiplicateur;
-						multiplicateur*=10;
-					}
-					chiffre = (chiffre-aRetirer)/(multiplicateur*10);
-					lblCalcul.setText(Double.toString(chiffre));
-					break;
-				default:
-					break;
+			else if(s instanceof Sigle)
+			{
+				switch (((Sigle)s).getSigne()) 
+				{//bon je suis perdue XD
+					case ".":
+						
+						break;
+					case "C":
+						chiffreStocker=0;
+						chiffreStockerAfficher=0;
+						lblCalcul.setText("0");
+						break;
+					case "<=":
+						
+//						double aRetirer=0;
+//						double multiplicateur=0.1;
+//						while(aRetirer == 0) 
+//						{
+//							aRetirer = chiffreStocker % multiplicateur;
+//							multiplicateur*=10;
+//						}
+//						chiffreStocker = (chiffreStocker-aRetirer)/(multiplicateur*10);
+//						lblCalcul.setText(Double.toString(chiffreStocker));
+						
+						
+						
+						break;
+					default:
+						break;
 				}
 			}
-			else{
-	
+			else
+			{
 				os=(Operation)s;
-				chiffre2=chiffre;
-				chiffre = 0;
-				lblCalcul.setText(Double.toString(chiffre));
+				chiffreStockerAfficher=chiffreStocker;
+				chiffreStocker = 0;
+				lblCalcul.setText(Double.toString(chiffreStocker));
 			}
 		}
 	}
-	public void setChiffre1 (int chiffre)
+	public void setchiffreStocker1 (int chiffreStocker)
 	{
-		System.out.println(chiffre);
+		System.out.println(chiffreStocker);
 	}
 }   

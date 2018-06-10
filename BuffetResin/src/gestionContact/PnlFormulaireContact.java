@@ -44,10 +44,8 @@ import gestionGalerie.BouttonPhoto;
 import gestionGalerie.MonImage;
 
 public class PnlFormulaireContact  extends PnlCentre 
-{ //pas sure
+{ 
 
-	//concernant les lbl globaux vraiment important ? //loan
-	
 	MonBouton btnAnnuler;
 	MonBouton btnSupprimer;
 	MonBouton btnChoixImage;
@@ -58,7 +56,7 @@ public class PnlFormulaireContact  extends PnlCentre
 	JTextArea txtNumeroTel;
 	JTextArea txtNumeroMobile;
 	JTextArea txtEmail;
-	boolean boulEtUnMagic;
+	boolean bModifier;
 	
 	MaFenetre maman;
 	Contact contact;
@@ -78,79 +76,29 @@ public class PnlFormulaireContact  extends PnlCentre
 		super("Formulaire");
 		this.maman = maman;
 	
-		btnAnnuler = new MonBouton("Annuler");
-		btnSupprimer = new MonBouton("Suprimmer");
-		btnChoixImage = new MonBouton("ChoixImage");
-		txtNom = new MonJtextArea("Nom");
-		txtPrenom = new MonJtextArea("Prenom");
-		txtNumeroTel = new MonJtextArea("Telephonne");
-		txtNumeroMobile = new MonJtextArea("Mobile");
-		txtEmail = new MonJtextArea("Email");
-		txtNom.addFocusListener(null);
-		iiDefaut = new ImageIcon(".\\src\\photoDefault\\default.png");
-		lblImage = new JLabel("",JLabel.CENTER);
-		lblTitre = new MonLabel();
-		lblTitre.setSize(new Dimension(100, 100));
-		btnModifier = new MonBouton("Modifier");
-		
-		add(btnModifier);
-		add(lblImage);
-		lblNom = new MonLabel();
-		lblNom.setText("Nom :\t ");
-		lblNom.setPreferredSize(new Dimension(120, 20));
-		txtNom.setPreferredSize(new Dimension(200, 20));
-		add(lblNom);
-		add(txtNom);
-		
-		lblPrenom = new MonLabel();
-		lblPrenom.setText("Prénom :\t ");
-		lblPrenom.setPreferredSize(new Dimension(120, 20));
-		txtPrenom.setPreferredSize(new Dimension(200, 20));
-		add(lblPrenom);
-		add(txtPrenom);
-		
-		lblTelMaison = new MonLabel();
-		lblTelMaison.setText("Tél. Fixe :\t ");
-		lblTelMaison.setPreferredSize(new Dimension(120, 20));
-		txtNumeroTel.setPreferredSize(new Dimension(200, 20));
-		add(lblTelMaison);
-		add(txtNumeroTel);
-		
-		lblTelMobile = new MonLabel();
-		lblTelMobile.setText("Tél. Mobile :\t ");
-		lblTelMobile.setPreferredSize(new Dimension(120, 20));
-		txtNumeroMobile.setPreferredSize(new Dimension(200, 20));
-		add(lblTelMobile);
-		add(txtNumeroMobile);
-		
-		lblMail = new MonLabel();
-		lblMail.setText("E-Mail :\t ");
-		lblMail.setPreferredSize(new Dimension(120, 20));
-		txtEmail.setPreferredSize(new Dimension(200, 20));
-		add(lblMail);
-		add(txtEmail);
-		
-		add(btnAnnuler); 
-		add(btnSupprimer);
-		add(btnChoixImage);
-		boulEtUnMagic = true;
-		
+		creatioComposant();
+		afficherComposant();
+		creationEvenement();
+		definirModification(false);
+	}
+
+	private void creationEvenement() {
 		this.addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentShown(ComponentEvent arg0) {
-				boulEtUnMagic=true;
+				bModifier=true;
 			}
 			
 			@Override
 			public void componentHidden(ComponentEvent arg0) {
-				if(boulEtUnMagic) {
+				if(bModifier) {
 					dechargement();
 					definirModification(false);
 				}
 			}
 		});
 		
-		lblImage.setPreferredSize(new Dimension(480,200));
+		
 		btnAnnuler.addActionListener(new ActionListener() 
 		{
 			@Override
@@ -181,7 +129,7 @@ public class PnlFormulaireContact  extends PnlCentre
 			{
 				maman.setbContact(true);
 				maman.changeCouche("Galerie");
-				boulEtUnMagic=false;
+				bModifier=false;
 			}
 		});
 		
@@ -273,8 +221,69 @@ public class PnlFormulaireContact  extends PnlCentre
 
 
 		});
-		definirModification(false);
-	}
+}
+	private void afficherComposant() {
+		add(btnModifier);
+		add(lblImage);
+		lblNom = new MonLabel();
+		lblNom.setText("Nom :\t ");
+		lblNom.setPreferredSize(new Dimension(120, 20));
+		txtNom.setPreferredSize(new Dimension(200, 20));
+		add(lblNom);
+		add(txtNom);
+		
+		lblPrenom = new MonLabel();
+		lblPrenom.setText("Prénom :\t ");
+		lblPrenom.setPreferredSize(new Dimension(120, 20));
+		txtPrenom.setPreferredSize(new Dimension(200, 20));
+		add(lblPrenom);
+		add(txtPrenom);
+		
+		lblTelMaison = new MonLabel();
+		lblTelMaison.setText("Tél. Fixe :\t ");
+		lblTelMaison.setPreferredSize(new Dimension(120, 20));
+		txtNumeroTel.setPreferredSize(new Dimension(200, 20));
+		add(lblTelMaison);
+		add(txtNumeroTel);
+		
+		lblTelMobile = new MonLabel();
+		lblTelMobile.setText("Tél. Mobile :\t ");
+		lblTelMobile.setPreferredSize(new Dimension(120, 20));
+		txtNumeroMobile.setPreferredSize(new Dimension(200, 20));
+		add(lblTelMobile);
+		add(txtNumeroMobile);
+		
+		lblMail = new MonLabel();
+		lblMail.setText("E-Mail :\t ");
+		lblMail.setPreferredSize(new Dimension(120, 20));
+		txtEmail.setPreferredSize(new Dimension(200, 20));
+		add(lblMail);
+		add(txtEmail);
+		
+		add(btnAnnuler); 
+		add(btnSupprimer);
+		add(btnChoixImage);
+		bModifier = true;
+	
+}
+	private void creatioComposant() {
+		btnAnnuler = new MonBouton("Annuler");
+		btnSupprimer = new MonBouton("Suprimmer");
+		btnChoixImage = new MonBouton("ChoixImage");
+		txtNom = new MonJtextArea("Nom");
+		txtPrenom = new MonJtextArea("Prenom");
+		txtNumeroTel = new MonJtextArea("Telephonne");
+		txtNumeroMobile = new MonJtextArea("Mobile");
+		txtEmail = new MonJtextArea("Email");
+		txtNom.addFocusListener(null);
+		iiDefaut = new ImageIcon(".\\src\\photoDefault\\default.png");
+		lblImage = new JLabel("",JLabel.CENTER);
+		lblTitre = new MonLabel();
+		lblTitre.setSize(new Dimension(100, 100));
+		btnModifier = new MonBouton("Modifier");
+		lblImage.setPreferredSize(new Dimension(480,200));
+	
+}
 	private void definirModification(boolean b) {
 	
 		btnAnnuler.setVisible(b);
@@ -284,7 +293,11 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtPrenom.setEditable(b);
 		txtNumeroMobile.setEditable(b);
 		txtNumeroTel.setEditable(b);
-		btnModifier.setText(b? "Valider":"Modifier");
+		
+		if (b) {
+			btnModifier.setText("Valider");
+		}
+		else btnModifier.setText("Modifier");
 	}
 	public void dechargement() 
 	{
@@ -296,7 +309,7 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtNumeroTel.setText("");
 		maman.setbContact(false);
 		setImage(iiDefaut); 
-		
+
 	}
 	public void setContact(Contact contact) 
 	{
@@ -322,24 +335,16 @@ public class PnlFormulaireContact  extends PnlCentre
 		{
 			setImage(new ImageIcon (contact.getPhotoDescription()));	
 		}
-//		System.out.println("donne moir le statuts" + new ImageIcon (contact.getPhotoDescription()).getImageLoadStatus());
-		
-//			setImage(new ImageIcon (contact.getPhotoDescription()));	
-		
-		
-		
 	}
 	public void setImage(ImageIcon laNouvelleimage) 
 	{
 		setlblImage(laNouvelleimage);//pour l'affichage
 	}
-
 	private void setlblImage (ImageIcon MaFutureIcone) //affichage du label avec la bonne image
 	{
 		this.iiformulaire = MaFutureIcone;
 		MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
 		lblImage.setIcon(m.transformationImage(MaFutureIcone.getDescription(), lblImage.getWidth()));
 	}
-
 }
 

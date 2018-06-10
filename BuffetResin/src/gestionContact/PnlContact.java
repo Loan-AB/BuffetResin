@@ -49,11 +49,33 @@ public class PnlContact  extends PnlCentre {
 	{
 		
 		super("Contact");
-		
-		
 		this.maman = maman;
+		creatioComposant();
+		cretationDelaListe();
+		add(btnCreer);
+	
+	}
+	private void cretationDelaListe() {
+		//les éléments de la liste
+				lstContact = new JList<>(lm);
+				lstContact.setCellRenderer(new GraphiqueJlist());
+				lstContact.setModel(lm);
+				lstContact.setBackground(Color.LIGHT_GRAY);
+				lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
+				JScrollPane scrollPane= new JScrollPane(lstContact); 
+				scrollPane.setPreferredSize(new Dimension(450,580));
+				
+				scrollPane.setBackground(Color.WHITE);
+				add(scrollPane,BorderLayout.CENTER);
+				lstContact.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						maman.afficherContact(lstContact.getSelectedValue());
+					}
+				});
 		
-		
+	}
+	private void creatioComposant() {
 		btnCreer = new MonBouton("Créer un nouveau contact");
 		lblTitre = new MonLabel();
 		lblTitre.setText("Contact");
@@ -73,25 +95,6 @@ public class PnlContact  extends PnlCentre {
 		for (Contact contact : lContact) {
 			lm.addElement(contact);
 		}
-		
-		//les éléments de la liste
-		lstContact = new JList<>(lm);
-		lstContact.setCellRenderer(new ContactCellRenderer());
-		lstContact.setModel(lm);
-		lstContact.setBackground(Color.LIGHT_GRAY);
-		lstContact.setSelectedIndex(0); //pour ne pas avoir d'erreur de ne pas avoir selectionner
-		JScrollPane scrollPane= new JScrollPane(lstContact); 
-		scrollPane.setPreferredSize(new Dimension(450,580));
-		
-		scrollPane.setBackground(Color.WHITE);
-		add(scrollPane,BorderLayout.CENTER);
-		lstContact.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				maman.afficherContact(lstContact.getSelectedValue());
-			}
-		});
-		add(btnCreer);
 		
 	}
 	private void lireToutLesContact() {

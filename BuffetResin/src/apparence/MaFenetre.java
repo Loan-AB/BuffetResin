@@ -38,49 +38,17 @@ public class MaFenetre extends JFrame
 	
 	public MaFenetre()
 	{
-		coucheAutorisee.add("Accueil");coucheAutorisee.add("Galerie");coucheAutorisee.add("Calculatrice");coucheAutorisee.add("Contact");
-		
-		pnlBas = new PnlBas();
-		pnlCentre = new PnlCentre("coucou");
-		pnlHaut = new PnlHaut();
-		couche = new CardLayout();
-		pnlAccueil = new PnlAccueil(this);
-		pnlContact = new PnlContact(this);
-		pnlCalculatrice = new PnlCalculatrice(this);
-		pnlGalerie = new PnlGalerie(this);
-		pnlImage = new PnlImage(this);
-		
-		pnlFormulaire = new PnlFormulaireContact(this);
-		historiqueLayout = new ArrayList<>();
-		
-		this.setSize(460, 760);
-		pnlBas.setLayout(new FlowLayout());
-		pnlCentre.setLayout(new GridLayout());
-		pnlHaut.setLayout(new FlowLayout());
-		
-		add(pnlHaut,BorderLayout.NORTH);
-		add(pnlCentre,BorderLayout.CENTER);
-		add(pnlBas, BorderLayout.SOUTH);
-		
-		pnlCentre.setLayout(couche);
-
-		pnlCentre.add(pnlAccueil,"Accueil");
-		pnlCentre.add(pnlContact,"Contact");
-		pnlCentre.add(pnlCalculatrice,"Calculatrice");
-		pnlCentre.add(pnlGalerie,"Galerie");
-		pnlCentre.add(pnlFormulaire,"Formulaire");
-		pnlCentre.add(pnlImage,"Image");
-		
-		couche.show(pnlCentre, "Accueil");
-//		couche.show(pnlCentre, "Calculatrice");
-		
+		creatioComposant();
+		miseEnPlaceCouches();
+		creationEvent();
 		historiqueLayout.add("Accueil");
-		
-		this.setUndecorated(true);//Enleve le cadre de la frame 
-		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
-		
-		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true)); //loan 08.06.2018
-		
+
+		this.setVisible(true); //ça toujours a la fin
+		this.setLocationRelativeTo(null); //Doit etre à la fin pour être au centre de l'écran
+	}
+	
+	private void creationEvent() 
+	{
 		ActionListener lancerAppli = new ActionListener() 
 		{
 			@Override
@@ -102,14 +70,55 @@ public class MaFenetre extends JFrame
 				couche.show(pnlCentre, historiqueLayout.get(historiqueLayout.size()-1)); //on affiche la dernière couche
 			}
 		};
-
 		pnlBas.setListenerBtn(lancerAppli, backAppli);
 		pnlAccueil.setListenerBtn(lancerAppli);
-		
-		this.setVisible(true); //ça toujours a la fin
-		this.setLocationRelativeTo(null); //Doit etre à la fin pour être au centre de l'écran
 	}
-	
+
+	private void miseEnPlaceCouches() 
+	{
+		add(pnlHaut,BorderLayout.NORTH);
+		add(pnlCentre,BorderLayout.CENTER);
+		add(pnlBas, BorderLayout.SOUTH);
+		pnlCentre.setLayout(couche);
+		pnlCentre.add(pnlAccueil,"Accueil");
+		pnlCentre.add(pnlContact,"Contact");
+		pnlCentre.add(pnlCalculatrice,"Calculatrice");
+		pnlCentre.add(pnlGalerie,"Galerie");
+		pnlCentre.add(pnlFormulaire,"Formulaire");
+		pnlCentre.add(pnlImage,"Image");
+		
+		//indique quel couche a mettre lors du démarrage de l'appli
+		couche.show(pnlCentre, "Accueil");
+	}
+
+	private void creatioComposant() 
+	{
+		coucheAutorisee.add("Accueil");coucheAutorisee.add("Galerie");coucheAutorisee.add("Calculatrice");coucheAutorisee.add("Contact");
+		
+		pnlBas = new PnlBas();
+		pnlCentre = new PnlCentre("coucou");
+		pnlHaut = new PnlHaut();
+		couche = new CardLayout();
+		pnlAccueil = new PnlAccueil(this);
+		pnlContact = new PnlContact(this);
+		pnlCalculatrice = new PnlCalculatrice(this);
+		pnlGalerie = new PnlGalerie(this);
+		pnlImage = new PnlImage(this);
+		
+		pnlFormulaire = new PnlFormulaireContact(this);
+		historiqueLayout = new ArrayList<>();
+		
+		pnlBas.setLayout(new FlowLayout());
+		pnlCentre.setLayout(new GridLayout());
+		pnlHaut.setLayout(new FlowLayout());
+		
+		this.setSize(460, 760);
+		this.setUndecorated(true);//Enleve le cadre de la frame 
+		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
+		getRootPane().setBorder(new LineBorder(Color.WHITE, 20, true)); //loan 08.06.2018
+		
+	}
+
 	public void changeCouche(String nom) 
 	{
 		System.out.println(nom+ " a tenté de s'ouvrire");
@@ -170,5 +179,6 @@ public class MaFenetre extends JFrame
 	{
 		pnlGalerie.supprimerImage(numImage);
 	}
+
 }
 
