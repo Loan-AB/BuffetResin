@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.util.StringTokenizer;
 
 import javax.management.relation.RelationServiceNotRegisteredException;
 import javax.swing.BorderFactory;
@@ -23,7 +24,7 @@ public class PnlCalculatrice extends PnlCentre
 	MaFenetre maman;
 	MonBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
-	double chiffreStocker,chiffreAfficher  , chiffreAfficherVirgule;
+	double chiffreStocker,chiffreAfficher;
 	OperationStrategy os;
 	Sigle sig;
 	JPanel panEcran;
@@ -57,17 +58,18 @@ public class PnlCalculatrice extends PnlCentre
 				chiffreStockers.add(tabBouton[i]);
 			
 		}
-		chiffreStockers.add(new MonBoutonCalculatrice(".", this));
+//		chiffreStockers.add(new MonBoutonCalculatrice(".", this));
 		chiffreStockers.add(new MonBoutonCalculatrice("0",this));
-		chiffreStockers.add(new MonBoutonCalculatrice("=", this));
 		
-	    operateur.setOpaque(false);
+		operateur.setOpaque(false);
+	
 		operateur.add(new MonBoutonCalculatrice("+", this));
 	    operateur.add(new MonBoutonCalculatrice("-", this));
 	    operateur.add(new MonBoutonCalculatrice("/", this));
 	    operateur.add(new MonBoutonCalculatrice("*", this));
 	    operateur.add(new MonBoutonCalculatrice("C", this));
 	    operateur.add(new MonBoutonCalculatrice("<=", this));
+		operateur.add(new MonBoutonCalculatrice("=", this));
 	    
 	    panEcran.add(lblCalcul);
 	    panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -92,6 +94,8 @@ public class PnlCalculatrice extends PnlCentre
 		lblCalcul.setText("0");
 		lblCalcul.setFont( new Font("Arial", Font.BOLD, 50));
 		lblCalcul.setForeground(Color.BLACK);
+		lblCalcul.setBackground(Color.white);
+		lblCalcul.setOpaque(true);
 		lblCalcul.setPreferredSize(new Dimension(380, 75));
 		lblCalcul.setHorizontalAlignment(JLabel.RIGHT);
 	}
@@ -100,51 +104,43 @@ public class PnlCalculatrice extends PnlCentre
 	{
 		if(s instanceof Nombre) 
 		{
-			if (sens == 10) 
-			{
-				chiffreAfficher = chiffreAfficher*10 +((Nombre)s).getValeur(); //*10 pour les dizaine , dentaine etc
-			}
-			else
-			{
-				
-//				System.out.println(chiffreAfficherVirgule + "av");
-				chiffreAfficherVirgule =  chiffreAfficherVirgule*10 +((Nombre)s).getValeur();
-//				System.out.println(chiffreAfficherVirgule + "ap");
-//				chiffreAfficher = 	chiffreAfficher+chiffreAfficherVirgule;
-			}
-
-			lblCalcul.setText(chiffreAfficher+"."+chiffreAfficherVirgule);
+			chiffreAfficher = chiffreAfficher*10 +((Nombre)s).getValeur(); //*10 pour les dizaine , dentaine etc
+			lblCalcul.setText(Double.toString(chiffreAfficher));
 		}
 		else 
 		{
 			if(s instanceof OperEgal) 
 			{
 				chiffreAfficher=os.doOper(chiffreStocker, chiffreAfficher);
-				lblCalcul.setText(Double.toString(chiffreAfficher));
+//				lblCalcul.setText(Double.toString(chiffreAfficher));
 			}
 			else if(s instanceof Sigle)
 			{
 				switch (((Sigle)s).getSigne()) 
-				{//bon je suis perdue XD
-					case ".":
-						sens=0.1;
-						break;
+				{
 					case "C":
-						chiffreStocker=0;
-						chiffreAfficher=0;
-						chiffreAfficherVirgule = 0;
-						lblCalcul.setText("0");
+						chiffreStocker = chiffreAfficher =  SigEffacer.effacer(chiffreStocker,chiffreAfficher);
+//						lblCalcul.setText(Double.toString(chiffreAfficher));
 						break;
 					case "<=": //questions :(
+//						SigRetour.retour(lblCalcul.toString());
 						
-						if (lblCalcul.getText().length() > 0) //donc si ce n'est pas vide
+		
+//						chiffreAfficher = Double.parseDouble(SigRetour.retour(lblCalcul.toString()));
+						
+						if (lblCalcul.getText().length() > 3) //donc si ce n'est pas vide
 						{
 						StringBuilder strB = new StringBuilder(lblCalcul.getText());
-						strB.deleteCharAt(lblCalcul.getText().length()-1);
+						strB.deleteCharAt(lblCalcul.getText().length()-3);
 						lblCalcul.setText(strB.toString());
-						chiffreAfficher = Double.parseDouble(lblCalcul.getText()); 
-						System.out.println(chiffreAfficher + "actu");
-						System.out.println(chiffreStocker + "stock");
+						chiffreAfficher = Double.parseDouble(strB.toString()); 
+						}
+						else
+						{
+							
+							lblCalcul.setText("0.0");
+							chiffreAfficher = 0.0; 
+							//ben c'est plu petit quoi donc le chiffre passe a zero
 						}
 						// merci https://www.youtube.com/watch?v=Ym9_qF4iGHg
 						// pour la solution est l'explication du code
@@ -156,8 +152,9 @@ public class PnlCalculatrice extends PnlCentre
 				os=(Operation)s;
 				chiffreStocker = Double.parseDouble(lblCalcul.getText());
 				chiffreAfficher = 0;
-				lblCalcul.setText(Double.toString(chiffreAfficher));
+//				lblCalcul.setText(Double.toString(chiffreAfficher));
 			}
+			lblCalcul.setText(Double.toString(chiffreAfficher));
 		}
 	}
 	public void setchiffreStocker1 (int chiffreStocker)

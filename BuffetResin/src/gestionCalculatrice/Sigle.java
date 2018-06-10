@@ -1,6 +1,6 @@
 package gestionCalculatrice;
 
-public class Sigle extends Symbole {
+public abstract class  Sigle extends Symbole {
 
 	private String signe;
 	public Sigle(String signe) {
