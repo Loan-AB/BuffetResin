@@ -64,7 +64,7 @@ public class PnlCalculatrice extends PnlCentre
 				chiffreStockers.add(tabBouton[i]);
 			
 		}
-//		chiffreStockers.add(new MonBoutonCalculatrice(".", this));
+		//	chiffreStockers.add(new MonBoutonCalculatrice(".", this));
 		chiffreStockers.add(new MonBoutonCalculatrice("0",this));
 		
 		operateur.setOpaque(false);
