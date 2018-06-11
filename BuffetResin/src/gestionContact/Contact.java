@@ -29,6 +29,15 @@ public class Contact implements Serializable, Comparable{
 	private String photoDescription; //crée pour garder l'url de mon image
 	
 	//si l'on précise le chemin de l'image a part. c'est utiliser pour le désézise
+	/**
+	 * @param nom
+	 * @param prenom
+	 * @param numeroTel
+	 * @param numeroMobile
+	 * @param email
+	 * @param photoDescription
+	 * @param photo
+	 */
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -53,6 +62,14 @@ public class Contact implements Serializable, Comparable{
 		this.nomFichier = nom+prenom;
 	}
 	
+	/**
+	 * @param nom
+	 * @param prenom
+	 * @param numeroTel
+	 * @param numeroMobile
+	 * @param email
+	 * @param photo
+	 */
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,ImageIcon photo) {
 		this.nom = nom;
 		this.prenom = prenom;
@@ -70,11 +87,17 @@ public class Contact implements Serializable, Comparable{
 		this.nomFichier = nom+prenom;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() 
 	{
 		return  getNom() + " " + getPrenom() + " " + getNumeroMobile(); //cela s'affichera dans la jlist
 	}
+	/**
+	 * 
+	 */
 	public void enregistrer() 
 	{
 		System.out.println("Votre contact " + nom+ " "+prenom + " :  modifier/crée");
@@ -89,6 +112,16 @@ public class Contact implements Serializable, Comparable{
 		System.out.println(cheminduficherRelatif);
 		serializeObject(nomFichier,nom,prenom,numeroTel,numeroMobile,email,cheminduficherRelatif,photo); //écrire
 	}
+	/**
+	 * @param nomFichier
+	 * @param nom
+	 * @param prenom
+	 * @param numeroTel
+	 * @param numeroMobile
+	 * @param email
+	 * @param photoDescription
+	 * @param photo
+	 */
 	private void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) {
 		Contact cs = new Contact(nom,prenom,numeroTel,numeroMobile,email,photoDescription,photo);
 		File f = new File(chemin+nomFichier+".txt");
@@ -107,6 +140,9 @@ public class Contact implements Serializable, Comparable{
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * 
+	 */
 	private void changerNomFichier() {
 		File f = new File(chemin+nomFichier+".txt");
 		File f2 = new File(chemin+nom+prenom+".txt");
@@ -118,12 +154,18 @@ public class Contact implements Serializable, Comparable{
 		}
 		nomFichier = nom+prenom;
 	}
+	/**
+	 * 
+	 */
 	public void suppressioncontact()
 	{
 		File f = new File(chemin+nomFichier+".txt");
 		System.out.println("votre fichier " + chemin+nomFichier+".txt" + " as été supprimer");
 		f.delete(); 
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	@Override
 	public int compareTo(Object arg0) {
 		Contact c = (Contact)arg0;
@@ -135,74 +177,128 @@ public class Contact implements Serializable, Comparable{
 	}
 
 	//Setter et Getter : 
+	/**
+	 * @return
+	 */
 	public String getNom() {
 		return nom;
 	}
 
+	/**
+	 * @param nom
+	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 		changerNomFichier();
 	}
 
+	/**
+	 * @return
+	 */
 	public String getPrenom() {
 		return prenom;
 	}
 
+	/**
+	 * @param prenom
+	 */
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 		changerNomFichier();
 	}
 
+	/**
+	 * @return
+	 */
 	public String getNumeroTel() {
 		return numeroTel;
 	}
 
+	/**
+	 * @param numeroTel
+	 */
 	public void setNumeroTel(String numeroTel) {
 		numeroTel = numeroTel;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getNumeroMobile() {
 		return numeroMobile;
 	}
 
+	/**
+	 * @param numeroMobile
+	 */
 	public void setNumeroMobile(String numeroMobile) {
 		numeroMobile = numeroMobile;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getEmail() {
 		return email;
 	}
 
+	/**
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return
+	 */
 	public ImageIcon getPhoto() {
 		return photo;
 	}
 
+	/**
+	 * @param photo
+	 */
 	public void setPhoto(ImageIcon photo) {
 		this.photo = photo;
 	}
 	
+	/**
+	 * @param path
+	 */
 	public static void setChemin(String path) {
 		chemin = path;
 	}
 	
+	/**
+	 * @return
+	 */
 	public static String setChemin() {
 		return chemin;
 	}
+	/**
+	 * @return
+	 */
 	public static String getChemin() {
 		return chemin;
 	}
 
+	/**
+	 * @return
+	 */
 	public String getNomFichier() {
 		return nomFichier;
 	}
+	/**
+	 * @return
+	 */
 	public String getPhotoDescription() {
 		return photoDescription;
 	}
 
+	/**
+	 * @param photoDescription
+	 */
 	public void setPhotoDescription(String photoDescription) {
 		this.photoDescription = photoDescription;
 	}

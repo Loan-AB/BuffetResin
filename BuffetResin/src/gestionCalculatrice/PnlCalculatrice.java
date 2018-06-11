@@ -32,6 +32,9 @@ public class PnlCalculatrice extends PnlCentre
 	JPanel operateur;
 	double sens;
 	
+	/**
+	 * @param maman
+	 */
 	public PnlCalculatrice(MaFenetre maman) 
 	{
 		super("Calculatrice");
@@ -46,6 +49,9 @@ public class PnlCalculatrice extends PnlCentre
 	    this.add(chiffreStockers, BorderLayout.CENTER);
 	    this.add(operateur, BorderLayout.EAST);
 	}
+	/**
+	 * 
+	 */
 	private void ajoutContenu() 
 	{ 
 		tabBouton =  new MonBoutonCalculatrice[9];
@@ -74,6 +80,9 @@ public class PnlCalculatrice extends PnlCentre
 	    panEcran.add(lblCalcul);
 	    panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
+	/**
+	 * 
+	 */
 	private void creationPanels() 
 	{
 	    panEcran = new JPanel();
@@ -88,6 +97,9 @@ public class PnlCalculatrice extends PnlCentre
 		
 	}
 	
+	/**
+	 * 
+	 */
 	private void configurerLabel() {
 
 		lblCalcul = new MonLabel();
@@ -100,6 +112,9 @@ public class PnlCalculatrice extends PnlCentre
 		lblCalcul.setHorizontalAlignment(JLabel.RIGHT);
 	}
 	
+	/**
+	 * @param s
+	 */
 	public void doOper(Symbole s) 
 	{
 		if(s instanceof Nombre) 
@@ -157,6 +172,9 @@ public class PnlCalculatrice extends PnlCentre
 			lblCalcul.setText(Double.toString(chiffreAfficher));
 		}
 	}
+	/**
+	 * @param chiffreStocker
+	 */
 	public void setchiffreStocker1 (int chiffreStocker)
 	{
 		System.out.println(chiffreStocker);

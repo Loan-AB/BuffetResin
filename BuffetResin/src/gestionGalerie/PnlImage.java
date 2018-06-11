@@ -34,6 +34,10 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 	MonBouton btnValiderPhotoContact;
 	int numImage;
 
+	
+	/**
+	 * @param maman
+	 */
 	public PnlImage(MaFenetre maman) 
 	{
 		super("Galerie");
@@ -79,6 +83,12 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 		lblImage = new JLabel();
 		add(lblImage);		
 	}
+
+	/**
+	 * @param monImageIcon
+	 * @param description
+	 * @param numImage
+	 */
 	public void setImage(ImageIcon monImageIcon , String description, int numImage) //loan 08.06.2018
 	{
 		this.numImage = numImage;
@@ -87,12 +97,20 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 		System.out.println(monImageIcon.getDescription());
 		lblImage.setIcon(monImageIcon);
 	}
+	
+	/**
+	 * @param file
+	 */
 	private void delete(String file) {
     		File fichier = new File(file);
     		fichier.delete();
     		maman.changeCouche("Gallerie");
     		maman.supprimerImage(numImage);
     }
+	
+	/**
+	 * @param bContact
+	 */
 	public void setbContactBouton(boolean bContact) { //loan
 		btnValiderPhotoContact.setVisible(bContact);
 		btnDelete.setVisible(!bContact);

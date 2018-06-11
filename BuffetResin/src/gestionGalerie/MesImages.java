@@ -21,6 +21,9 @@ public class MesImages {
 	//ImageIcon photoChoisie;
 	
 	
+	/**
+	 * 
+	 */
 	public MesImages() {
 		// TODO Auto-generated constructor stub
 		
@@ -47,11 +50,18 @@ public class MesImages {
 	}
 	
 	//Retourne la photo choisie avec sa référence dans le tableau
+	/**
+	 * @param num
+	 * @return
+	 */
 	public ImageIcon recupererImage(int num) {
 		return tblPhotos[num];
 	}
 	
 	//Retourne la taille du tableau de photos
+	/**
+	 * @return
+	 */
 	public int Size() {
 		return tblPhotos.length;
 	}

@@ -10,6 +10,9 @@ public class MonJtextArea extends JTextArea
 {
 
 	String textHolder;
+	/**
+	 * @param textHolder
+	 */
 	public MonJtextArea(String textHolder) 
 	{
 		super(1,25);
@@ -42,16 +45,25 @@ public class MonJtextArea extends JTextArea
 		
 	}
 	
+	/**
+	 * @return
+	 */
 	private String txt() 
 	{
 		return super.getText();
 	}
 	
+	/**
+	 * @param s
+	 */
 	private void txt(String s) 
 	{
 		super.setText(s);
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.text.JTextComponent#getText()
+	 */
 	public String getText() 
 	{
 		if (super.getText().equals(textHolder) ) 
@@ -64,6 +76,9 @@ public class MonJtextArea extends JTextArea
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.text.JTextComponent#setText(java.lang.String)
+	 */
 	public void setText(String donneeText) 
 	{
 		setForeground(Color.BLACK);

@@ -22,6 +22,9 @@ public class PnlHaut extends JPanel{
 	private	DateFormat df;
 	MonBouton BtnFermer ;
 	
+	/**
+	 * 
+	 */
 	public PnlHaut() 
 	{
 		setSize(480, 100);

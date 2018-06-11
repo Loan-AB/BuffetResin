@@ -2,10 +2,17 @@ package gestionCalculatrice;
 
 public class SigRetour extends Sigle {
 
+	/**
+	 * @param signe
+	 */
 	public SigRetour(String signe) {
 		super(signe);
 	}
 
+	/**
+	 * @param valeurString
+	 * @return
+	 */
 	public static String retour(String valeurString) {
 		
 		if (valeurString.length() > 3) //donc si ce n'est pas vide

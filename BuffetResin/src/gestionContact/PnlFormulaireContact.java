@@ -71,7 +71,10 @@ public class PnlFormulaireContact  extends PnlCentre
 	MonLabel lblNom;
 	MonLabel lblTelMobile;
 	MonLabel lblTelMaison;
-	public PnlFormulaireContact(MaFenetre maman) 
+	/**
+ * @param maman
+ */
+public PnlFormulaireContact(MaFenetre maman) 
 {
 		super("Formulaire");
 		this.maman = maman;
@@ -82,6 +85,9 @@ public class PnlFormulaireContact  extends PnlCentre
 		definirModification(false);
 	}
 
+	/**
+	 * 
+	 */
 	private void creationEvenement() {
 		this.addComponentListener(new ComponentAdapter() {
 			@Override
@@ -222,6 +228,9 @@ public class PnlFormulaireContact  extends PnlCentre
 
 		});
 }
+	/**
+	 * 
+	 */
 	private void afficherComposant() {
 		add(btnModifier);
 		add(lblImage);
@@ -266,6 +275,9 @@ public class PnlFormulaireContact  extends PnlCentre
 		bModifier = true;
 	
 }
+	/**
+	 * 
+	 */
 	private void creatioComposant() {
 		btnAnnuler = new MonBouton("Annuler");
 		btnSupprimer = new MonBouton("Suprimmer");
@@ -284,6 +296,9 @@ public class PnlFormulaireContact  extends PnlCentre
 		lblImage.setPreferredSize(new Dimension(480,200));
 	
 }
+	/**
+	 * @param b
+	 */
 	private void definirModification(boolean b) {
 	
 		btnAnnuler.setVisible(b);
@@ -299,6 +314,9 @@ public class PnlFormulaireContact  extends PnlCentre
 		}
 		else btnModifier.setText("Modifier");
 	}
+	/**
+	 * 
+	 */
 	public void dechargement() 
 	{
 		contact = null;
@@ -311,6 +329,9 @@ public class PnlFormulaireContact  extends PnlCentre
 		setImage(iiDefaut); 
 
 	}
+	/**
+	 * @param contact
+	 */
 	public void setContact(Contact contact) 
 	{
 		//ajout des élément dsand
@@ -336,10 +357,16 @@ public class PnlFormulaireContact  extends PnlCentre
 			setImage(new ImageIcon (contact.getPhotoDescription()));	
 		}
 	}
+	/**
+	 * @param laNouvelleimage
+	 */
 	public void setImage(ImageIcon laNouvelleimage) 
 	{
 		setlblImage(laNouvelleimage);//pour l'affichage
 	}
+	/**
+	 * @param MaFutureIcone
+	 */
 	private void setlblImage (ImageIcon MaFutureIcone) //affichage du label avec la bonne image
 	{
 		this.iiformulaire = MaFutureIcone;

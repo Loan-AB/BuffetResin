@@ -4,14 +4,14 @@ import java.awt.*;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
-//source : http://www.camick.com/java/source/WrapLayout.java
-//https://tips4java.wordpress.com/2008/11/06/wrap-layout/
+	//source : http://www.camick.com/java/source/WrapLayout.java
+	//https://tips4java.wordpress.com/2008/11/06/wrap-layout/
 
 
-/**
- *  FlowLayout subclass that fully supports wrapping of components.
- */
-//Sous-classe FlowLayout qui prend entièrement en charge l'encapsulation des composants.
+	/**
+	 *  FlowLayout subclass that fully supports wrapping of components.
+	 */
+	//Sous-classe FlowLayout qui prend entièrement en charge l'encapsulation des composants.
 public  class WrapLayout extends FlowLayout
 {
 	private Dimension preferredLayoutSize;
@@ -37,7 +37,7 @@ public  class WrapLayout extends FlowLayout
 	* The value of the alignment argument must be one of
 	* <code>WrapLayout</code>, <code>WrapLayout</code>,
 	* or <code>WrapLayout</code>.
-	* @param align the alignment value
+	*  @param align the alignment value
 	*/
 	
 	/**Construit un nouveau <code>FlowLayout</code> avec le code spécifié.
@@ -45,7 +45,7 @@ public  class WrapLayout extends FlowLayout
 	 * La valeur de l'argument d'alignement doit être l'une des valeurs suivantes
 	 * <code>WrapLayout</code>, <code>WrapLayout</code>,
 	 * ou <code>WrapLayout</code>.
-	 * @param aligner la valeur d'alignement
+	 * @param align la valeur d'alignement
 	 */
 	
 	public WrapLayout(int align)
@@ -65,17 +65,18 @@ public  class WrapLayout extends FlowLayout
 	* @param vgap the vertical gap between components
 	*/
 	
-	/**	Crée un nouveau gestionnaire de disposition des flux avec l'alignement indiqué.
-	  *	et les espaces horizontaux et verticaux indiqués.
-	  *	<p>
-	  * La valeur de l'argument d'alignement doit être l'une des valeurs suivantes
-	  * <code>WrapLayout</code>, <code>WrapLayout</code>,
-	  * ou <code>WrapLayout</code>.
-	  * @param aligner la valeur d'alignement
-	  * @param hgap l'écart horizontal entre les composants.
-	  *	@param vgap l'écart vertical entre les composants.
+   /**Crée un nouveau gestionnaire de disposition des flux avec l'alignement indiqué.
+    * et les espaces horizontaux et verticaux indiqués.
+	* <p>
+	* La valeur de l'argument d'alignement doit être l'une des valeurs suivantes
+	* <code>WrapLayout</code>, <code>WrapLayout</code>,
+	* ou <code>WrapLayout</code>.
+	* @param align la valeur d'alignement
+	* @param hgap l'écart horizontal entre les composants.
+	* @param vgap l'écart vertical entre les composants.
 	  */
 
+	
 	public WrapLayout(int align, int hgap, int vgap)
 	{
 		super(align, hgap, vgap);
@@ -89,13 +90,7 @@ public  class WrapLayout extends FlowLayout
 	* subcomponents of the specified container
 	*/
 	
-	/**
-	 * Retourne les dimensions préférées pour cette mise en page compte tenu de l'option
-	 * <i>visible</i> composants dans le conteneur cible spécifié.
-	 * @param cible le composant qui doit être disposé.
-	 * @return Retourne les dimensions préférées pour la mise en page de l'image.
-	 * Sous-composants du conteneur spécifié.
-	 */
+	
 	@Override
 	public Dimension preferredLayoutSize(Container target)
 	{
@@ -110,13 +105,7 @@ public  class WrapLayout extends FlowLayout
 	* subcomponents of the specified container
 	*/
 	
-	/**
-	 * Retourne les dimensions minimales nécessaires à la mise en page de la page <i>visible</i>i>.
-	 * composants contenus dans le conteneur cible spécifié.
-	 * @param cible le composant qui doit être disposé.
-	 * Retourne les dimensions minimales pour la mise en page de l'image.
-	 * Sous-composants du conteneur spécifié.
-	 */
+	
 	
 	@Override
 	public Dimension minimumLayoutSize(Container target)

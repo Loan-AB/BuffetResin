@@ -21,6 +21,9 @@ public class MonImage extends ImageIcon
 	ImageIcon photoSortie;
 
 	// Récupération d'une image par son numéro dans un tableau
+		/**
+		 * @param numImage
+		 */
 		public MonImage(int numImage) 
 		{
 				photoEntree=mesImages.recupererImage(numImage);
@@ -35,6 +38,9 @@ public class MonImage extends ImageIcon
 				photoSortie.setDescription(photoEntree.getDescription());
 		}
 	//Récupération d'une image par son lien
+		/**
+		 * @param chemin
+		 */
 		public MonImage(String chemin) 
 		{
 				
@@ -47,11 +53,19 @@ public class MonImage extends ImageIcon
 				photoSortie.setDescription(photoEntree.getDescription());
 		}
 	
+		/**
+		 * 
+		 */
 		public MonImage() 
 		{
 				
 		}
 
+	/**
+	 * @param path
+	 * @param width
+	 * @return
+	 */
 	public  ImageIcon transformationImage(String path, int width) 
 	{
 		ImageIcon ii = new ImageIcon(path);
@@ -60,6 +74,12 @@ public class MonImage extends ImageIcon
 		return new ImageIcon(ii.getImage().getScaledInstance((int)(ii.getIconWidth()*ratio), (int)(ii.getIconHeight()*ratio), Image.SCALE_DEFAULT));
 	}
 
+	/**
+	 * @param description
+	 * @param i
+	 * @param j
+	 * @return
+	 */
 	public  ImageIcon transformationImage(String description, int i, int j) {
 		ImageIcon ii = new ImageIcon(description);
 		System.out.println("MonImage je retourne votre description " +ii.getDescription());

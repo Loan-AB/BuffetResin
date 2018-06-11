@@ -36,6 +36,9 @@ public class MaFenetre extends JFrame
 	PnlImage pnlImage;
 	ArrayList<String> historiqueLayout;
 	
+	/**
+	 * 
+	 */
 	public MaFenetre()
 	{
 		creatioComposant();
@@ -47,6 +50,9 @@ public class MaFenetre extends JFrame
 		this.setLocationRelativeTo(null); //Doit etre à la fin pour être au centre de l'écran
 	}
 	
+	/**
+	 * 
+	 */
 	private void creationEvent() 
 	{
 		ActionListener lancerAppli = new ActionListener() 
@@ -74,6 +80,9 @@ public class MaFenetre extends JFrame
 		pnlAccueil.setListenerBtn(lancerAppli);
 	}
 
+	/**
+	 * 
+	 */
 	private void miseEnPlaceCouches() 
 	{
 		add(pnlHaut,BorderLayout.NORTH);
@@ -91,6 +100,9 @@ public class MaFenetre extends JFrame
 		couche.show(pnlCentre, "Accueil");
 	}
 
+	/**
+	 * 
+	 */
 	private void creatioComposant() 
 	{
 		coucheAutorisee.add("Accueil");coucheAutorisee.add("Galerie");coucheAutorisee.add("Calculatrice");coucheAutorisee.add("Contact");
@@ -119,6 +131,9 @@ public class MaFenetre extends JFrame
 		
 	}
 
+	/**
+	 * @param nom
+	 */
 	public void changeCouche(String nom) 
 	{
 		System.out.println(nom+ " a tenté de s'ouvrire");
@@ -136,6 +151,9 @@ public class MaFenetre extends JFrame
 		}
 	}
 	
+	/**
+	 * @param contact
+	 */
 	public void afficherContact(Contact contact) 
 	{
 		if (contact != null) 
@@ -149,32 +167,52 @@ public class MaFenetre extends JFrame
 		changeCouche("Formulaire");
 	}
 	
+	/**
+	 * @param contact
+	 */
 	public void ajouterContact(Contact contact) 
 	{
 		pnlContact.ajouterContact(contact);
 	}
 	
+	/**
+	 * @param contact
+	 */
 	public void supprimerContact(Contact contact) 
 	{
 		pnlContact.supprimerContact(contact);
 	}
 	
+	/**
+	 * @param icon
+	 * @param description
+	 * @param numImage
+	 */
 	public void afficherImage(ImageIcon icon , String description, int numImage) 
 	{
 		pnlImage.setImage(icon,description, numImage);
 		changeCouche("Image");
 	}
 	
+	/**
+	 * @param ii
+	 */
 	public void setImageFormulaireNouveauContact(ImageIcon ii) 
 	{
 		pnlFormulaire.setImage(ii);
 	}
 	
+	/**
+	 * @param b
+	 */
 	public void setbContact(boolean b) 
 	{
 		pnlImage.setbContactBouton(b);
 	}
 	
+	/**
+	 * @param numImage
+	 */
 	public void supprimerImage(int numImage) 
 	{
 		pnlGalerie.supprimerImage(numImage);

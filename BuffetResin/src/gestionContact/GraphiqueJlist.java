@@ -11,7 +11,10 @@ import javax.swing.ListCellRenderer;
 		@SuppressWarnings("serial")
 		class GraphiqueJlist extends DefaultListCellRenderer implements ListCellRenderer<Object>
 		{
-		  @Override
+		  /* (non-Javadoc)
+		 * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int, boolean, boolean)
+		 */
+		@Override
 		  public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 		     Contact photo = (Contact) value;
 		 

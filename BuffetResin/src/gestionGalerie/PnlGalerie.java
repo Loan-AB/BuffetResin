@@ -96,8 +96,10 @@ public class PnlGalerie extends PnlCentre {
 		bouttoAjoute.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser("C:\\Users\\loanb\\Pictures");//Permet d'ajouter un image dans la gallerie
+				JFileChooser fileChooser = new JFileChooser();//Permet d'ajouter un image dans la gallerie
 				
+				fileChooser.setCurrentDirectory(new File  
+						(System.getProperty("user.home") + System.getProperty("file.separator")+ "Pictures"));
 				fileChooser.addChoosableFileFilter(imagesFilter);	// Ajouter un choix du Filtre 
 				fileChooser.setAcceptAllFileFilterUsed(false);		// N'Accepte pas tout les types de fichier
 				
@@ -138,6 +140,9 @@ public class PnlGalerie extends PnlCentre {
 			}
 		});		
 	}
+	/**
+	 * @param numImage
+	 */
 	public void supprimerImage(int numImage) {
 		System.out.println(numImage);
 		panelPhoto.remove(bouttonPhoto[numImage]);

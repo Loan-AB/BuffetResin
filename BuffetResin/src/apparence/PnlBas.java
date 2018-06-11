@@ -16,6 +16,9 @@ public class PnlBas extends JPanel
 	private MonBouton btnHome;
 	private MonBouton btnBack;
 	
+	/**
+	 * 
+	 */
 	public PnlBas()
 	{
 		setSize(480, 70);
@@ -31,6 +34,10 @@ public class PnlBas extends JPanel
 		this.add(btnBack);
 		this.add(btnHome);
 	}
+	/**
+	 * @param home
+	 * @param back
+	 */
 	public void setListenerBtn(ActionListener home, ActionListener back) 
 	{
 		btnHome.addActionListener(home);

@@ -19,6 +19,11 @@ public class PnlAccueil extends PnlCentre
 	MaFenetre maman;
 	JLabel labelWallPaper = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
 
+	/**
+	 * @
+	 *
+	 *
+	 */
 	public PnlAccueil(MaFenetre maman) 
 	{
 		super("Acceuil");
@@ -35,6 +40,11 @@ public class PnlAccueil extends PnlCentre
 		
 	}
 
+	/**
+	 * @param lancerContact
+	 * @param lancerSecret
+	 * @param lancerGalerie
+	 */
 	public void setListenerBtn(ActionListener lancerContact, ActionListener lancerSecret,ActionListener lancerGalerie) 
 	{
 		btnContact.addActionListener(lancerContact);
@@ -42,6 +52,9 @@ public class PnlAccueil extends PnlCentre
 		btnCalculatrice.addActionListener(lancerSecret);
 	}
 	
+	/**
+	 * @param lancerAppli
+	 */
 	public void setListenerBtn(ActionListener lancerAppli) 
 	{
 		btnContact.addActionListener(lancerAppli);

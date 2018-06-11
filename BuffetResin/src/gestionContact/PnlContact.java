@@ -45,6 +45,9 @@ public class PnlContact  extends PnlCentre {
 	ArrayList<Contact> lContact;
 
 	
+	/**
+	 * @param maman
+	 */
 	public PnlContact(MaFenetre maman) 
 	{
 		
@@ -55,6 +58,9 @@ public class PnlContact  extends PnlCentre {
 		add(btnCreer);
 	
 	}
+	/**
+	 * 
+	 */
 	private void cretationDelaListe() {
 		//les éléments de la liste
 				lstContact = new JList<>(lm);
@@ -75,6 +81,9 @@ public class PnlContact  extends PnlCentre {
 				});
 		
 	}
+	/**
+	 * 
+	 */
 	private void creatioComposant() {
 		btnCreer = new MonBouton("Créer un nouveau contact");
 		lblTitre = new MonLabel();
@@ -97,6 +106,9 @@ public class PnlContact  extends PnlCentre {
 		}
 		
 	}
+	/**
+	 * 
+	 */
 	private void lireToutLesContact() {
 		File chemin = new File(".\\src\\fichierContact\\"); 
 		listerRepertoire(chemin);
@@ -108,6 +120,9 @@ public class PnlContact  extends PnlCentre {
 	 * 
 	 * Entrée : le chemin du repertoire ou contien les fichier
 	 * Sortie : aucune
+	 */
+	/**
+	 * @param repertoire
 	 */
 	public void listerRepertoire(File repertoire){
 		String [] listefichiers;
@@ -126,6 +141,9 @@ public class PnlContact  extends PnlCentre {
 	 * Les methodes suivante servent a la création et la lecture des fichiers
 	 * 
 	 */
+	/**
+	 * @param nomFichier
+	 */
 	public  void deSerializeObject(String nomFichier) 
 	{ 
 		try 
@@ -142,6 +160,9 @@ public class PnlContact  extends PnlCentre {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * @param contact
+	 */
 	public void ajouterContact(Contact contact) 
 	{
 		if(!lm.contains(contact)) 
@@ -158,6 +179,9 @@ public class PnlContact  extends PnlCentre {
 			lstContact.setSelectedIndex(-1);
 		}
 	}
+	/**
+	 * @param contact
+	 */
 	public void supprimerContact(Contact contact) 
 	{
 		if(lm.contains(contact)) 

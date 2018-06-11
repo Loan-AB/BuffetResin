@@ -23,6 +23,9 @@ public class PnlCentre extends JPanel
 	// Modele pour les appli
 	String nom;
 	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	  protected void paintComponent(Graphics g) 
 	{
@@ -31,6 +34,9 @@ public class PnlCentre extends JPanel
 	}
 	
     	
+	/**
+	 * @param nom
+	 */
 	public PnlCentre(String nom) 
 	{
 		setSize(480,200);

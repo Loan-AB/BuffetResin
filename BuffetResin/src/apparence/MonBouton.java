@@ -9,6 +9,9 @@ import gestionGalerie.MonImage;
 
 public class MonBouton extends JButton 
 {
+	/**
+	 * @param nom
+	 */
 	public MonBouton(String nom)
 	{
 		super(" ");
@@ -16,6 +19,10 @@ public class MonBouton extends JButton
 		this.setText(nom);
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
+	/**
+	 * @param nom
+	 * @param b
+	 */
 	public MonBouton(String nom, boolean b) 
 	{
 		super(" ");
@@ -25,6 +32,10 @@ public class MonBouton extends JButton
 		this.setBackground(Color.BLACK);
 	}
 	
+	/**
+	 * @param nom
+	 * @param path
+	 */
 	public MonBouton(String nom,String path )
 	{
 		super(" ");
@@ -37,6 +48,11 @@ public class MonBouton extends JButton
 		this.setIcon(m.transformationImage(path,70)); 
 		this.setBackground(Color.BLACK);
 	}
+	/**
+	 * @param nom
+	 * @param path
+	 * @param taille
+	 */
 	public MonBouton(String nom, String path, int taille) {
 		super(" ");
 		this.setBorderPainted(false); //pour ne pas voir les bordures
