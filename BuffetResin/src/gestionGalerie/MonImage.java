@@ -20,9 +20,11 @@ public class MonImage extends ImageIcon
 	ImageIcon photoEntree;
 	ImageIcon photoSortie;
 
-	// Récupération d'une image par son numéro dans un tableau
+	
 		/**
+		 * @author julien
 		 * @param numImage
+		 *  Récupération d'une image par son numéro dans un tableau et de lui donner une taille 
 		 */
 		public MonImage(int numImage) 
 		{
@@ -31,14 +33,16 @@ public class MonImage extends ImageIcon
 				//Transforme l'ImageIcon  en Image
 				Image image = photoEntree.getImage();
 				//la nouvelle image et mise à l'échelle
-				Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+				Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH);  
 				
 				//la newimg est transformée en  ImageIcon
 				photoSortie = new ImageIcon(newimg);
 				photoSortie.setDescription(photoEntree.getDescription());
 		}
-	//Récupération d'une image par son lien
+	
 		/**
+		 * @author julien
+		 * Récupération d'une image par son lien et de lui donne une taille 
 		 * @param chemin
 		 */
 		public MonImage(String chemin) 
@@ -47,14 +51,14 @@ public class MonImage extends ImageIcon
 				ImageIcon photoEntree = new ImageIcon(chemin);
 				
 				Image image = photoEntree.getImage(); // transform it 
-				Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+				Image newimg = image.getScaledInstance(130, 130,  java.awt.Image.SCALE_SMOOTH); // Donne une taille à l'image à l'échelle donnée 
 				
 				photoSortie = new ImageIcon(newimg);
 				photoSortie.setDescription(photoEntree.getDescription());
 		}
 	
 		/**
-		 * 
+		 * Constructeur de base
 		 */
 		public MonImage() 
 		{

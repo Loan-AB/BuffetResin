@@ -36,17 +36,22 @@ import apparence.MonLabel;
 import apparence.PnlCentre;
 import javafx.stage.FileChooser;
 
-//Classe du panel de la galerie photo
 
+
+/**
+ * Panel de la galerie photo
+ * 
+ *
+ */
 public class PnlGalerie extends PnlCentre {
 	protected MaFenetre maman;
 	protected MesImages mesImages = new MesImages();
-	protected JPanel panelPhoto = new JPanel();
-	protected JScrollPane scrollPane = new JScrollPane(panelPhoto);
-	protected BouttonPhoto []bouttonPhoto= new BouttonPhoto[mesImages.Size()];
-	protected ImageIcon monImage;
+	protected JPanel pnlPhoto = new JPanel();
+	protected JScrollPane scrollPane = new JScrollPane(pnlPhoto);
+	protected MonBoutonPhoto []bouttonPhoto= new MonBoutonPhoto[mesImages.Size()];
+	//protected ImageIcon monImage; ???
 	protected WrapLayout wrapLayout = new WrapLayout();
-	MonBouton bouttoAjoute = new MonBouton("ajouter");
+	MonBouton bouttonAjouter = new MonBouton("ajouter");
 	JFileChooser fileChooser;
 	JLabel lblTitre = new JLabel();
 	
@@ -56,6 +61,14 @@ public class PnlGalerie extends PnlCentre {
     FileFilter imagesFilter = new FileNameExtensionFilter("Images", "jpg", "jpeg", "png"); //Filtre que les images
     
     
+    
+	/**
+	 * @author Julien
+	 * @param maman
+	 */
+	/**
+	 * @param maman
+	 */
 	public PnlGalerie(MaFenetre maman) {
 		super("Galerie");
 		this.maman = maman;	
@@ -64,9 +77,9 @@ public class PnlGalerie extends PnlCentre {
 		add(lblTitre);
 		add(scrollPane,BorderLayout.CENTER);
 		
-		panelPhoto.setBackground(Color.LIGHT_GRAY);
+		pnlPhoto.setBackground(Color.LIGHT_GRAY);
 		
-		panelPhoto.setLayout(new WrapLayout(4));
+		pnlPhoto.setLayout(new WrapLayout(4));
 		scrollPane.getVerticalScrollBar().setUnitIncrement(20); //Permet de choisir la vitesse de la scrollbar Verticale
 		
 		scrollPane.setPreferredSize(new Dimension(450,580));
@@ -77,26 +90,27 @@ public class PnlGalerie extends PnlCentre {
 		
 		//Création du tableau de boutons avec des images
 		for(int i=0;i<mesImages.Size();i++) {
-			monImage = mesImages.recupererImage(i);
+			//monImage = mesImages.recupererImage(i);???
 			int p = i;
-			bouttonPhoto[i] = new BouttonPhoto(new MonImage(i));
-			panelPhoto.add(bouttonPhoto[i]);
+			bouttonPhoto[i] = new MonBoutonPhoto(new MonImage(i));
+			pnlPhoto.add(bouttonPhoto[i]);
 			bouttonPhoto[i].addMouseListener(new MouseAdapter()
 			 {
 				public void mouseClicked(MouseEvent e) {
-					ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
+					ImageIcon ii = ((MonBoutonPhoto)(e.getSource())).getImageIcon();
 					MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
 					maman.afficherImage(m.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),p);//loan 08.06.2018
 					
 				}
 			});
 		}
-		add(bouttoAjoute);
+		
+		add(bouttonAjouter);
 		//Action du bouton ajouter une photo
-		bouttoAjoute.addActionListener(new ActionListener() {
+		bouttonAjouter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JFileChooser fileChooser = new JFileChooser();//Permet d'ajouter un image dans la gallerie
+				JFileChooser fileChooser = new JFileChooser();//Permet d'ajouter une image dans la gallerie en ouvrant une fenêtre de choix de fichier
 				
 				fileChooser.setCurrentDirectory(new File  
 						(System.getProperty("user.home") + System.getProperty("file.separator")+ "Pictures"));
@@ -114,18 +128,18 @@ public class PnlGalerie extends PnlCentre {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
-				    BouttonPhoto btnP = new BouttonPhoto(new MonImage("./src/photoGallerie/" + fileToSave.getName()));
+				    MonBoutonPhoto btnP = new MonBoutonPhoto(new MonImage("./src/photoGallerie/" + fileToSave.getName()));
 				    
-				    panelPhoto.add(btnP);
+				    pnlPhoto.add(btnP);
 				    int numeroImage = bouttonPhoto.length;
-					BouttonPhoto[] temp = new BouttonPhoto[bouttonPhoto.length+1];
+					MonBoutonPhoto[] temp = new MonBoutonPhoto[bouttonPhoto.length+1];
 					for(int i =0;i<bouttonPhoto.length;i++) { temp[i] = bouttonPhoto[i];}
 					temp[bouttonPhoto.length] = btnP;
 					bouttonPhoto = temp;
 					btnP.addMouseListener(new MouseAdapter()
 					 {
 						public void mouseClicked(MouseEvent e) {
-							ImageIcon ii = ((BouttonPhoto)(e.getSource())).getImageIcon();
+							ImageIcon ii = ((MonBoutonPhoto)(e.getSource())).getImageIcon();
 							System.err.println(numeroImage);
 							MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
 							maman.afficherImage(m.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),numeroImage);//loan 08.06.2018
@@ -145,6 +159,6 @@ public class PnlGalerie extends PnlCentre {
 	 */
 	public void supprimerImage(int numImage) {
 		System.out.println(numImage);
-		panelPhoto.remove(bouttonPhoto[numImage]);
+		pnlPhoto.remove(bouttonPhoto[numImage]);
 	}
 }

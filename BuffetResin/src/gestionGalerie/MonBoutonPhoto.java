@@ -21,13 +21,14 @@ import javax.swing.border.Border;
 
 
 
-public class BouttonPhoto extends JButton{ 
+public class MonBoutonPhoto extends JButton{ 
 	ImageIcon ii;
 	
 	/**
+	 * @author julien
 	 * @param monImage
 	 */
-	public BouttonPhoto(MonImage monImage) {
+	public MonBoutonPhoto(MonImage monImage) {
 		
 		ii = monImage.photoSortie;
 		

@@ -8,7 +8,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-//Cette classe permet de récupérer les images dans un dossier 
+ 
 
 public class MesImages {
 	
@@ -18,11 +18,14 @@ public class MesImages {
 	File recherche;
 	
 	File listePhoto[];
-	//ImageIcon photoChoisie;
+	
 	
 	
 	/**
-	 * 
+	 * * @author julien
+	 * Cette classe permet de récupérer les images d'une adresse donnée
+	 * et de les ajouter à un tableau d'ImageIcon
+	 *
 	 */
 	public MesImages() {
 		// TODO Auto-generated constructor stub
@@ -49,18 +52,18 @@ public class MesImages {
 		}	
 	}
 	
-	//Retourne la photo choisie avec sa référence dans le tableau
+	
 	/**
 	 * @param num
-	 * @return
+	 * @return Retourne la photo choisie avec sa référence dans le tableau
 	 */
 	public ImageIcon recupererImage(int num) {
 		return tblPhotos[num];
 	}
 	
-	//Retourne la taille du tableau de photos
+	//
 	/**
-	 * @return
+	 * @return la taille du tableau de photos
 	 */
 	public int Size() {
 		return tblPhotos.length;

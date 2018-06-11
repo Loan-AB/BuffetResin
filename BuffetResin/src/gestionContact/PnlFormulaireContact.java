@@ -40,7 +40,7 @@ import apparence.MonLabel;
 import apparence.PnlCentre;
 import gestionCalculatrice.MonBoutonCalculatrice;
 import gestionContact.*;
-import gestionGalerie.BouttonPhoto;
+import gestionGalerie.MonBoutonPhoto;
 import gestionGalerie.MonImage;
 
 public class PnlFormulaireContact  extends PnlCentre 
