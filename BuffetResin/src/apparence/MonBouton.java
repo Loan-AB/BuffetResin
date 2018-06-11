@@ -53,7 +53,8 @@ public class MonBouton extends JButton
 	 * @param path
 	 * @param taille
 	 */
-	public MonBouton(String nom, String path, int taille) {
+	public MonBouton(String nom, String path, int taille) 
+	{
 		super(" ");
 		this.setBorderPainted(false); //pour ne pas voir les bordures
 		this.setActionCommand(nom);

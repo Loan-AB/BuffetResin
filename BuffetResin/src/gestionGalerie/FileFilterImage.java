@@ -7,7 +7,8 @@ import java.io.FileFilter;
 //Source : https://alvinalexander.com/blog/post/java/how-implement-java-filefilter-list-files-directory
 
 
-public class FileFilterImage implements FileFilter{
+public class FileFilterImage implements FileFilter
+{
 
 	private final String[] okFileExtensions = new String[] {"jpg", "jpeg","png"};// tableau de choix des extensions des fichiers
 

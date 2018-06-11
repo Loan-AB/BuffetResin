@@ -15,10 +15,10 @@ public class MonImage extends ImageIcon
 {
 	
 	
-	MesImages mesImages = new MesImages();
+	protected MesImages mesImages = new MesImages();
 	
-	ImageIcon photoEntree;
-	ImageIcon photoSortie;
+	protected ImageIcon photoEntree;
+	protected ImageIcon photoSortie;
 
 	
 		/**
@@ -84,7 +84,8 @@ public class MonImage extends ImageIcon
 	 * @param j
 	 * @return
 	 */
-	public  ImageIcon transformationImage(String description, int i, int j) {
+	public  ImageIcon transformationImage(String description, int i, int j) 
+	{
 		ImageIcon ii = new ImageIcon(description);
 		System.out.println("MonImage je retourne votre description " +ii.getDescription());
 		return new ImageIcon(ii.getImage().getScaledInstance(i, j, Image.SCALE_DEFAULT));

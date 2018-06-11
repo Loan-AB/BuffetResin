@@ -32,7 +32,8 @@ import apparence.MonLabel;
 import apparence.PnlCentre;
 import gestionContact .*;
 
-public class PnlContact  extends PnlCentre {
+public class PnlContact  extends PnlCentre 
+{
 
 	
 	
@@ -61,7 +62,8 @@ public class PnlContact  extends PnlCentre {
 	/**
 	 * 
 	 */
-	private void cretationDelaListe() {
+	private void cretationDelaListe() 
+	{
 		//les éléments de la liste
 				lstContact = new JList<>(lm);
 				lstContact.setCellRenderer(new GraphiqueJlist());
@@ -73,7 +75,8 @@ public class PnlContact  extends PnlCentre {
 				
 				scrollPane.setBackground(Color.WHITE);
 				add(scrollPane,BorderLayout.CENTER);
-				lstContact.addMouseListener(new MouseAdapter() {
+				lstContact.addMouseListener(new MouseAdapter() 
+				{
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						maman.afficherContact(lstContact.getSelectedValue());
@@ -84,7 +87,8 @@ public class PnlContact  extends PnlCentre {
 	/**
 	 * 
 	 */
-	private void creatioComposant() {
+	private void creatioComposant() 
+	{
 		btnCreer = new MonBouton("Créer un nouveau contact");
 		lblTitre = new MonLabel();
 		lblTitre.setText("Contact");
@@ -92,16 +96,19 @@ public class PnlContact  extends PnlCentre {
 		System.out.println("Voici la liste des contacts au début du programme : ");
 		lireToutLesContact();
 		add(lblTitre);
-		btnCreer.addActionListener(new ActionListener() {
+		btnCreer.addActionListener(new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) 
+			{
 				maman.afficherContact(null); //pour que l'image par defaut apparait 
 				maman.changeCouche("Formulaire");
 			}
 		});
 		//Affichage de la Jlist avec les images
 		lm = new DefaultListModel<Contact>();
-		for (Contact contact : lContact) {
+		for (Contact contact : lContact)
+		{
 			lm.addElement(contact);
 		}
 		
@@ -109,7 +116,8 @@ public class PnlContact  extends PnlCentre {
 	/**
 	 * 
 	 */
-	private void lireToutLesContact() {
+	private void lireToutLesContact() 
+	{
 		File chemin = new File(".\\src\\fichierContact\\"); 
 		listerRepertoire(chemin);
 	}
@@ -124,7 +132,8 @@ public class PnlContact  extends PnlCentre {
 	/**
 	 * @param repertoire
 	 */
-	public void listerRepertoire(File repertoire){
+	public void listerRepertoire(File repertoire)
+	{
 		String [] listefichiers;
 		int i;
 		listefichiers=repertoire.list();
@@ -153,10 +162,12 @@ public class PnlContact  extends PnlCentre {
 			Contact cs = (Contact) ois.readObject();
 			lContact.add(cs);
 		}
-		catch (java.io.IOException e) {
+		catch (java.io.IOException e) 
+		{
 			e.printStackTrace();
 		}
-		catch (ClassNotFoundException e) {
+		catch (ClassNotFoundException e) 
+		{
 			e.printStackTrace();
 		}
 	}

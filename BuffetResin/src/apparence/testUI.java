@@ -1,6 +1,7 @@
 package apparence;
 
-public class testUI {
+public class testUI 
+{
 
 	/**
 	 * @param args

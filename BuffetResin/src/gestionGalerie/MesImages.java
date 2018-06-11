@@ -10,7 +10,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
  
 
-public class MesImages {
+public class MesImages 
+{
 	
 	
 	private ImageIcon tblPhotos[];
@@ -27,7 +28,8 @@ public class MesImages {
 	 * et de les ajouter à un tableau d'ImageIcon
 	 *
 	 */
-	public MesImages() {
+	public MesImages() 
+	{
 		// TODO Auto-generated constructor stub
 		
 		//récupération des fichier dans le dossier donné
@@ -57,7 +59,8 @@ public class MesImages {
 	 * @param num
 	 * @return Retourne la photo choisie avec sa référence dans le tableau
 	 */
-	public ImageIcon recupererImage(int num) {
+	public ImageIcon recupererImage(int num) 
+	{
 		return tblPhotos[num];
 	}
 	
@@ -65,7 +68,8 @@ public class MesImages {
 	/**
 	 * @return la taille du tableau de photos
 	 */
-	public int Size() {
+	public int Size() 
+	{
 		return tblPhotos.length;
 	}
 

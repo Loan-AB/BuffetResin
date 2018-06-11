@@ -25,14 +25,15 @@ import apparence.PnlCentre;
 
 //Panel ou est affiché l'image seul
 
-public class PnlImage extends PnlCentre implements ImageObserver {
-	JLabel lblImage;
-	ImageIcon monImageIcon;
-	MaFenetre maman;
-	MonBouton btnDelete;
-	MesImages imagesListe =  new MesImages();
-	MonBouton btnValiderPhotoContact;
-	int numImage;
+public class PnlImage extends PnlCentre implements ImageObserver 
+{
+	protected JLabel lblImage;
+	protected ImageIcon monImageIcon;
+	protected MaFenetre maman;
+	protected MonBouton btnDelete;
+	protected MesImages imagesListe =  new MesImages();
+	protected MonBouton btnValiderPhotoContact;
+	protected int numImage;
 
 	
 	/**
@@ -101,7 +102,8 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 	/**
 	 * @param file
 	 */
-	private void delete(String file) {
+	private void delete(String file)
+	{
     		File fichier = new File(file);
     		fichier.delete();
     		maman.changeCouche("Gallerie");
@@ -111,7 +113,8 @@ public class PnlImage extends PnlCentre implements ImageObserver {
 	/**
 	 * @param bContact
 	 */
-	public void setbContactBouton(boolean bContact) { //loan
+	public void setbContactBouton(boolean bContact) 
+	{ //loan
 		btnValiderPhotoContact.setVisible(bContact);
 		btnDelete.setVisible(!bContact);
 	}

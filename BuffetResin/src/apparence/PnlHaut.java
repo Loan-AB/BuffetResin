@@ -16,7 +16,8 @@ import javax.swing.border.LineBorder;
 
 import gestionGalerie.MonImage;
 
-public class PnlHaut extends JPanel{
+public class PnlHaut extends JPanel
+{
 	private java.util.Date time;
 	private MonLabel lblTime;
 	private	DateFormat df;

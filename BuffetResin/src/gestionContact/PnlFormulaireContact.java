@@ -74,30 +74,35 @@ public class PnlFormulaireContact  extends PnlCentre
 	/**
  * @param maman
  */
-public PnlFormulaireContact(MaFenetre maman) 
-{
-		super("Formulaire");
-		this.maman = maman;
-	
-		creatioComposant();
-		afficherComposant();
-		creationEvenement();
-		definirModification(false);
+	public PnlFormulaireContact(MaFenetre maman) 
+	{
+			super("Formulaire");
+			this.maman = maman;
+		
+			creatioComposant();
+			afficherComposant();
+			creationEvenement();
+			definirModification(false);
 	}
 
 	/**
 	 * 
 	 */
-	private void creationEvenement() {
-		this.addComponentListener(new ComponentAdapter() {
+	private void creationEvenement() 
+	{
+		this.addComponentListener(new ComponentAdapter() 
+		{
 			@Override
-			public void componentShown(ComponentEvent arg0) {
+			public void componentShown(ComponentEvent arg0) 
+			{
 				bModifier=true;
 			}
 			
 			@Override
-			public void componentHidden(ComponentEvent arg0) {
-				if(bModifier) {
+			public void componentHidden(ComponentEvent arg0) 
+			{
+				if(bModifier) 
+				{
 					dechargement();
 					definirModification(false);
 				}
@@ -139,36 +144,46 @@ public PnlFormulaireContact(MaFenetre maman)
 			}
 		});
 		
-		txtNumeroMobile.addKeyListener(new KeyAdapter() {
+		txtNumeroMobile.addKeyListener(new KeyAdapter() 
+		{
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyReleased(KeyEvent e) 
+			{
 				// TODO Auto-generated method stub
-				if(!(e.getKeyChar() < 58 && e.getKeyChar() > 47)) {
+				if(!(e.getKeyChar() < 58 && e.getKeyChar() > 47)) 
+				{
 					txtNumeroMobile.setText(txtNumeroMobile.getText().replaceAll(e.getKeyChar()+"", ""));
 					//e.setKeyCode(KeyEvent.VK_BACK_SPACE);
 				}				
 			}
 		});
 		
-		txtNumeroTel.addKeyListener(new KeyAdapter() {
+		txtNumeroTel.addKeyListener(new KeyAdapter() 
+		{
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyReleased(KeyEvent e) 
+			{
 				// TODO Auto-generated method stub
-				if(!(e.getKeyChar() < 58 && e.getKeyChar() > 47)) {
+				if(!(e.getKeyChar() < 58 && e.getKeyChar() > 47)) 
+				{
 					txtNumeroTel.setText(txtNumeroTel.getText().replaceAll(e.getKeyChar()+"", ""));
 					//e.setKeyCode(KeyEvent.VK_BACK_SPACE);
 				}				
 			}
 		});
 		
-		btnModifier.addActionListener(new ActionListener() {
+		btnModifier.addActionListener(new ActionListener() 
+		{
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				if(btnModifier.getText().equals("Modifier")) {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				if(btnModifier.getText().equals("Modifier")) 
+				{
 					definirModification(true);
 				}
-				else {
+				else 
+				{
 					boolean probleme = false;
 					java.util.regex.Pattern p = java.util.regex.Pattern.compile("^[\\p{L}\\p{N}\\._%+-]+@[\\p{L}\\p{N}\\.\\-]+\\.[\\p{L}]{2,}$"); //voir Regex
 					if(!p.matcher(txtEmail.getText()).matches())//mail
@@ -195,7 +210,8 @@ public PnlFormulaireContact(MaFenetre maman)
 					else {
 						lblPrenom.setForeground(Color.WHITE);
 					}
-					if(!probleme) {
+					if(!probleme) 
+					{
 						definirModification(false);
 						if(contact == null) //si on crée un nouveau contact	
 						{ 	
@@ -227,11 +243,12 @@ public PnlFormulaireContact(MaFenetre maman)
 
 
 		});
-}
+	}
 	/**
 	 * 
 	 */
-	private void afficherComposant() {
+	private void afficherComposant() 
+	{
 		add(btnModifier);
 		add(lblImage);
 		lblNom = new MonLabel();
@@ -278,7 +295,8 @@ public PnlFormulaireContact(MaFenetre maman)
 	/**
 	 * 
 	 */
-	private void creatioComposant() {
+	private void creatioComposant() 
+	{
 		btnAnnuler = new MonBouton("Annuler");
 		btnSupprimer = new MonBouton("Suprimmer");
 		btnChoixImage = new MonBouton("ChoixImage");
@@ -295,11 +313,12 @@ public PnlFormulaireContact(MaFenetre maman)
 		btnModifier = new MonBouton("Modifier");
 		lblImage.setPreferredSize(new Dimension(480,200));
 	
-}
+	}
 	/**
 	 * @param b
 	 */
-	private void definirModification(boolean b) {
+	private void definirModification(boolean b) 
+	{
 	
 		btnAnnuler.setVisible(b);
 		btnChoixImage.setVisible(b);
