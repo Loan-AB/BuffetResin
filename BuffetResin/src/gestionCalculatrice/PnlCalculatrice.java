@@ -17,7 +17,6 @@ import apparence.PnlCentre;
 @SuppressWarnings("serial")
 public class PnlCalculatrice extends PnlCentre 
 {
-	
 	MaFenetre maman;
 	MonBoutonCalculatrice [] tabBouton;
 	MonLabel lblCalcul;
@@ -30,6 +29,7 @@ public class PnlCalculatrice extends PnlCentre
 	double sens;
 	
 	/**
+	 * constructeur du pnlCalculatrice
 	 * @param maman
 	 */
 	public PnlCalculatrice(MaFenetre maman) 
@@ -46,8 +46,9 @@ public class PnlCalculatrice extends PnlCentre
 	    this.add(chiffreStockers, BorderLayout.CENTER);
 	    this.add(operateur, BorderLayout.EAST);
 	}
-	/**
-	 * 
+	/**ajoutContenu
+	 * permet l'ajout du contenu des panels 
+	 * @author loanb
 	 */
 	private void ajoutContenu() 
 	{ 
@@ -74,8 +75,10 @@ public class PnlCalculatrice extends PnlCentre
 	    panEcran.add(lblCalcul);
 	    panEcran.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
-	/**
-	 * 
+	/**creationPanels
+	 * creation des panels qui contiendra les élémewnt de la caluclatrice 
+	 * afin d'avoir un meilleure design
+	 * @author loanb
 	 */
 	private void creationPanels() 
 	{
@@ -92,7 +95,9 @@ public class PnlCalculatrice extends PnlCentre
 	}
 	
 	/**
-	 * 
+	 * configurerLabel
+	 * configuration du label ou tout sera visible pour l'utilisateur
+	 * @author loanb
 	 */
 	private void configurerLabel() {
 
@@ -107,7 +112,10 @@ public class PnlCalculatrice extends PnlCentre
 	}
 	
 	/**
+	 * doOper
+	 * definir l'action par rapport au bouton selectionner 
 	 * @param s
+	 * @author loanb
 	 */
 	public void doOper(Symbole s) 
 	{
@@ -131,7 +139,8 @@ public class PnlCalculatrice extends PnlCentre
 						chiffreStocker = chiffreAfficher =  SigEffacer.effacer(chiffreStocker,chiffreAfficher);
 //						lblCalcul.setText(Double.toString(chiffreAfficher));
 						break;
-					case "<=": //questions :(
+					case "<=": //ne fonctionne pour une raison inconnue
+						//alors j'écrit ici ce qui est écrit dans SigRetour.retour(xxx)
 //						SigRetour.retour(lblCalcul.toString());
 						
 		
@@ -151,7 +160,8 @@ public class PnlCalculatrice extends PnlCentre
 							chiffreAfficher = 0.0; 
 							//ben c'est plu petit quoi donc le chiffre passe a zero
 						}
-						// merci https://www.youtube.com/watch?v=Ym9_qF4iGHg
+						// le code pour le bouton retour a etait pris sur le site :
+						// https://www.youtube.com/watch?v=Ym9_qF4iGHg
 						// pour la solution est l'explication du code
 						break;
 				}
@@ -167,10 +177,13 @@ public class PnlCalculatrice extends PnlCentre
 		}
 	}
 	/**
+	 * 
 	 * @param chiffreStocker
+	 * @author loanb
 	 */
-	public void setchiffreStocker1 (int chiffreStocker)
+	public void setchiffreStocker (int chiffreStocker)
 	{
 		System.out.println(chiffreStocker);
+		this.chiffreStocker = chiffreStocker;
 	}
 }   

@@ -1,7 +1,8 @@
 package gestionCalculatrice;
 
 /**
- * @author Julien
+ * crée une class pour les symboles
+ * @author loanb
  *
  */
 public abstract class Symbole {

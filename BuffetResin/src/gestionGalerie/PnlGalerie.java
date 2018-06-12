@@ -41,21 +41,22 @@ public class PnlGalerie extends PnlCentre
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	protected MaFenetre maman;
-	protected MesImages mesImages = new MesImages();
-	protected JPanel pnlPhoto = new JPanel();
-	protected JScrollPane scrollPane = new JScrollPane(pnlPhoto);
-	protected MonBoutonPhoto []bouttonPhoto= new MonBoutonPhoto[mesImages.Size()];
+	@SuppressWarnings("unused")
+	private  MaFenetre maman;
+	private  MesImages mesImages = new MesImages();
+	private  JPanel pnlPhoto = new JPanel();
+	private  JScrollPane scrollPane = new JScrollPane(pnlPhoto);
+	private  MonBoutonPhoto []bouttonPhoto= new MonBoutonPhoto[mesImages.Size()];
 	//protected ImageIcon monImage; ???
-	protected WrapLayout wrapLayout = new WrapLayout();
-	protected MonBouton bouttonAjouter = new MonBouton("ajouter");
-	protected JFileChooser fileChooser;
-	protected JLabel lblTitre = new JLabel();
+	protected  WrapLayout wrapLayout = new WrapLayout();
+	private  MonBouton bouttonAjouter = new MonBouton("ajouter");
+	protected    JFileChooser fileChooser;
+	private  JLabel lblTitre = new JLabel();
 	
-	protected JTextField sourceFileTextField;
-	protected JTextField destinationFileTextField;
+	protected    JTextField sourceFileTextField;
+	protected    JTextField destinationFileTextField;
     
-	protected FileFilter imagesFilter = new FileNameExtensionFilter("Images", "jpg", "jpeg", "png"); //Filtre que les images
+	private  FileFilter imagesFilter = new FileNameExtensionFilter("Images", "jpg", "jpeg", "png"); //Filtre que les images
     
     
     
@@ -105,6 +106,12 @@ public class PnlGalerie extends PnlCentre
 			 });
 			}
 		
+		/*
+		 * c
+		 * celui-ci permet l'ajout d'une images 
+		 * 
+		 * @auhor loanb and @author julien
+		 */
 		add(bouttonAjouter);
 		//Action du bouton ajouter une photo
 		bouttonAjouter.addActionListener(new ActionListener() 
@@ -124,7 +131,7 @@ public class PnlGalerie extends PnlCentre
 				if (userSelection == JFileChooser.APPROVE_OPTION) 
 				{
 				    File fileToSave = fileChooser.getSelectedFile();
-				    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+//				    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
 				    try
 				    {
 				    	//Donne le lien pour enregistrer le fichier voulu
@@ -148,7 +155,7 @@ public class PnlGalerie extends PnlCentre
 							public void mouseClicked(MouseEvent e) 
 							{
 								ImageIcon ii = ((MonBoutonPhoto)(e.getSource())).getImageIcon();
-								System.err.println(numeroImage);
+//								System.err.println(numeroImage);
 								MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
 								maman.afficherImage(m.transformationImage(ii.getDescription(),scrollPane.getWidth()),ii.getDescription(),numeroImage);//loan 08.06.2018
 								
@@ -163,11 +170,13 @@ public class PnlGalerie extends PnlCentre
 		});		
 	}
 	/**
+	 * permet la supression de l'image dans la galleire et dans le dossier
 	 * @param numImage
+	 * @author loanb
 	 */
 	public void supprimerImage(int numImage) 
 	{
-		System.out.println(numImage);
+//		System.out.println(numImage);
 		pnlPhoto.remove(bouttonPhoto[numImage]);
 	}
 }

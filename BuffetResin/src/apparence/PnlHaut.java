@@ -19,6 +19,9 @@ public class PnlHaut extends JPanel
 {
 	/**
 	 * 
+	 * Panel qui contient tout ce qui est dans le haut du smartphone
+	 * il ne changera jamais
+	 * @author loanb
 	 */
 	private static final long serialVersionUID = 1L;
 	private java.util.Date time;
@@ -45,6 +48,10 @@ public class PnlHaut extends JPanel
 		lblTime.setForeground(Color.BLACK);
 		this.add(BtnFermer);
 		
+		/*
+		 * 
+		 * @author resin
+		 */
 		BtnFermer.addActionListener(new ActionListener() 
 		{
 			@Override

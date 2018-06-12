@@ -9,10 +9,10 @@ import gestionGalerie.MonImage;
 
 public class PnlBas extends JPanel 
 {
-// Panel qui contient les 3 bouttons de base
-	
 	/**
-	 * 
+	 * Panel qui contient tout ce qui est dans le bas du smartphone
+	 * il ne changera jamais
+	 * @author loanb
 	 */
 	private static final long serialVersionUID = 1L;
 	private MonBouton btnHome;
@@ -37,6 +37,7 @@ public class PnlBas extends JPanel
 		this.add(btnHome);
 	}
 	/**
+	 * Ajouter les actions voulue au bouton
 	 * @param home
 	 * @param back
 	 */

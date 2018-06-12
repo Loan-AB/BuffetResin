@@ -17,6 +17,11 @@ import gestionCalculatrice.PnlCalculatrice;
 import gestionContact.*;
 import gestionGalerie.*;
 
+/**
+ * @author loanb
+ * C'est la fenetre ou tout s'affiche
+ * tout se contruit ici
+ */
 @SuppressWarnings("serial")
 public class MaFenetre extends JFrame 
 {
@@ -99,7 +104,10 @@ public class MaFenetre extends JFrame
 	}
 
 	/**
-	 * 
+	 * tout les composant nécessaire a l'affichage de la frame de base
+	 * on crée tout les panels de notre smartphone
+	 * et on gère l'historique grâve a un historiquelayout
+	 * @author loanb
 	 */
 	private void creatioComposant() 
 	{
@@ -118,10 +126,12 @@ public class MaFenetre extends JFrame
 		pnlFormulaire = new PnlFormulaireContact(this);
 		historiqueLayout = new ArrayList<>();
 		
+		//nos 3 panels de bases
 		pnlBas.setLayout(new FlowLayout());
 		pnlCentre.setLayout(new GridLayout());
 		pnlHaut.setLayout(new FlowLayout());
 		
+		//Definition de la taille de la frae de base
 		this.setSize(460, 760);
 		this.setUndecorated(true);//Enleve le cadre de la frame 
 		setBackground(new Color(1.0f, 1.0f, 1.0f, 0.0f));
@@ -130,19 +140,25 @@ public class MaFenetre extends JFrame
 	}
 
 	/**
+	 * ChangeCouche(nom) 
+	 * elle permet la gestion de l'historique, lors d'un changement de couche , on ajoute 
+	 * celle-ci a l'historique si elle est une couche autorisée
+	 * @author loanb
 	 * @param nom
 	 */
+	
 	public void changeCouche(String nom) 
 	{
-		System.out.println(nom+ " a tenté de s'ouvrire");
-		if(!(historiqueLayout.get(historiqueLayout.size()-1).equals(nom))) 
+		System.out.println(nom+ " a tenté de s'ouvrir");
+		if(!(historiqueLayout.get(historiqueLayout.size()-1).equals(nom))) //si pas 2 fois de suite la même couche
 		{
 			
 			if(coucheAutorisee.contains(historiqueLayout.get(historiqueLayout.size()-1))) 
 			{
 				historiqueLayout.add(nom);
 			}
-			else {
+			else 
+			{
 				historiqueLayout.set(historiqueLayout.size()-1, nom);
 			}
 			couche.show(pnlCentre, nom);
@@ -150,7 +166,11 @@ public class MaFenetre extends JFrame
 	}
 	
 	/**
+	 * afficherContact
+	 * peremet le contrôle des contact , si le contact exist ou si c'est un nouveau contact que l'on crée
+	 * si c'est un nouveau contact on décharge le pnlFormulaire des données inutiles.
 	 * @param contact
+	 * @author loanb
 	 */
 	public void afficherContact(Contact contact) 
 	{
@@ -166,7 +186,10 @@ public class MaFenetre extends JFrame
 	}
 	
 	/**
+	 * ajouterContact
+	 * permet d'ajouter un nouveau contact et de l'enregistrer
 	 * @param contact
+	 * @author loanb
 	 */
 	public void ajouterContact(Contact contact) 
 	{
@@ -174,7 +197,10 @@ public class MaFenetre extends JFrame
 	}
 	
 	/**
+	 * supprimerContact 
+	 * supprimer le fichier du contact que nous demandons
 	 * @param contact
+	 * @author loanb
 	 */
 	public void supprimerContact(Contact contact) 
 	{
@@ -182,6 +208,8 @@ public class MaFenetre extends JFrame
 	}
 	
 	/**
+	 * AfficherImage 
+	 * Permet d'affecter la nouvelle image au contact et d'afficher la bonne image dans le formulaire
 	 * @param icon
 	 * @param description
 	 * @param numImage
@@ -193,7 +221,10 @@ public class MaFenetre extends JFrame
 	}
 	
 	/**
+	 * SetImageFormulaireNouveauContact
+	 * permet de definir la nouvelle image du contact crée
 	 * @param ii
+	 *  permet d'ajouter un nouveau contact et de l'enregistrer
 	 */
 	public void setImageFormulaireNouveauContact(ImageIcon ii) 
 	{
@@ -201,7 +232,11 @@ public class MaFenetre extends JFrame
 	}
 	
 	/**
+	 * setbContact
+	 * permet le choix si on affiche ou non le bouton supprimer ou valider
+	 * dans la gallerie
 	 * @param b
+	 *  permet d'ajouter un nouveau contact et de l'enregistrer
 	 */
 	public void setbContact(boolean b) 
 	{
@@ -209,12 +244,24 @@ public class MaFenetre extends JFrame
 	}
 	
 	/**
+	 * supprimerImage
+	 * permet la supression de l'image dans la gallerie
 	 * @param numImage
+	 * @author loanb
 	 */
 	public void supprimerImage(int numImage) 
 	{
 		pnlGalerie.supprimerImage(numImage);
 	}
+	
+	/**
+	 * definirModificationFormulaire
+	 * permet de definit si le formulaire et en mode modification
+	 * ou en mode vision.
+	 * suivant le boolean , le pnlFormulaire affiche ou non les bouton de la modifications
+	 * @param b
+	 * @author loanb
+	 */
 
 	public void definirModificationFormulaire(boolean b) {
 		pnlFormulaire.definirModification(b);

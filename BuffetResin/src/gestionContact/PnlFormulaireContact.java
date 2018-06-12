@@ -24,9 +24,6 @@ import gestionGalerie.MonImage;
 
 public class PnlFormulaireContact  extends PnlCentre 
 { 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private MonBouton btnAnnuler;
 	private MonBouton btnSupprimer;
@@ -54,7 +51,9 @@ public class PnlFormulaireContact  extends PnlCentre
 	private MonLabel lblTelMobile;
 	private MonLabel lblTelMaison;
 	/**
+ * le constructeur du formaulaire
  * @param maman
+ * @author loanb
  */
 	public PnlFormulaireContact(MaFenetre maman) 
 	{
@@ -68,10 +67,14 @@ public class PnlFormulaireContact  extends PnlCentre
 	}
 
 	/**
-	 * 
+	 * creationEvenement
+	 * ici tout les evenements sont crée dasn cette methode
+	 * par rapport a un bouton
+	 * @author loanb
 	 */
 	private void creationEvenement() 
 	{
+		
 		this.addComponentListener(new ComponentAdapter() 
 		{
 			@Override
@@ -90,7 +93,6 @@ public class PnlFormulaireContact  extends PnlCentre
 				}
 			}
 		});
-		
 		
 		btnAnnuler.addActionListener(new ActionListener() 
 		{
@@ -194,28 +196,27 @@ public class PnlFormulaireContact  extends PnlCentre
 					if(!probleme) 
 					{
 						definirModification(false);
-						
-						
 						if(contact == null) //si on crée un nouveau contact	
 						{ 	
-							
 							nouveauContact();
 						}
 						else 
 						{
 							modifierContact();
-							
 						}
-						
 					}
 				}
 			}
-
-
 		});
 	}
-	protected void modifierContact() {
-		
+	
+	/*
+	 * modifierContact
+	 * modifie les donnée de la classe contact par rapport au nouvelle donnée du formulaire
+	 * @author loanb
+	 */
+	protected void modifierContact() 
+	{
 		contact.setNom(txtNom.getText());
 		contact.setPrenom(txtPrenom.getText());
 		contact.setNumeroTel(txtNumeroTel.getText());
@@ -227,10 +228,16 @@ public class PnlFormulaireContact  extends PnlCentre
 		contact.setPhotoDescription(iiformulaire.getDescription());
 		contact.enregistrer();
 		maman.ajouterContact(contact);
-		
 	}
 
-	protected void nouveauContact() {
+	/*
+	 * nouveauContact
+	 * permet de crée un nouveau contact avec les donnée du formaulaire
+	 * 
+	 * @author loanb
+	 */
+	protected void nouveauContact() 
+	{
 		contact = new Contact(txtNom.getText(), txtPrenom.getText(), txtNumeroTel.getText(),
 				txtNumeroMobile.getText(), txtEmail.getText(), iiformulaire.getDescription().toString(), iiformulaire);
 		contact.enregistrer();
@@ -238,7 +245,9 @@ public class PnlFormulaireContact  extends PnlCentre
 	}
 
 	/**
-	 * 
+	 * afficherComposant
+	 * affiche les composant
+	 * @author loanb
 	 */
 	private void afficherComposant() 
 	{
@@ -278,14 +287,15 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtEmail.setPreferredSize(new Dimension(200, 20));
 		add(lblMail);
 		add(txtEmail);
-		System.out.println("cc");
 		add(btnAnnuler); 
 		add(btnSupprimer);
 		add(btnChoixImage);
 		bModifier = true;
 }
 	/**
-	 * 
+	 * creatioComposant
+	 * permet de crée tout les composants
+	 * @author loanb
 	 */
 	private void creatioComposant() 
 	{
@@ -307,7 +317,10 @@ public class PnlFormulaireContact  extends PnlCentre
 	
 	}
 	/**
+	 * definirModification
+	 * defini si le dormaulaire est en mode modification et valider
 	 * @param b
+	 * @author loanb
 	 */
 	public void definirModification(boolean b) 
 	{
@@ -330,7 +343,9 @@ public class PnlFormulaireContact  extends PnlCentre
 		}
 	}
 	/**
-	 * 
+	 * dechargement
+	 * cette ,ethode decharge tout les composant du formulaire
+	 * @author loanb
 	 */
 	public void dechargement() 
 	{
@@ -348,8 +363,13 @@ public class PnlFormulaireContact  extends PnlCentre
 		lblMail.setForeground(Color.white);
 		lblPrenom.setForeground(Color.white);
 	}
+	
 	/**
+	 * setContact
+	 * methode qui permet de charger les informations du contact dans les JtextAreas par rapport au information
+	 * de l'objet cotact
 	 * @param contact
+	 * @author loanb
 	 */
 	public void setContact(Contact contact) 
 	{
@@ -378,22 +398,29 @@ public class PnlFormulaireContact  extends PnlCentre
 		}
 	}
 	
+	/*
+	 * miseEnPlaceImageDefaut
+	 * cette methode permet la mise en place de l'image par defaut 
+	 * avec la bonne taille , mais également dans les données des contacts
+	 * @author loanb
+	 */
 	private void miseEnPlaceImageDefaut() 
 	{
 		//on indique la nouvelle image
 		System.out.println("salut je suis vide");
 		setImage(new ImageIcon (iiDefaut.getDescription()));
-		
 		//redefinition de la nouvelle image dans contact + sauvegarde
 		MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
 		contact.setPhoto(m.transformationImage(iiDefaut.getDescription(), 120, 120));
 		contact.setPhotoDescription(iiDefaut.getDescription());
 		modifierContact(); //enregistre
-		
 	}
 
 	/**
+	 * setImage
+	 * permet de mettre la nouvelle image , dans la bonne taille
 	 * @param laNouvelleimage
+	 * @author loanb
 	 */
 	public void setImage(ImageIcon laNouvelleimage) 
 	{
@@ -406,20 +433,23 @@ public class PnlFormulaireContact  extends PnlCentre
 	}
 	
 	/**
+	 * setlblImage
+	 * ceette methode sert a mettre a jour l'image de contact dans le formulaire
 	 * @param MaFutureIcone
+	 * @author loanb
 	 */
 	
 	private void setlblImage (ImageIcon MaFutureIcone) //affichage du label avec la bonne image
 	{
 		MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
-		System.out.println(MaFutureIcone.getDescription() + " icone ?");
+//		System.out.println(MaFutureIcone.getDescription() + " icone ?");
 		
 		lblImage.setIcon(m.transformationImage(MaFutureIcone.getDescription(), lblImage.getWidth()));
 		if (lblImage.getIcon().getIconHeight() < 0) //si une icone a sa ahauteur negative c'est quelle n'est pas chargée correctement 
 		{
 			miseEnPlaceImageDefaut(); //recommance le processus de contrôle 
 		}
-		System.out.println(lblImage.getIcon().getIconHeight());
+//		System.out.println(lblImage.getIcon().getIconHeight());
 		
 	}
 }

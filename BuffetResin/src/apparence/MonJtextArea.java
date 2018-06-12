@@ -8,14 +8,14 @@ import javax.swing.JTextArea;
 
 public class MonJtextArea extends JTextArea 
 {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	String textHolder;
+	
 	/**
+	 * MonJtextArea 
+	 * constructeur de tout les JTextArea 
 	 * @param textHolder
+	 * @author loanb
 	 */
 	public MonJtextArea(String textHolder) 
 	{
@@ -23,6 +23,8 @@ public class MonJtextArea extends JTextArea
 		this.textHolder = textHolder;
 		setForeground(Color.darkGray);
 		setText(textHolder);
+		
+		//ces lignes de codes servent a definir ce qui afficher par defaut lorsque le contenu est vide
 		this.addFocusListener(new FocusListener() 
 		{
 			@Override
@@ -34,7 +36,7 @@ public class MonJtextArea extends JTextArea
 					txt(textHolder);
 				}
 			}
-			
+			//ici c'est lorsque l'utilisateur écrit , le texte devient noir
 			@Override
 			public void focusGained(FocusEvent arg0) 
 			{
@@ -49,17 +51,12 @@ public class MonJtextArea extends JTextArea
 		
 	}
 	
-	/**
-	 * @return
-	 */
+
 	private String txt() 
 	{
 		return super.getText();
 	}
 	
-	/**
-	 * @param s
-	 */
 	private void txt(String s) 
 	{
 		super.setText(s);

@@ -28,6 +28,8 @@ public class Contact implements Serializable, Comparable<Object>
 	
 	//si l'on précise le chemin de l'image a part. c'est utiliser pour le désézise
 	/**
+	 * Premier constructeur des contacts si on a l'image
+	 * ce constructeur est utilisé lorsque l'on déserialise les contact d'un fichier
 	 * @param nom
 	 * @param prenom
 	 * @param numeroTel
@@ -35,6 +37,7 @@ public class Contact implements Serializable, Comparable<Object>
 	 * @param email
 	 * @param photoDescription
 	 * @param photo
+	 * @author loanb
 	 */
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo) 
 	{
@@ -45,29 +48,22 @@ public class Contact implements Serializable, Comparable<Object>
 		this.email = email;
 		//ajout de l'image
 		this.photo = new ImageIcon(photo.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT));
-		System.out.println(new ImageIcon (getPhotoDescription()).getImageLoadStatus() +"");
-//		if ( new ImageIcon (getPhotoDescription()).getImageLoadStatus() != 8)
-//		{
-			
-//			setPhoto(MonImage.transformationImage(".\\src\\photoDefault\\default.png", 120, 120));
-//			setPhotoDescription(".\\src\\photoDefault\\default.png");
-//		}
-//		else
-//		{
-			this.photo.setDescription(photoDescription);
-			this.photoDescription = photoDescription;
-//		}
-		
+		this.photo.setDescription(photoDescription);
+		this.photoDescription = photoDescription;
 		this.nomFichier = nom+prenom;
 	}
 	
 	/**
+	 //si l'on précise le chemin de l'image a part. c'est utiliser lors de la création/modification d'un contact
+	 * Premier constructeur des contacts si on a l'image
+	 * ce constructeur est utilisé lorsque l'on déserialise les contact d'un fichier
 	 * @param nom
 	 * @param prenom
 	 * @param numeroTel
 	 * @param numeroMobile
 	 * @param email
 	 * @param photo
+	 * @author loanb
 	 */
 	public Contact(String nom, String prenom, String numeroTel, String numeroMobile, String email,ImageIcon photo) 
 	{
@@ -95,8 +91,11 @@ public class Contact implements Serializable, Comparable<Object>
 	{
 		return  getNom() + " " + getPrenom() + " " + getNumeroMobile(); //cela s'affichera dans la jlist
 	}
+	
 	/**
-	 * 
+	 * enregistrer
+	 * cette methode permet d'enregistrer/modifier un contact dans un fichier
+	 * @author loanb
 	 */
 	public void enregistrer() 
 	{
@@ -113,6 +112,8 @@ public class Contact implements Serializable, Comparable<Object>
 		serializeObject(nomFichier,nom,prenom,numeroTel,numeroMobile,email,cheminduficherRelatif,photo); //écrire
 	}
 	/**
+	 * serializeObject
+	 * cette methode permet la création du fichier avec les paramère demander du contact
 	 * @param nomFichier
 	 * @param nom
 	 * @param prenom
@@ -121,6 +122,7 @@ public class Contact implements Serializable, Comparable<Object>
 	 * @param email
 	 * @param photoDescription
 	 * @param photo
+	 * @author loanb
 	 */
 	private void serializeObject(String nomFichier, String nom, String prenom, String numeroTel, String numeroMobile, String email,String photoDescription, ImageIcon photo)
 	{
@@ -143,8 +145,12 @@ public class Contact implements Serializable, Comparable<Object>
 			e.printStackTrace();
 		}
 	}
+	
 	/**
-	 * 
+	 * changerNomFichier
+	 * cette methode est utiliser lorsque l'on modifier un contact
+	 * elle supprimer l'ancien nom du fichier pour en recrée un nouveau avec les bonnes informations
+	 * @author loanb
 	 */
 	private void changerNomFichier() 
 	{
@@ -158,8 +164,9 @@ public class Contact implements Serializable, Comparable<Object>
 		}
 		nomFichier = nom+prenom;
 	}
-	/**
-	 * 
+	/**suppressioncontact
+	 * permet la supression du fichier qui coresspant ou contact que nous avons voulu supprimer
+	 * @author loanb
 	 */
 	public void suppressioncontact()
 	{
@@ -167,8 +174,12 @@ public class Contact implements Serializable, Comparable<Object>
 		System.out.println("votre fichier " + chemin+nomFichier+".txt" + " as été supprimer");
 		f.delete(); 
 	}
-	/* (non-Javadoc)
+	/* compareTo
+	 * cette methode nous permet de comparer un objet de type ici contact
+	 * afin de determienr si c'est ou non le même contact
+	 * (non-Javadoc)
 	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 * @uthor loanb
 	 */
 	@Override
 	public int compareTo(Object arg0) 
@@ -190,9 +201,6 @@ public class Contact implements Serializable, Comparable<Object>
 		return nom;
 	}
 
-	/**
-	 * @param nom
-	 */
 	public void setNom(String nom) 
 	{
 		this.nom = nom;

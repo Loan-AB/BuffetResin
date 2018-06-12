@@ -3,6 +3,9 @@ package gestionCalculatrice;
 public class Nombre extends Symbole{
 	private double valeur;
 	
+	/*stoque le nombre
+	 * @author loanb
+	 */
 	public Nombre(double val) {
 		valeur = val;
 	}

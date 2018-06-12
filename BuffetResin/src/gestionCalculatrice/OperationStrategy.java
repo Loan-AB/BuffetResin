@@ -1,8 +1,8 @@
 package gestionCalculatrice;
 
 /**
- * @author Julien
- *
+ * @author loanb
+ * permet d'obligé la methodes dans tout les operations
  */
 public interface OperationStrategy {
 	/**

@@ -6,18 +6,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
-
-
-
-
-
 public class MonBoutonPhoto extends JButton
 { 
 	/**
+	 * cette classe permet de paramètré notre bouton avec une image
 	 * 
+	 * @author loanb and julien
 	 */
 	private static final long serialVersionUID = 1L;
-	ImageIcon ii;
+	private ImageIcon ii;
 	
 	/**
 	 * @author julien
@@ -36,8 +33,7 @@ public class MonBoutonPhoto extends JButton
 		//setBorder(new RoudedBorder(20));
 		
 		setBackground(new Color(0.0f, 0.0f, 0.0f, 0.0f));
-		setBorderPainted(false);;
-		
+		setBorderPainted(false);
 	}
 	
 	/**

@@ -7,6 +7,11 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+/*
+ * cette classe permet la mise en place graphique de la Jlist.
+ * donc on definit le comportement de la Jlist
+ * @author loanb
+ */
 	//pour la mise en place de la Jlist , spécialement concue pour les Jlist avec images
 		@SuppressWarnings("serial")
 		class GraphiqueJlist extends DefaultListCellRenderer implements ListCellRenderer<Object>

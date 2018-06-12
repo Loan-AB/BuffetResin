@@ -8,16 +8,10 @@ import javax.swing.ImageIcon;
 
 public class MesImages 
 {
-	
-	
 	private ImageIcon tblPhotos[];
-	
-	File recherche;
-	
-	File listePhoto[];
-	
-	
-	
+	private File recherche;
+	private File listePhoto[];
+
 	/**
 	 * * @author julien
 	 * Cette classe permet de récupérer les images d'une adresse donnée

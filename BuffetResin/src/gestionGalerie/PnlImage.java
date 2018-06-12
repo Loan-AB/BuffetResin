@@ -27,13 +27,13 @@ public class PnlImage extends PnlCentre implements ImageObserver
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	protected JLabel lblImage;
-	protected ImageIcon monImageIcon;
-	protected MaFenetre maman;
-	protected MonBouton btnDelete;
-	protected MesImages imagesListe =  new MesImages();
-	protected MonBouton btnValiderPhotoContact;
-	protected int numImage;
+	private  JLabel lblImage;
+	private  ImageIcon monImageIcon;
+	private  MaFenetre maman;
+	private  MonBouton btnDelete;
+	protected  MesImages imagesListe =  new MesImages();
+	private  MonBouton btnValiderPhotoContact;
+	private  int numImage;
 
 	
 	/**
@@ -50,17 +50,6 @@ public class PnlImage extends PnlCentre implements ImageObserver
 			public void actionPerformed(ActionEvent e) 
 			{
 			File imagePath = new File(monImageIcon.getDescription());
-			//controle si image dans dossier images faire une boucle pour trouver image voulue
-				// si oui supprimer si non rien.
-//				for (int i = 0; i < imagesListe.listePhoto.length; i++) 
-//				{
-//					if (imagePath.getAbsolutePath().equals(imagesListe.listePhoto[i].getAbsolutePath())) 
-//					{
-//						System.out.println(imagesListe.listePhoto[i].getAbsolutePath());
-//						delete(imagesListe.listePhoto[i].getAbsolutePath());
-//						maman.changeCouche("Galerie");
-//					}
-//				}
 				delete(monImageIcon.getDescription());
 				maman.changeCouche("Galerie");
 			}
@@ -72,8 +61,8 @@ public class PnlImage extends PnlCentre implements ImageObserver
 			@Override
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				System.out.println("clicker valider :D");
-				System.out.println(monImageIcon.getDescription());
+//				System.out.println("clicker valider :D");
+//				System.out.println(monImageIcon.getDescription());
 				maman.setImageFormulaireNouveauContact(monImageIcon);
 				maman.changeCouche("Formulaire");
 			}
@@ -86,21 +75,26 @@ public class PnlImage extends PnlCentre implements ImageObserver
 	}
 
 	/**
+	 * setImage 
+	 * affiche l'image aen grand par rapport au bouton cliquer
 	 * @param monImageIcon
 	 * @param description
 	 * @param numImage
+	 * @author loanb
 	 */
 	public void setImage(ImageIcon monImageIcon , String description, int numImage) //loan 08.06.2018
 	{
 		this.numImage = numImage;
 		this.monImageIcon = monImageIcon;
 		this.monImageIcon.setDescription(description);
-		System.out.println(monImageIcon.getDescription());
+//		System.out.println(monImageIcon.getDescription());
 		lblImage.setIcon(monImageIcon);
 	}
 	
 	/**
+	 * supprimer le fichier du dossier selectionner
 	 * @param file
+	 * @author loanb
 	 */
 	private void delete(String file)
 	{
@@ -111,7 +105,12 @@ public class PnlImage extends PnlCentre implements ImageObserver
     }
 	
 	/**
+	 * réation d'un bouton pour le lien entre gallerie et contact
+	 * setbContactBouton
+	 * permet de choisir par rapport au bollean si on affiche le bouton supprimer ou le bouton valider
+	 * 
 	 * @param bContact
+	 * @author loanb
 	 */
 	public void setbContactBouton(boolean bContact) 
 	{ //loan

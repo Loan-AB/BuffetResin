@@ -32,9 +32,6 @@ import apparence.PnlCentre;
 
 public class PnlContact  extends PnlCentre 
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private MonLabel lblTitre;
 	private MonBouton btnCreer;
@@ -45,20 +42,24 @@ public class PnlContact  extends PnlCentre
 
 	
 	/**
+	 * le constructeur du panel contact
 	 * @param maman
+	 * @author loanb
 	 */
 	public PnlContact(MaFenetre maman) 
 	{
-		
 		super("Contact");
 		this.maman = maman;
 		creatioComposant();
 		cretationDelaListe();
 		add(btnCreer);
-	
 	}
 	/**
+	 * cretationDelaListe
+	 * cette methode sert a crée tout la jliste qui contient tout les contact
+	 * on y a joute même un evenement au clique.
 	 * 
+	 * @author loanb
 	 */
 	private void cretationDelaListe() 
 	{
@@ -83,7 +84,9 @@ public class PnlContact  extends PnlCentre
 		
 	}
 	/**
-	 * 
+	 * creatioComposant
+	 * on crée tout les composant utilsie pour le pnlContact
+	 * @author loanb
 	 */
 	private void creatioComposant() 
 	{
@@ -112,25 +115,26 @@ public class PnlContact  extends PnlCentre
 		}
 		
 	}
-	/**
-	 * 
+	/*lireToutLesContact
+	 * permet la lecture de tout les contact en mettant le chemin par defaut
+	 * cette fonction appelle une autre fonctione pour lire tout les fichiers
+	 * @author loanb
 	 */
 	private void lireToutLesContact() 
 	{
 		File chemin = new File(".\\src\\fichierContact\\"); 
 		listerRepertoire(chemin);
 	}
+	
 	/*
 	 * La methode listerRepertoire 
 	 * 
-	 * but : cette methode sert a lister tout les fichiers et les désérialize
+	 * cette methode sert a lister tout les fichiers et les désérialize
 	 * 
-	 * Entrée : le chemin du repertoire ou contien les fichier
+	 * Entrée : @param repertoire
 	 * Sortie : aucune
 	 */
-	/**
-	 * @param repertoire
-	 */
+
 	public void listerRepertoire(File repertoire)
 	{
 		String [] listefichiers;
@@ -145,12 +149,12 @@ public class PnlContact  extends PnlCentre
 				}
 			}
 		}
-	/*
-	 * Les methodes suivante servent a la création et la lecture des fichiers
-	 * 
-	 */
+
 	/**
+	 * deSerializeObject
+	 * permet la lecture d'un fichier et de crée cette objet dans le code
 	 * @param nomFichier
+	 * @author loanb
 	 */
 	public  void deSerializeObject(String nomFichier) 
 	{ 
@@ -172,7 +176,11 @@ public class PnlContact  extends PnlCentre
 		}
 	}
 	/**
+	 * ajouterContact
+	 * cette methode permet l'ajout du contact dans la jlist
+	 * a a bonne place => ordre alphabetique
 	 * @param contact
+	 * @author loanb
 	 */
 	public void ajouterContact(Contact contact) 
 	{
@@ -191,7 +199,10 @@ public class PnlContact  extends PnlCentre
 		}
 	}
 	/**
+	 * supprimerContact
+	 * cette methode permet de supprimer dans la jlist le contact que nous avons supprimer
 	 * @param contact
+	 * @author loanb
 	 */
 	public void supprimerContact(Contact contact) 
 	{

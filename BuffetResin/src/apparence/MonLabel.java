@@ -13,7 +13,8 @@ public class MonLabel extends JLabel
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * le constructeur des labels
+	 * @author loanb
 	 */
 	public MonLabel() 
 	{

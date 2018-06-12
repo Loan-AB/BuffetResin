@@ -4,6 +4,9 @@ public class OperAddition extends Operation {
 
 	/* (non-Javadoc)
 	 * @see gestionCalculatrice.OperationStrategy#doOper(double, double)
+	 * doOper
+	 * permet l'addition de 2 nombre
+	 * @author loanb
 	 */
 	@Override
 	public double doOper(double nb1, double nb2) {

@@ -3,7 +3,9 @@ package gestionCalculatrice;
 public class SigEffacer extends Sigle {
 
 	/**
+	 * permet de definir le comportement du sigle effacer
 	 * @param signe
+	 * @author loanb
 	 */
 	public SigEffacer(String signe) {
 		super(signe);

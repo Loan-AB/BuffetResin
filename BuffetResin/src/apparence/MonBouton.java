@@ -8,12 +8,12 @@ import gestionGalerie.MonImage;
 
 public class MonBouton extends JButton 
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	/**
+	 * le constructeur des boutons par defaut
 	 * @param nom
+	 * @author loanb
 	 */
 	public MonBouton(String nom)
 	{
@@ -23,8 +23,10 @@ public class MonBouton extends JButton
 		this.setCursor(new Cursor(Cursor.HAND_CURSOR));
 	}
 	/**
+	 * le contrsucteur pout les bouton qui sont par defaut non visible
 	 * @param nom
 	 * @param b
+	 * @author loanb
 	 */
 	public MonBouton(String nom, boolean b) 
 	{
@@ -35,8 +37,10 @@ public class MonBouton extends JButton
 	}
 	
 	/**
+	 * le constructeur pour les boutons qui contienne une image en plus
 	 * @param nom
 	 * @param path
+	 * @author loanb
 	 */
 	public MonBouton(String nom,String path )
 	{
@@ -50,10 +54,12 @@ public class MonBouton extends JButton
 		this.setIcon(m.transformationImage(path,70)); 
 		this.setBackground(Color.BLACK);
 	}
-	/**
+	/** 
+	 * le constructeur pour les boutons qui contienne une image en plus et on précise la taille
 	 * @param nom
 	 * @param path
 	 * @param taille
+	 * @author loanb
 	 */
 	public MonBouton(String nom, String path, int taille) 
 	{

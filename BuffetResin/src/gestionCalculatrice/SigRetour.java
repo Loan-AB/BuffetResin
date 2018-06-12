@@ -1,9 +1,12 @@
 package gestionCalculatrice;
 
-public class SigRetour extends Sigle {
+public class SigRetour extends Sigle { //non fonctionelle malheureusement
 
 	/**
+	 * ici on paramètre le sigle retour est son comportement
+	 *
 	 * @param signe
+	 * @author loanb
 	 */
 	public SigRetour(String signe) {
 		super(signe);

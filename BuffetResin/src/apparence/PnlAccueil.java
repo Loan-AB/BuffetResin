@@ -3,9 +3,6 @@ package apparence;
 
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 @SuppressWarnings("serial")
 public class PnlAccueil extends PnlCentre 
 {
@@ -14,13 +11,11 @@ public class PnlAccueil extends PnlCentre
 	MonBouton btnGalerie;
 	MonBouton btnCalculatrice;
 	MaFenetre maman;
-	JLabel labelWallPaper = new JLabel(new ImageIcon("./src/photoDefault/wallpaper1.png"));
-
 	/**
-	 * @
-	 *
-	 *
+	 * ce panel sert de panel qui donne accès tout les application entre elle
+	 * @author loanb
 	 */
+	
 	public PnlAccueil(MaFenetre maman) 
 	{
 		super("Acceuil");
@@ -33,14 +28,15 @@ public class PnlAccueil extends PnlCentre
 		add(btnContact);
 		add(btnGalerie);
 		add(btnCalculatrice);
-		add(labelWallPaper);
 		
 	}
 
 	/**
+	 * Cette methode sert a ajouter les listener au bouton voulu
 	 * @param lancerContact
 	 * @param lancerSecret
 	 * @param lancerGalerie
+	 * @author loanb
 	 */
 	public void setListenerBtn(ActionListener lancerContact, ActionListener lancerSecret,ActionListener lancerGalerie) 
 	{
@@ -50,7 +46,9 @@ public class PnlAccueil extends PnlCentre
 	}
 	
 	/**
+	 * sert lors du lancement d'ajouter tout.
 	 * @param lancerAppli
+	 * @author loanb
 	 */
 	public void setListenerBtn(ActionListener lancerAppli) 
 	{

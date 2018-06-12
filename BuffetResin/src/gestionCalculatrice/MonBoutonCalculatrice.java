@@ -15,7 +15,8 @@ public class MonBoutonCalculatrice extends MonBouton
 {
 
 	/**
-	 * 
+	 * cette methode permet de crée les bouton correcte avec les évenement qui correspond a leur texte
+	 * @author loanb
 	 */
 	private static final long serialVersionUID = 1L;
 	Symbole s;
@@ -42,7 +43,6 @@ public class MonBoutonCalculatrice extends MonBouton
 				default:this.s=new OperEgal();
 			}
 		}
-
 		this.maman = maman;
 		
 		this.addActionListener(new ActionListener() 
