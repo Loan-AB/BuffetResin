@@ -13,6 +13,10 @@ import javax.swing.JButton;
 
 public class MonBoutonPhoto extends JButton
 { 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ImageIcon ii;
 	
 	/**

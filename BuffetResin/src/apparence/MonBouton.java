@@ -9,6 +9,10 @@ import gestionGalerie.MonImage;
 public class MonBouton extends JButton 
 {
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	 * @param nom
 	 */
 	public MonBouton(String nom)

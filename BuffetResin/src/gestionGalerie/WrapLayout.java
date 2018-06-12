@@ -14,6 +14,10 @@ import javax.swing.SwingUtilities;
 	//Sous-classe FlowLayout qui prend entièrement en charge l'encapsulation des composants.
 public  class WrapLayout extends FlowLayout
 {
+	/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 	private Dimension preferredLayoutSize;
 
 	/**

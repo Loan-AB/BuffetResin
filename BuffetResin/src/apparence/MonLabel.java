@@ -10,6 +10,11 @@ public class MonLabel extends JLabel
 	/**
 	 * 
 	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
+	 */
 	public MonLabel() 
 	{
 		setForeground(Color.white);

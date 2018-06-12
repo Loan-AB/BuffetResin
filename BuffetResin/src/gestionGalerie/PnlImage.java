@@ -23,6 +23,10 @@ import apparence.PnlCentre;
 
 public class PnlImage extends PnlCentre implements ImageObserver 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected JLabel lblImage;
 	protected ImageIcon monImageIcon;
 	protected MaFenetre maman;

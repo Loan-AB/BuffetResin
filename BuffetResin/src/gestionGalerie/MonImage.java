@@ -10,6 +10,11 @@ public class MonImage extends ImageIcon
 {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected MesImages mesImages = new MesImages();
 	
 	protected ImageIcon photoEntree;

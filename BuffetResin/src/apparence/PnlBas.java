@@ -2,8 +2,6 @@ package apparence;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
-
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
@@ -13,6 +11,10 @@ public class PnlBas extends JPanel
 {
 // Panel qui contient les 3 bouttons de base
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private MonBouton btnHome;
 	private MonBouton btnBack;
 	

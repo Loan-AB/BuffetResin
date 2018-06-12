@@ -24,6 +24,10 @@ import gestionGalerie.MonImage;
 
 public class PnlFormulaireContact  extends PnlCentre 
 { 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private MonBouton btnAnnuler;
 	private MonBouton btnSupprimer;
 	private MonBouton btnChoixImage;

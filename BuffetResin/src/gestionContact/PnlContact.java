@@ -32,6 +32,10 @@ import apparence.PnlCentre;
 
 public class PnlContact  extends PnlCentre 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private MonLabel lblTitre;
 	private MonBouton btnCreer;
 	private JList<Contact> lstContact;
@@ -156,6 +160,7 @@ public class PnlContact  extends PnlCentre
 			ObjectInputStream ois = new ObjectInputStream(fichier);
 			Contact cs = (Contact) ois.readObject();
 			lContact.add(cs);
+			ois.close();
 		}
 		catch (java.io.IOException e) 
 		{

@@ -37,6 +37,10 @@ import apparence.PnlCentre;
  */
 public class PnlGalerie extends PnlCentre 
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected MaFenetre maman;
 	protected MesImages mesImages = new MesImages();
 	protected JPanel pnlPhoto = new JPanel();

@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 import static java.nio.file.StandardCopyOption.*;
 import javax.swing.ImageIcon;
 
-public class Contact implements Serializable, Comparable
+public class Contact implements Serializable, Comparable<Object>
 {
 
 	private static final long serialVersionUID = 1L;

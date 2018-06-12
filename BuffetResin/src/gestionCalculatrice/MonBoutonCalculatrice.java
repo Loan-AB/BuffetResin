@@ -14,6 +14,10 @@ import apparence.MonBouton;
 public class MonBoutonCalculatrice extends MonBouton
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Symbole s;
 	PnlCalculatrice maman;
 

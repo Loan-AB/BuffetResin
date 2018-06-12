@@ -17,6 +17,10 @@ import javax.swing.border.LineBorder;
 
 public class PnlHaut extends JPanel
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private java.util.Date time;
 	private MonLabel lblTime;
 	private	DateFormat df;

@@ -9,6 +9,10 @@ import javax.swing.JTextArea;
 public class MonJtextArea extends JTextArea 
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String textHolder;
 	/**
 	 * @param textHolder
