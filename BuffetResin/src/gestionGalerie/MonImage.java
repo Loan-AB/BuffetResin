@@ -74,7 +74,6 @@ public class MonImage extends ImageIcon
 	{
 		ImageIcon ii = new ImageIcon(path);
 		double ratio = (double)width/ii.getIconWidth();
-		System.out.println("MonImage je retourne votre description " +ii.getDescription());
 		return new ImageIcon(ii.getImage().getScaledInstance((int)(ii.getIconWidth()*ratio), (int)(ii.getIconHeight()*ratio), Image.SCALE_DEFAULT));
 	}
 

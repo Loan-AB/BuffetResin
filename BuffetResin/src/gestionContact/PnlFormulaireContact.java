@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.MediaTracker;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -45,32 +46,31 @@ import gestionGalerie.MonImage;
 
 public class PnlFormulaireContact  extends PnlCentre 
 { 
-
-	MonBouton btnAnnuler;
-	MonBouton btnSupprimer;
-	MonBouton btnChoixImage;
-	MonBouton btnModifier;
+	private MonBouton btnAnnuler;
+	private MonBouton btnSupprimer;
+	private MonBouton btnChoixImage;
+	private MonBouton btnModifier;
 	
-	JTextArea txtNom;
-	JTextArea txtPrenom;
-	JTextArea txtNumeroTel;
-	JTextArea txtNumeroMobile;
-	JTextArea txtEmail;
+	private JTextArea txtNom;
+	private JTextArea txtPrenom;
+	private JTextArea txtNumeroTel;
+	private JTextArea txtNumeroMobile;
+	private JTextArea txtEmail;
 	boolean bModifier;
 	
-	MaFenetre maman;
-	Contact contact;
-	JLabel lblImage;
-	ImageIcon iiformulaire;
+	private MaFenetre maman;
+	private Contact contact;
+	private JLabel lblImage;
+	private ImageIcon iiformulaire;
 	
-	ImageIcon iiDefaut;
-	MonLabel lblTitre;
+	private ImageIcon iiDefaut;
+	private MonLabel lblTitre;
 	
-	MonLabel lblMail;
-	MonLabel lblPrenom;
-	MonLabel lblNom;
-	MonLabel lblTelMobile;
-	MonLabel lblTelMaison;
+	private MonLabel lblMail;
+	private MonLabel lblPrenom;
+	private MonLabel lblNom;
+	private MonLabel lblTelMobile;
+	private MonLabel lblTelMaison;
 	/**
  * @param maman
  */
@@ -127,7 +127,6 @@ public class PnlFormulaireContact  extends PnlCentre
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				contact.suppressioncontact();
-				System.out.println("cc");
 				maman.supprimerContact(contact);
 				maman.changeCouche("Contact");
 			}
@@ -180,7 +179,7 @@ public class PnlFormulaireContact  extends PnlCentre
 			{
 				if(btnModifier.getText().equals("Modifier")) 
 				{
-					definirModification(true);
+					definirModification(true); //donc on affiche tout.
 				}
 				else 
 				{
@@ -213,30 +212,19 @@ public class PnlFormulaireContact  extends PnlCentre
 					if(!probleme) 
 					{
 						definirModification(false);
+						
+						
 						if(contact == null) //si on crée un nouveau contact	
 						{ 	
-							contact = new Contact(txtNom.getText(), txtPrenom.getText(), txtNumeroTel.getText(),
-									txtNumeroMobile.getText(), txtEmail.getText(), iiformulaire.getDescription().toString(), iiformulaire);
 							
-							//lors de la création pas de pb
-							//car on clique qu'une seule fois sur choix image
+							nouveauContact();
 						}
 						else 
 						{
-							contact.setNom(txtNom.getText());
-							contact.setPrenom(txtPrenom.getText());
-							contact.setNumeroTel(txtNumeroTel.getText());
-							contact.setNumeroMobile(txtNumeroMobile.getText());
-							contact.setEmail(txtEmail.getText());
-							contact.setPhotoDescription(iiformulaire.getDescription());
-							MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
-							contact.setPhoto(m.transformationImage(iiformulaire.getDescription(), 120, 120));
-							contact.setPhotoDescription(iiformulaire.getDescription());
-							//mais si on modifier ya un pb :/
+							modifierContact();
+							
 						}
-						System.err.println(maman.toString());
-						contact.enregistrer();
-						maman.ajouterContact(contact);
+						
 					}
 				}
 			}
@@ -244,6 +232,29 @@ public class PnlFormulaireContact  extends PnlCentre
 
 		});
 	}
+	protected void modifierContact() {
+		
+		contact.setNom(txtNom.getText());
+		contact.setPrenom(txtPrenom.getText());
+		contact.setNumeroTel(txtNumeroTel.getText());
+		contact.setNumeroMobile(txtNumeroMobile.getText());
+		contact.setEmail(txtEmail.getText());
+		contact.setPhotoDescription(iiformulaire.getDescription());
+		MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+		contact.setPhoto(m.transformationImage(iiformulaire.getDescription(), 120, 120));
+		contact.setPhotoDescription(iiformulaire.getDescription());
+		contact.enregistrer();
+		maman.ajouterContact(contact);
+		
+	}
+
+	protected void nouveauContact() {
+		contact = new Contact(txtNom.getText(), txtPrenom.getText(), txtNumeroTel.getText(),
+				txtNumeroMobile.getText(), txtEmail.getText(), iiformulaire.getDescription().toString(), iiformulaire);
+		contact.enregistrer();
+		maman.ajouterContact(contact);	
+	}
+
 	/**
 	 * 
 	 */
@@ -285,12 +296,11 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtEmail.setPreferredSize(new Dimension(200, 20));
 		add(lblMail);
 		add(txtEmail);
-		
+		System.out.println("cc");
 		add(btnAnnuler); 
 		add(btnSupprimer);
 		add(btnChoixImage);
 		bModifier = true;
-	
 }
 	/**
 	 * 
@@ -317,21 +327,25 @@ public class PnlFormulaireContact  extends PnlCentre
 	/**
 	 * @param b
 	 */
-	private void definirModification(boolean b) 
+	public void definirModification(boolean b) 
 	{
-	
-		btnAnnuler.setVisible(b);
-		btnChoixImage.setVisible(b);
 		txtEmail.setEditable(b);
 		txtNom.setEditable(b);
 		txtPrenom.setEditable(b);
 		txtNumeroMobile.setEditable(b);
 		txtNumeroTel.setEditable(b);
-		
-		if (b) {
+		btnSupprimer.setVisible(b);
+		btnChoixImage.setVisible(b);
+		if (b) 
+		{
 			btnModifier.setText("Valider");
+			btnAnnuler.setText("Anuller");
 		}
-		else btnModifier.setText("Modifier");
+		else
+		{
+			btnModifier.setText("Modifier");
+			btnAnnuler.setText("retour");
+		}
 	}
 	/**
 	 * 
@@ -346,14 +360,18 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtNumeroTel.setText("");
 		maman.setbContact(false);
 		setImage(iiDefaut); 
-
+		
+		//remise des txt en blanc
+		lblNom.setForeground(Color.white);
+		lblMail.setForeground(Color.white);
+		lblPrenom.setForeground(Color.white);
 	}
 	/**
 	 * @param contact
 	 */
 	public void setContact(Contact contact) 
 	{
-		//ajout des élément dsand
+		//ajout des élément dans les txt.
 		this.contact = contact;
 		txtNom.setText(contact.getNom());	
 		lblImage.setIcon(contact.getPhoto());
@@ -361,36 +379,66 @@ public class PnlFormulaireContact  extends PnlCentre
 		txtNumeroMobile.setText(contact.getNumeroMobile());
 		txtNumeroTel.setText(contact.getNumeroTel());
 		txtPrenom.setText(contact.getPrenom());
-
-		//ici contrôler si le l'image existe toujours
 		
-		if ( new ImageIcon (contact.getPhotoDescription()).getImageLoadStatus() != 8)
-		{
-			setImage(new ImageIcon (iiDefaut.getDescription()));
-			MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
-			contact.setPhoto(m.transformationImage(iiDefaut.getDescription(), 120, 120));
-			contact.setPhotoDescription(iiDefaut.getDescription());
+		/*
+		 * Contrôle de l'image si elle existe toujours dans la galerie
+		 * si ce n'est pas le cas on remplace l'image par celle par defaut
+		 * et on modifie et enregistre le contact
+		 * 
+		 */
+		if ( new ImageIcon (contact.getPhotoDescription()).getImageLoadStatus() != MediaTracker.COMPLETE)  //ça passe
+		{	
+			miseEnPlaceImageDefaut();
 		}
 		else
 		{
 			setImage(new ImageIcon (contact.getPhotoDescription()));	
 		}
 	}
+	
+	private void miseEnPlaceImageDefaut() 
+	{
+		//on indique la nouvelle image
+		System.out.println("salut je suis vide");
+		setImage(new ImageIcon (iiDefaut.getDescription()));
+		
+		//redefinition de la nouvelle image dans contact + sauvegarde
+		MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+		contact.setPhoto(m.transformationImage(iiDefaut.getDescription(), 120, 120));
+		contact.setPhotoDescription(iiDefaut.getDescription());
+		modifierContact(); //enregistre
+		
+	}
+
 	/**
 	 * @param laNouvelleimage
 	 */
 	public void setImage(ImageIcon laNouvelleimage) 
 	{
+		this.iiformulaire = laNouvelleimage;
 		setlblImage(laNouvelleimage);//pour l'affichage
 	}
+	public ImageIcon getImage() 
+	{
+		return iiformulaire; //pour l'affichage
+	}
+	
 	/**
 	 * @param MaFutureIcone
 	 */
+	
 	private void setlblImage (ImageIcon MaFutureIcone) //affichage du label avec la bonne image
 	{
-		this.iiformulaire = MaFutureIcone;
 		MonImage m = new MonImage(); //instencier , pour ne pas avoir de static
+		System.out.println(MaFutureIcone.getDescription() + " icone ?");
+		
 		lblImage.setIcon(m.transformationImage(MaFutureIcone.getDescription(), lblImage.getWidth()));
+		if (lblImage.getIcon().getIconHeight() < 0) //si une icone a sa ahauteur negative c'est quelle n'est pas chargée correctement 
+		{
+			miseEnPlaceImageDefaut(); //recommance le processus de contrôle 
+		}
+		System.out.println(lblImage.getIcon().getIconHeight());
+		
 	}
 }
 

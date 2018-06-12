@@ -5,14 +5,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.util.StringTokenizer;
 
 import static java.nio.file.StandardCopyOption.*;
 import javax.swing.ImageIcon;
-
-import gestionGalerie.MonImage;
 
 public class Contact implements Serializable, Comparable
 {
@@ -232,7 +229,7 @@ public class Contact implements Serializable, Comparable
 	 */
 	public void setNumeroTel(String numeroTel) 
 	{
-		numeroTel = numeroTel;
+		this.numeroTel = numeroTel;
 	}
 
 	/**
@@ -248,7 +245,7 @@ public class Contact implements Serializable, Comparable
 	 */
 	public void setNumeroMobile(String numeroMobile) 
 	{
-		numeroMobile = numeroMobile;
+		this.numeroMobile = numeroMobile;
 	}
 
 	/**

@@ -29,7 +29,6 @@ public class MonBouton extends JButton
 		this.setActionCommand(nom);
 		this.setText(nom);
 		this.setVisible(b);
-		this.setBackground(Color.BLACK);
 	}
 	
 	/**

@@ -6,6 +6,10 @@ import java.io.FileFilter;
 //cette classe permet de filtrer les types de fichiers que nous souhaitons en donnant leur extension
 //Source : https://alvinalexander.com/blog/post/java/how-implement-java-filefilter-list-files-directory
 
+/*
+ *
+ * 
+ */
 
 public class FileFilterImage implements FileFilter
 {

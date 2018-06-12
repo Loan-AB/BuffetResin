@@ -57,14 +57,11 @@ public class PnlCalculatrice extends PnlCentre
 		tabBouton =  new MonBoutonCalculatrice[9];
 		for (int i = 0; i < tabBouton.length; i++) 
 		{
-			System.out.println(tabBouton.length);
-			System.out.println(i);
-			
 				tabBouton[i]= new MonBoutonCalculatrice (Integer.toString(i+1), this);
 				chiffreStockers.add(tabBouton[i]);
 			
 		}
-		//	chiffreStockers.add(new MonBoutonCalculatrice(".", this));
+//		chiffreStockers.add(new MonBoutonCalculatrice(".", this));
 		chiffreStockers.add(new MonBoutonCalculatrice("0",this));
 		
 		operateur.setOpaque(false);

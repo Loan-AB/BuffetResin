@@ -34,16 +34,12 @@ import gestionContact .*;
 
 public class PnlContact  extends PnlCentre 
 {
-
-	
-	
-	MonLabel lblTitre;
-	MonBouton btnCreer;
-	JList<Contact> lstContact;
-	Contact[] tabContact;
-	MaFenetre maman;
-	DefaultListModel<Contact> lm;
-	ArrayList<Contact> lContact;
+	private MonLabel lblTitre;
+	private MonBouton btnCreer;
+	private JList<Contact> lstContact;
+	private MaFenetre maman;
+	private DefaultListModel<Contact> lm;
+	private ArrayList<Contact> lContact;
 
 	
 	/**
@@ -102,6 +98,7 @@ public class PnlContact  extends PnlCentre
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				maman.afficherContact(null); //pour que l'image par defaut apparait 
+				maman.definirModificationFormulaire(true);
 				maman.changeCouche("Formulaire");
 			}
 		});

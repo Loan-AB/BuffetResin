@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import gestionCalculatrice.PnlCalculatrice;
@@ -24,17 +22,17 @@ public class MaFenetre extends JFrame
 {
 
 	private ArrayList<String> coucheAutorisee = new ArrayList<String>();
-	PnlBas pnlBas;
-	PnlHaut pnlHaut;
-	PnlCentre pnlCentre;
-	PnlAccueil pnlAccueil;
-	CardLayout couche;
-	PnlCalculatrice pnlCalculatrice;
-	PnlContact pnlContact;
-	PnlGalerie pnlGalerie;
-	PnlFormulaireContact pnlFormulaire;
-	PnlImage pnlImage;
-	ArrayList<String> historiqueLayout;
+	private PnlBas pnlBas;
+	private PnlHaut pnlHaut;
+	private PnlCentre pnlCentre;
+	private PnlAccueil pnlAccueil;
+	private CardLayout couche;
+	private PnlCalculatrice pnlCalculatrice;
+	private PnlContact pnlContact;
+	private PnlGalerie pnlGalerie;
+	private PnlFormulaireContact pnlFormulaire;
+	private PnlImage pnlImage;
+	private ArrayList<String> historiqueLayout;
 	
 	/**
 	 * 
@@ -216,6 +214,11 @@ public class MaFenetre extends JFrame
 	public void supprimerImage(int numImage) 
 	{
 		pnlGalerie.supprimerImage(numImage);
+	}
+
+	public void definirModificationFormulaire(boolean b) {
+		pnlFormulaire.definirModification(b);
+		
 	}
 
 }
