@@ -32,7 +32,7 @@ public class MesImages
 		recherche = new File("./src/photoGallerie");
 		
 		//Selectionne les fichier que nous souahitons utiliser
-		
+		listePhoto= new File[recherche.listFiles(new FileFilterImage()).length];
 		listePhoto = recherche.listFiles(new FileFilterImage());
 		
 		//Donne la taille de notre tableau de photos
