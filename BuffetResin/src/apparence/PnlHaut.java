@@ -4,17 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.GregorianCalendar;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+
+
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import gestionGalerie.MonImage;
+
 
 public class PnlHaut extends JPanel
 {

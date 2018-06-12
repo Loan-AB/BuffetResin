@@ -1,12 +1,8 @@
 package gestionGalerie;
 
 import java.io.File;
-import java.io.FilenameFilter;
-
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 
  
 

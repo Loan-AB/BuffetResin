@@ -4,12 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.util.StringTokenizer;
 
-import javax.management.relation.RelationServiceNotRegisteredException;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import apparence.MaFenetre;

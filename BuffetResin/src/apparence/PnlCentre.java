@@ -1,19 +1,9 @@
 package apparence;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Label;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
-import gestionGalerie.MonImage;
-import javafx.scene.layout.BackgroundImage;
-
 
 @SuppressWarnings("serial")
 public class PnlCentre extends JPanel 

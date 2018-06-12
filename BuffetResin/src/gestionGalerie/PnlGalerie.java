@@ -1,28 +1,21 @@
 package gestionGalerie;
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -34,7 +27,6 @@ import apparence.MaFenetre;
 import apparence.MonBouton;
 import apparence.MonLabel;
 import apparence.PnlCentre;
-import javafx.stage.FileChooser;
 
 
 

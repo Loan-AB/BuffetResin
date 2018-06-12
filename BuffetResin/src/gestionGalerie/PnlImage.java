@@ -1,26 +1,22 @@
 package gestionGalerie;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Image;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.ImageObserver;
 import java.io.File;
-import java.net.URLConnection;
-import java.util.ArrayList;
 
-import javax.swing.Icon;
+
+
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
+
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JWindow;
+
 
 import apparence.MaFenetre;
 import apparence.MonBouton;
-import apparence.PnlAccueil;
+
 import apparence.PnlCentre;
 
 //Panel ou est affiché l'image seul
